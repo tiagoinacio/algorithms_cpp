@@ -17,8 +17,8 @@ include_directories(
     )
 
 add_library(
-    example
-    src/example.cpp
+    bublesort
+    src/sorting/bublesort.cpp
     )
 
 set(GOOGLETEST_ROOT external/googletest/googletest CACHE STRING "Google Test source root")
@@ -42,8 +42,7 @@ add_library(googletest ${GOOGLETEST_SOURCES})
 add_executable(
     unit_tests
     test/main.cpp
-    test/example_add.cpp
-    test/example_subtract.cpp
+    test/sorting/bublesort.cpp
     )
 
 add_dependencies(unit_tests googletest)
@@ -51,7 +50,7 @@ add_dependencies(unit_tests googletest)
 target_link_libraries(
     unit_tests
     googletest
-    example
+    bublesort
     pthread
     )
 
