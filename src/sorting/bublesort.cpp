@@ -52,25 +52,23 @@ void bublesort_improved(std::vector<double> &vec)
     } while (swapped == true);
 }
 
-// double arr[] bublesort_improved(double arr[], int size)
-// {
-//     bool swapped;
+void bublesort_improved(double arr[], int size)
+{
+    bool swapped;
 
-//     do {
-//         swapped = false;
+    do {
+        swapped = false;
 
-//         for (int index = 0; index < size - 1; index++) {
+        for (int index = 0; index < size - 1; index++) {
 
-//             if (arr[index] > arr[index + 1]) {
-//                 int tmp = arr[index];
+            if (arr[index] > arr[index + 1]) {
+                int tmp = arr[index];
 
-//                 arr[index] = arr[index + 1];
-//                 arr[index + 1] = tmp;
-//                 swapped = true;
-//             }
-//         }
+                arr[index] = arr[index + 1];
+                arr[index + 1] = tmp;
+                swapped = true;
+            }
+        }
 
-//     } while (swapped == true);
-
-//     return arr;
-// }
+    } while (swapped == true);
+}
