@@ -43,6 +43,7 @@ add_executable(
     unit_tests
     test/main.cpp
     test/sorting/bublesort.cpp
+    test/data-structures/linked-list.cpp
     )
 
 add_dependencies(unit_tests googletest)

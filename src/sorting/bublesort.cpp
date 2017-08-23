@@ -1,5 +1,14 @@
 #include "sorting/bublesort.h"
 
+/**
+ * @brief bublesort
+ *
+ * sorts a vector of doubles using two nested for loops
+ * even if the vector is already sorted, it will always loop for all elements
+ * big O(n^2)
+ *
+ * @param vec reference to an unsorted vector of doubles
+ */
 void bublesort(std::vector<double> &vec)
 {
     int vecSize = vec.size();
@@ -15,6 +24,16 @@ void bublesort(std::vector<double> &vec)
     }
 }
 
+/**
+ * @brief bublesort
+ *
+ * sorts an of doubles using two nested for loops
+ * even if the array is already sorted, it will always loop for all elements
+ * big O(n^2)
+ *
+ * @param arr reference to an array of doubles
+ * @param size of the array
+ */
 void bublesort(double arr[], int size)
 {
     if (size < 1) return;
@@ -30,6 +49,15 @@ void bublesort(double arr[], int size)
     }
 }
 
+/**
+ * @brief bublesort_improved
+ *
+ * sorts a vector of doubles using two nested for loops
+ * even if the vector is already sorted, it will always loop for all elements
+ * big O(n^2)
+ *
+ * @param vec reference to an unsorted vector of doubles
+ */
 void bublesort_improved(std::vector<double> &vec)
 {
     bool swapped;
@@ -52,6 +80,16 @@ void bublesort_improved(std::vector<double> &vec)
     } while (swapped == true);
 }
 
+/**
+ * @brief bublesort_improved
+ *
+ * sorts an of doubles using two nested for loops
+ * if the array is already sorted, it will stop the iterations
+ * big O(n^2)
+ *
+ * @param arr reference to an array of doubles
+ * @param size of the array
+ */
 void bublesort_improved(double arr[], int size)
 {
     bool swapped;
