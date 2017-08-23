@@ -1,6 +1,7 @@
 #ifndef DATA_STRUCTURES_LINKED_LIST_H_INCLUDED
 #define DATA_STRUCTURES_LINKED_LIST_H_INCLUDED
 
+#include <memory>
 #include <iostream>
 
 namespace datastructures {
@@ -59,7 +60,7 @@ class LinkedList {
 
   void append(T value) {
     if (head.get() == nullptr) {
-      std::unique_ptr<datastructures::Node<T> > newValue(new Node<T>(value));
+      std::unique_ptr<datastructures::Node<T> > newValue(new datastructures::Node<T>(value));
       head = std::move(newValue);
       listSize++;
       return;
@@ -74,7 +75,25 @@ class LinkedList {
     listSize++;
   }
 
+  void preppend(T value) {
+    if (head.get() == nullptr) {
+      std::unique_ptr<datastructures::Node<T> > newValue(new datastructures::Node<T>(value));
+      head = std::move(newValue);
+      listSize++;
+      return;
+    }
+
+    std::unique_ptr<datastructures::Node<T> > newNode(new datastructures::Node<T>(value));
+    newNode->setNext(head.release());
+    head = std::move(newNode);
+    listSize++;
+  }
+
   T get(int index) {
+    if (index >= listSize) {
+      throw "index out of bounds";
+    }
+
     if (index == 0) {
       return head->getValue();
     }

@@ -48,3 +48,28 @@ TEST(linked_list, clear)
     ASSERT_EQ(linkedList.size(), 1);
     ASSERT_EQ(linkedList.get(0), 50);
 }
+
+TEST(linked_list, preppend)
+{
+    datastructures::LinkedList<double> linkedList;
+    ASSERT_EQ(linkedList.size(), 0);
+
+    linkedList.append(2);
+    linkedList.append(5);
+
+    ASSERT_EQ(linkedList.size(), 2);
+    ASSERT_EQ(linkedList.get(0), 2);
+    ASSERT_EQ(linkedList.get(1), 5);
+
+    linkedList.preppend(7);
+    ASSERT_EQ(linkedList.size(), 3);
+    ASSERT_EQ(linkedList.get(0), 7);
+    ASSERT_EQ(linkedList.get(1), 2);
+    ASSERT_EQ(linkedList.get(2), 5);
+}
+
+TEST(linked_list, get)
+{
+    datastructures::LinkedList<double> linkedList;
+    ASSERT_ANY_THROW(linkedList.get(1));
+}

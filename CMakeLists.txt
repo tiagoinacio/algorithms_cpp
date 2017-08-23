@@ -1,15 +1,23 @@
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
-project(gtest-demo)
-
-enable_language(C)
-enable_language(CXX)
+project(algorithms_cpp)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
-    set(CMAKE_CXX_FLAGS         "-Wall -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused")
-    set(CMAKE_CXX_FLAGS_DEBUG   "-O0 -g3")
-    set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+    set(CMAKE_CXX_FLAGS         "-Wall -Wreorder -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused")
+    set(CMAKE_CXX_FLAGS_DEBUG   "-g3")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
+endif()
+
+# C++ compile flags
+# -std=c++11 -> for c++ standarts
+# -Wall for WARNING
+# -pedantic -> for warning between c and c++
+# -pthread for portability
+# -g -O0 -fprofile-arcs -ftest-coverage for code coverage
+if(NOT CMAKE_VERSION VERSION_LESS 3.1)
+    set(CMAKE_CXX_STANDARD 11)
+else()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 endif()
 
 include_directories(
@@ -40,16 +48,17 @@ endforeach()
 add_library(googletest ${GOOGLETEST_SOURCES})
 
 add_executable(
-    unit_tests
+    unit-tests
     test/main.cpp
     test/sorting/bublesort.cpp
     test/data-structures/linked-list.cpp
+    test/data-structures/array-list.cpp
     )
 
-add_dependencies(unit_tests googletest)
+add_dependencies(unit-tests googletest)
 
 target_link_libraries(
-    unit_tests
+    unit-tests
     googletest
     bublesort
     pthread
@@ -58,4 +67,4 @@ target_link_libraries(
 include(CTest)
 enable_testing()
 
-add_test(unit ${PROJECT_BINARY_DIR}/unit_tests)
+add_test(unit ${PROJECT_BINARY_DIR}/unit-tests)

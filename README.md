@@ -1,7 +1,6 @@
-[![Build Status](https://travis-ci.org/bast/gtest-demo.svg?branch=master)](https://travis-ci.org/bast/gtest-demo/builds)
-[![Coverage Status](https://coveralls.io/repos/bast/gtest-demo/badge.png?branch=master)](https://coveralls.io/r/bast/gtest-demo?branch=master)
-[![License](https://img.shields.io/badge/license-%20BSD--3-blue.svg)](../master/LICENSE)
-
+[![Build Status](https://travis-ci.org/tiagoinacio/algorithms_cpp.svg?branch=master)](https://travis-ci.org/tiagoinacio/algorithms_cpp/builds)
+[![Coverage Status](https://coveralls.io/repos/github/tiagoinacio/algorithms_cpp/badge.svg?branch=master)](https://coveralls.io/github/tiagoinacio/algorithms_cpp?branch=master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## How to build this demo
 
