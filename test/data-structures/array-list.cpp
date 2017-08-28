@@ -60,3 +60,21 @@ TEST(array_list, copy_constructor)
     datastructures::ArrayList<double> cloneArrayList(arrayList);
     ASSERT_EQ(cloneArrayList.get(0), 4);
 }
+
+TEST(array_list, get_out_of_bounds)
+{
+    datastructures::ArrayList<double> arrayList;
+
+    ASSERT_ANY_THROW(arrayList.get(1));
+}
+
+TEST(array_list, assignment_operator)
+{
+    datastructures::ArrayList<double> arrayList;
+    datastructures::ArrayList<double> arrayList2;
+
+    arrayList.add(7);
+
+    arrayList2 = arrayList;
+    ASSERT_EQ(arrayList2.get(0), 7);
+}

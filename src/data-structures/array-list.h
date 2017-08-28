@@ -30,11 +30,13 @@ class ArrayList {
     *array_ = *(obj.array_);
   }
 
-  // assignement operator
-  ArrayList<T>& operator=(ArrayList<T> tmp) {
-    std::swap(array_ , tmp.array_);
-    std::swap(size_, tmp.size_);
-    std::swap(capacity_, tmp.capacity_);
+  // assignment operator
+  ArrayList<T>& operator=(const ArrayList<T> &rhs) {
+    if (this != &rhs) {
+      *this->array_ = *(rhs.array_);
+      this->size_ = rhs.size_;
+      this->capacity_ = rhs.capacity_;
+    }
     return *this;
   }
 
