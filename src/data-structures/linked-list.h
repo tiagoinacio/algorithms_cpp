@@ -53,6 +53,15 @@ class LinkedList {
     head(nullptr)
     {}
 
+  // assignment operator
+  LinkedList<T>& operator=(const LinkedList<T>& rhs) {
+    if (this != &rhs) {
+      this->next = rhs.next;
+      this->value = rhs.value;
+    }
+    return *this;
+  }
+
   void clear() {
     head.reset(nullptr);
     listSize = 0;

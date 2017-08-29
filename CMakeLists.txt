@@ -53,6 +53,7 @@ add_executable(
     test/sorting/bublesort.cpp
     test/data-structures/linked-list.cpp
     test/data-structures/array-list.cpp
+    test/data-structures/hash-table.cpp
     )
 
 add_dependencies(unit-tests googletest)

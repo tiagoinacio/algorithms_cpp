@@ -78,3 +78,21 @@ TEST(array_list, assignment_operator)
     arrayList2 = arrayList;
     ASSERT_EQ(arrayList2.get(0), 7);
 }
+
+TEST(array_list, set)
+{
+    datastructures::ArrayList<double> arrayList;
+
+    arrayList.set(4, 5);
+    ASSERT_EQ(arrayList.size(), 4);
+    ASSERT_EQ(arrayList.capacity(), 8);
+
+    // default instatiation
+    ASSERT_EQ(arrayList.get(0), 0);
+    ASSERT_EQ(arrayList.get(1), 0);
+    ASSERT_EQ(arrayList.get(2), 0);
+    ASSERT_EQ(arrayList.get(3), 0);
+
+    // setted value
+    ASSERT_EQ(arrayList.get(4), 5);
+}

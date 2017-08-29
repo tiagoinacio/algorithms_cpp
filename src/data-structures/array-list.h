@@ -55,6 +55,26 @@ class ArrayList {
     size_++;
   }
 
+  void set(int index, const T &value) {
+    if (index <= capacity_) {
+      array_[index] = value;
+      size_++;
+    } else {
+      capacity_ = index * 2;
+      T *newArray = new T[capacity_];
+      for (int i = 0; i < size_; i++) {
+        newArray[i] = array_[i];
+      }
+      for (int i = size_; i < capacity_; i++) {
+        newArray[i] = T();
+      }
+      newArray[index] = value;
+      delete[] array_;
+      array_ = newArray;
+      size_ = index;
+    }
+  }
+
   T get(int index) {
     if (index > size_) {
       throw "Index out of bounds";
