@@ -58,7 +58,7 @@ class ArrayList {
   void set(int index, const T &value) {
     if (index <= capacity_) {
       array_[index] = value;
-      size_++;
+      size_ = size_ > index ? size_ : index;
     } else {
       capacity_ = index * 2;
       T *newArray = new T[capacity_];

@@ -9,10 +9,17 @@
 
 namespace datastructures {
 
+template <typename E>
+struct map {
+    std::string key;
+    E value;
+};
+
 template <typename T>
 class HashTable {
  private:
-    datastructures::ArrayList<std::unique_ptr<datastructures::LinkedList<T> > > array_;
+    // [linkedList<map> *, linkedList<map> *]
+    datastructures::ArrayList<datastructures::LinkedList<map<T> > *> array_;
 
  public:
     HashTable<T>()
@@ -20,18 +27,35 @@ class HashTable {
 
     void set(const std::string &key, const T &value) {
         int index = hashFn(key);
-        std::unique_ptr<datastructures::LinkedList<T> > linkedList(new datastructures::LinkedList<T>);
-        linkedList.add(value);
+        datastructures::LinkedList<map< T> > *linkedList = new datastructures::LinkedList<map<T> >;
+        map<T> keyValue;
+        keyValue.key = key;
+        keyValue.value = value;
+        linkedList->append(keyValue);
         array_.set(index, linkedList);
     }
 
     T get(const std::string &key) {
         int index = hashFn(key);
-        return array_[index].get(index);
+        datastructures::LinkedList<map< T> > *linkedList = array_.get(index);
+
+        for (int i = 0; i < array_.size(); i++) {
+            map<T> map_ = linkedList->get(i);
+            if (map_.key == key) {
+                return map_.value;
+            }
+        }
+        return T();
     }
 
     int hashFn(const std::string &key) {
-        return 0;
+        int index = 0;
+
+        for ( int i = 0; i < key.length(); i++ ) {
+		    index += int(key[i]);
+        }
+
+        return index % 127;
     }
 };
 }

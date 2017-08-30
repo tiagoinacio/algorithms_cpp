@@ -6,6 +6,11 @@ TEST(hash_table, constructor)
 {
     datastructures::HashTable<std::string> hashTable;
 
-    hashTable.set("name", "tiago");
-    ASSERT_EQ(hashTable.get("name"), "tiago");
+    hashTable.set("first_name", "tiago");
+    hashTable.set("last_name", "inacio");
+
+    ASSERT_EQ(hashTable.get("first_name"), "tiago");
+    ASSERT_EQ(hashTable.get("last_name"), "inacio");
+
+    //ASSERT_EQ(hashTable.get("some_property"), "");
 }
