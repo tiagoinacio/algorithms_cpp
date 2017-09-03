@@ -5,7 +5,7 @@
 ## How to build this demo
 
 ```sh
-git clone https://github.com/tiagoinacio/algorithms_cpp.git
+git clone https://github.com/tiagoinacio/algorithms_cpp.git --recursive
 cd algorithms_cpp
 mkdir build
 cd build
