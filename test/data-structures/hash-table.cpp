@@ -12,5 +12,5 @@ TEST(hash_table, constructor)
     ASSERT_EQ(hashTable.get("first_name"), "tiago");
     ASSERT_EQ(hashTable.get("last_name"), "inacio");
 
-    //ASSERT_EQ(hashTable.get("some_property"), "");
+    ASSERT_ANY_THROW(hashTable.get("some_property"));
 }

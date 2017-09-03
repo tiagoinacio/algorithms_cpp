@@ -23,11 +23,16 @@ class HashTable {
 
  public:
     HashTable<T>()
-    {}
+    {
+        for (int i = 0; i < 127; i++) {
+            array_.add(new datastructures::LinkedList<map<T> >);
+        }
+
+    }
 
     void set(const std::string &key, const T &value) {
         int index = hashFn(key);
-        datastructures::LinkedList<map< T> > *linkedList = new datastructures::LinkedList<map<T> >;
+        datastructures::LinkedList<map<T> > *linkedList = array_.get(index);
         map<T> keyValue;
         keyValue.key = key;
         keyValue.value = value;
@@ -37,15 +42,17 @@ class HashTable {
 
     T get(const std::string &key) {
         int index = hashFn(key);
-        datastructures::LinkedList<map< T> > *linkedList = array_.get(index);
+        datastructures::LinkedList<map<T> > *linkedList = array_.get(index);
 
-        for (int i = 0; i < array_.size(); i++) {
-            map<T> map_ = linkedList->get(i);
-            if (map_.key == key) {
-                return map_.value;
+        if (linkedList->size() > 0) {
+            for (int i = 0; i < linkedList->size(); i++) {
+                map<T> map_ = linkedList->get(i);
+                if (map_.key == key) {
+                    return map_.value;
+                }
             }
         }
-        return T();
+        throw "no key found on hast table";
     }
 
     int hashFn(const std::string &key) {
