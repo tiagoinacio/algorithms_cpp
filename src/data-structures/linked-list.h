@@ -49,8 +49,8 @@ class LinkedList {
 
  public:
   LinkedList() :
-    listSize(0),
-    head(nullptr)
+    head(nullptr),
+    listSize(0)
     {}
 
   // assignment operator

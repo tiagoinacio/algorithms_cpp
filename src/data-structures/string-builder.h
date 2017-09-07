@@ -10,8 +10,8 @@ namespace datastructures {
 class StringBuilder {
  private:
     std::unique_ptr<char[]> str_;
-    size_t count_;
     size_t arraySize_;
+    size_t count_;
 
  public:
     StringBuilder ()

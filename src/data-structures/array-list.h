@@ -14,9 +14,12 @@ class ArrayList {
   int capacity_;
 
  public:
-  ArrayList<T>() : size_(0), capacity_(1), array_(nullptr) {
-    array_ = new T[1];
-  }
+  ArrayList<T>()
+    :
+    array_(new T[1]),
+    size_(0),
+    capacity_(1)
+    {}
 
   ~ArrayList<T>() {
     clear();
