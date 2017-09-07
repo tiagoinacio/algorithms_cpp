@@ -43,18 +43,22 @@ TEST(string_builder, duplicate_array)
     ASSERT_STREQ(stringBuilder.toString(), "12345678910111234567891011");
 }
 
-TEST(string_builder, big_values)
+TEST(string_builder, with_strings)
 {
-    // datastructures::StringBuilder stringBuilder;
+    datastructures::StringBuilder stringBuilder;
 
-    // stringBuilder.append("abcdefgh");
-    // ASSERT_STREQ(stringBuilder.toString(), "abcdefgh");
+    stringBuilder.append("abcdefgh");
+    ASSERT_STREQ(stringBuilder.toString(), "abcdefgh");
+}
 
-    // stringBuilder.append("abcdefgh");
-    // ASSERT_STREQ(stringBuilder.toString(), "abcdefghabcdefgh");
+TEST(string_builder, with_big_values)
+{
+    datastructures::StringBuilder stringBuilder;
 
-    // stringBuilder.append("abcdefgh");
-    // stringBuilder.append("abcdefgh");
-    // stringBuilder.append("abcdefgh");
-    // ASSERT_STREQ(stringBuilder.toString(), "abcdefghabcdefghabcdefghabcdefghabcdefgh");
+    stringBuilder.append("abcdefgh");
+    stringBuilder.append("abcdefgh");
+    stringBuilder.append("abcdefgh");
+    stringBuilder.append("abcdefgh");
+    stringBuilder.append("abcdefgh");
+    ASSERT_STREQ(stringBuilder.toString(), "abcdefghabcdefghabcdefghabcdefghabcdefgh");
 }

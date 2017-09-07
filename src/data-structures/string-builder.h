@@ -16,17 +16,21 @@ class StringBuilder {
  public:
     StringBuilder ()
     :
-    str_(new char[16]),
+    str_(new char[16]()),
     arraySize_(16),
     count_(0)
     {}
+
+    ~StringBuilder() {
+        str_.reset();
+    }
 
     void append(const char *str) {
         size_t strLength = strlen(str);
 
         if (count_ + strLength >= arraySize_) {
             arraySize_ = (count_ + strLength + 1) * 2;
-            std::unique_ptr<char[]> newArray(new char[arraySize_]);
+            auto newArray = std::make_unique<char[]>(arraySize_);
             char *ptr = newArray.get();
             for (int i = 0; i < count_; i++) {
                 ptr[i] = str_.get()[i];
@@ -46,7 +50,13 @@ class StringBuilder {
     };
 
     char* toString() {
-        return str_.get();
+        auto newArray = std::make_unique<char[]>(count_);
+
+        for (int i = 0; i < count_; i++) {
+            newArray.get()[i] = str_.get()[i];
+        }
+
+        return newArray.get();
     }
 };
 }
