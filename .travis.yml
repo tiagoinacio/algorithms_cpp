@@ -26,6 +26,8 @@ before_install:
     - sudo apt-get install -y libopencv-dev
     - pip install --user cpp-coveralls
 
+install: export CXX="g++-5"
+
 script:
     - mkdir build
     - cd build
