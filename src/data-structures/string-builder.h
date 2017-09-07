@@ -50,7 +50,8 @@ class StringBuilder {
     };
 
     char* toString() {
-        auto newArray = std::make_unique<char[]>(count_);
+        // count_ + 1 to have space for the null char
+        auto newArray = std::make_unique<char[]>(count_ + 1);
 
         for (int i = 0; i < count_; i++) {
             newArray.get()[i] = str_.get()[i];
