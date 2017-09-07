@@ -12,7 +12,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
 # -pedantic -> for warning between c and c++
 # -pthread for portability
 # -g -O0 -fprofile-arcs -ftest-coverage for code coverage
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/src
