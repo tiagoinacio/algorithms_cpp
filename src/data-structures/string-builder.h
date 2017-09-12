@@ -26,12 +26,12 @@ class StringBuilder {
     }
 
     void append(const char *str) {
-        size_t strLength = strlen(str);
+        auto strLength = strlen(str);
 
         if (count_ + strLength >= arraySize_) {
             arraySize_ = (count_ + strLength + 1) * 2;
-            std::unique_ptr<char[]> newArray = std::make_unique<char[]>(arraySize_);
-            char *ptr = newArray.get();
+            auto newArray = std::make_unique<char[]>(arraySize_);
+            auto ptr = newArray.get();
             for (int i = 0; i < count_; i++) {
                 ptr[i] = str_.get()[i];
             }
@@ -51,13 +51,14 @@ class StringBuilder {
 
     char* toString() {
         // count_ + 1 to have space for the null char
-        std::unique_ptr<char[]> newArray = std::make_unique<char[]>(count_ + 1);
+        auto newArray = std::make_unique<char[]>(count_ + 1);
+        auto ptr = newArray.get();
 
         for (int i = 0; i < count_; i++) {
-            newArray.get()[i] = str_.get()[i];
+            ptr[i] = str_.get()[i];
         }
 
-        return newArray.get();
+        return ptr;
     }
 };
 }
