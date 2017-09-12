@@ -30,7 +30,7 @@ class StringBuilder {
 
         if (count_ + strLength >= arraySize_) {
             arraySize_ = (count_ + strLength + 1) * 2;
-            auto newArray = std::make_unique<char[]>(arraySize_);
+            char[] newArray = std::make_unique<char[]>(arraySize_);
             char *ptr = newArray.get();
             for (int i = 0; i < count_; i++) {
                 ptr[i] = str_.get()[i];
@@ -51,7 +51,7 @@ class StringBuilder {
 
     char* toString() {
         // count_ + 1 to have space for the null char
-        auto newArray = std::make_unique<char[]>(count_ + 1);
+        char[] newArray = std::make_unique<char[]>(count_ + 1);
 
         for (int i = 0; i < count_; i++) {
             newArray.get()[i] = str_.get()[i];
