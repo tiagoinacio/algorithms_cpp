@@ -23,6 +23,11 @@ add_library(
     src/sorting/bublesort.cpp
     )
 
+add_library(
+    isUnique
+    src/utils/strings/is-unique.cpp
+    )
+
 set(GOOGLETEST_ROOT external/googletest/googletest CACHE STRING "Google Test source root")
 
 include_directories(
@@ -45,6 +50,7 @@ add_executable(
     unit-tests
     test/main.cpp
     test/sorting/bublesort.cpp
+    test/utils/strings/is-unique.cpp
     test/data-structures/linked-list.cpp
     test/data-structures/array-list.cpp
     test/data-structures/string-builder.cpp
@@ -57,6 +63,7 @@ target_link_libraries(
     unit-tests
     googletest
     bublesort
+    isUnique
     pthread
     )
 
