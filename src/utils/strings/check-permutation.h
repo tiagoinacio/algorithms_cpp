@@ -3,7 +3,7 @@
 
 #include <string>
 
-bool checkPermutation(char* first, char* second)
+bool checkPermutation(char* first, char* second);
 
 #endif
 

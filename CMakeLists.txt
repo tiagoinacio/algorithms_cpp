@@ -24,6 +24,11 @@ add_library(
     )
 
 add_library(
+    checkPermutation
+    src/utils/strings/check-permutation.cpp
+    )
+
+add_library(
     isUnique
     src/utils/strings/is-unique.cpp
     )
@@ -64,6 +69,7 @@ target_link_libraries(
     googletest
     bublesort
     isUnique
+    checkPermutation
     pthread
     )
 

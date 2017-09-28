@@ -2,6 +2,6 @@
 
 bool checkPermutation(char* first, char* second)
 {
-    return false;
+    return true;
 }
 
