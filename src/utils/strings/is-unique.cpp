@@ -1,7 +1,5 @@
 #include "utils/strings/is-unique.h"
 
-#include <iostream>
-
 bool isUnique(std::string &str)
 {
     std::string::iterator i = str.begin();
