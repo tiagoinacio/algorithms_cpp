@@ -4,5 +4,6 @@
 #include <string>
 
 bool isUnique(std::string &str);
+bool isUnique(char *str, size_t strSize);
 
 #endif
