@@ -24,6 +24,11 @@ add_library(
     )
 
 add_library(
+    urlify
+    src/utils/strings/urlify.cpp
+    )
+
+add_library(
     checkPermutation
     src/utils/strings/check-permutation.cpp
     )
@@ -60,6 +65,8 @@ add_executable(
     test/data-structures/array-list.cpp
     test/data-structures/string-builder.cpp
     test/data-structures/hash-table.cpp
+    test/utils/strings/check-permutation.cpp
+    test/utils/strings/urlify.cpp
     )
 
 add_dependencies(unit-tests googletest)
@@ -70,6 +77,7 @@ target_link_libraries(
     bublesort
     isUnique
     checkPermutation
+    urlify
     pthread
     )
 
