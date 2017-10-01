@@ -3,6 +3,6 @@
 
 #include <string>
 
-bool checkPermutation(char* first, char* second, size_t firstSize, size_t secondSize);
+bool isPalindromePermutation(char* str, size_t size);
 
 #endif

@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "sorting/bublesort.h"
+#include "utils/sort/bublesort.h"
 #include <vector>
 
 TEST(bublesort_vec, unsorted_vector)

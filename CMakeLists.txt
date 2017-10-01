@@ -19,23 +19,16 @@ include_directories(
     )
 
 add_library(
-    bublesort
-    src/sorting/bublesort.cpp
-    )
-
-add_library(
-    urlify
+    utils-strings
     src/utils/strings/urlify.cpp
-    )
-
-add_library(
-    checkPermutation
     src/utils/strings/check-permutation.cpp
+    src/utils/strings/is-unique.cpp
+    src/utils/strings/palindrome-permutation.cpp
     )
 
 add_library(
-    isUnique
-    src/utils/strings/is-unique.cpp
+    utils-sort
+    src/utils/sort/bublesort.cpp
     )
 
 set(GOOGLETEST_ROOT external/googletest/googletest CACHE STRING "Google Test source root")
@@ -59,14 +52,15 @@ add_library(googletest ${GOOGLETEST_SOURCES})
 add_executable(
     unit-tests
     test/main.cpp
-    test/sorting/bublesort.cpp
-    test/utils/strings/is-unique.cpp
     test/data-structures/linked-list.cpp
     test/data-structures/array-list.cpp
     test/data-structures/string-builder.cpp
     test/data-structures/hash-table.cpp
+    test/utils/sort/bublesort.cpp
     test/utils/strings/check-permutation.cpp
     test/utils/strings/urlify.cpp
+    test/utils/strings/is-unique.cpp
+    test/utils/strings/palindrome-permutation.cpp
     )
 
 add_dependencies(unit-tests googletest)
@@ -74,11 +68,9 @@ add_dependencies(unit-tests googletest)
 target_link_libraries(
     unit-tests
     googletest
-    bublesort
-    isUnique
-    checkPermutation
-    urlify
     pthread
+    utils-sort
+    utils-strings
     )
 
 include(CTest)
