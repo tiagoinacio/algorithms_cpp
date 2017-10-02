@@ -21,6 +21,20 @@ bool isPalindromePermutation(char* str, size_t size) {
 
     std::map<char, unsigned int>::const_iterator it = chars.begin();
     int numberOfMiddles = 0;
+
+    /*
+     *      middle 'c'
+     *   a b | c c | d e
+     * 
+     *  only one middle is allowed to have one occurence
+     * 
+     *      middle 'd'
+     *   a b c | d | c b a
+     * 
+     *      middle 'd'
+     *   a p w f | d | f w p a
+     * 
+     * */
     while (it != chars.end()) {
         if (it->second == 1) {
             numberOfMiddles++;
