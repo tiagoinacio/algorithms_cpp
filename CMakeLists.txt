@@ -25,6 +25,7 @@ add_library(
     src/utils/strings/is-unique.cpp
     src/utils/strings/palindrome-permutation.cpp
     src/utils/strings/is-palindrome.cpp
+    src/utils/strings/one-away.cpp
     )
 
 add_library(
@@ -63,6 +64,7 @@ add_executable(
     test/utils/strings/is-unique.cpp
     test/utils/strings/palindrome-permutation.cpp
     test/utils/strings/is-palindrome.cpp
+    test/utils/strings/one-away.cpp
     )
 
 add_dependencies(unit-tests googletest)
