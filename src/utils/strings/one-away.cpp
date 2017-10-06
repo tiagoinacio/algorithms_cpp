@@ -1,4 +1,5 @@
 #include "utils/strings/one-away.h"
+#include <string> // std::string, std::string::const_iterator
 
 bool isOneAway(const std::string &first, const std::string &second) {
     std::string::const_iterator firstIterator = first.begin();
