@@ -13,10 +13,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
 # -pthread for portability
 # -g -O0 -fprofile-arcs -ftest-coverage for code coverage
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I external/GSL/include")
 
-include_directories(
-    ${PROJECT_SOURCE_DIR}/src
-    )
+include_directories(${PROJECT_SOURCE_DIR}/src)
 
 add_library(
     utils-strings
@@ -26,6 +25,7 @@ add_library(
     src/utils/strings/palindrome-permutation.cpp
     src/utils/strings/is-palindrome.cpp
     src/utils/strings/one-away.cpp
+    src/utils/strings/string-compression.cpp
     )
 
 add_library(
@@ -34,10 +34,15 @@ add_library(
     )
 
 set(GOOGLETEST_ROOT external/googletest/googletest CACHE STRING "Google Test source root")
+set(GSL_ROOT external/GSL/ CACHE STRING "GSL source root")
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/${GOOGLETEST_ROOT}
     ${PROJECT_SOURCE_DIR}/${GOOGLETEST_ROOT}/include
+    )
+include_directories(
+    ${PROJECT_SOURCE_DIR}/${GSL_ROOT}
+    ${PROJECT_SOURCE_DIR}/${GSL_ROOT}/include
     )
 
 set(GOOGLETEST_SOURCES
@@ -65,6 +70,7 @@ add_executable(
     test/utils/strings/palindrome-permutation.cpp
     test/utils/strings/is-palindrome.cpp
     test/utils/strings/one-away.cpp
+    test/utils/strings/string-compression.cpp
     )
 
 add_dependencies(unit-tests googletest)
