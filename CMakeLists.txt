@@ -26,6 +26,7 @@ add_library(
     src/utils/strings/is-palindrome.cpp
     src/utils/strings/one-away.cpp
     src/utils/strings/string-compression.cpp
+    src/utils/strings/rotate-matrix.cpp
     )
 
 add_library(
@@ -71,6 +72,7 @@ add_executable(
     test/utils/strings/is-palindrome.cpp
     test/utils/strings/one-away.cpp
     test/utils/strings/string-compression.cpp
+    test/utils/strings/rotate-matrix.cpp
     )
 
 add_dependencies(unit-tests googletest)
