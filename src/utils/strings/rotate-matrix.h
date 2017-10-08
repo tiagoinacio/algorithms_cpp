@@ -2,7 +2,8 @@
 #define UTILS_STRINGS_ROTATE_MATRIX_H_INCLUDED
 
 #include <vector> // std::vector
+#include <math.h> // floor
 
-std::vector<std::vector<int> >& rotateMatrix(std::vector<std::vector<int> > &);
+std::vector<std::vector<int> >& rotateMatrixBy90Degrees(std::vector<std::vector<int> > &);
 
 #endif

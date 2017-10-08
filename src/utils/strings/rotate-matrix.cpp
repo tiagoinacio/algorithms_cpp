@@ -1,14 +1,24 @@
 #include "utils/strings/rotate-matrix.h"
-#include <iostream>
 
-std::vector<std::vector<int> >& rotateMatrix(std::vector<std::vector<int> > &matrix) {
+// rotate matrix in place by 90 dregrees
+std::vector<std::vector<int> >& rotateMatrixBy90Degrees(std::vector<std::vector<int> > &matrix) {
+    std::vector<int>::size_type rows = matrix[0].size();
+    std::vector< std::vector<int> >::size_type cycles = floor(rows / 2);
+    std::vector< std::vector<int> >::size_type currentCycle;
 
-    for (std::vector<std::vector<int> >::size_type columnIndex = 0; columnIndex < matrix.size(); columnIndex++) {
-        std::vector<int>::size_type rowSize = matrix[columnIndex].size();
-        for (std::vector<int>::size_type rowIndex = 0; rowIndex < rowSize; rowIndex++) {
-            int tmp = matrix[columnIndex][rowSize - rowIndex];
+    for (currentCycle = 0; currentCycle < cycles; currentCycle++) {
 
-            std::cout << matrix[columnIndex][rowIndex] << std::endl;
+        for (int i = 0; i < 3; i++) {
+            int tmp2 = matrix[currentCycle][3 - i];
+            matrix[currentCycle][3 - i] = matrix[currentCycle + 1][i];
+
+            int tmp1 = matrix[rows - i - 1][3 - i];
+            matrix[rows - i - 1][3 - i] = tmp2;
+
+            tmp2 = matrix[rows - i - 1][i];
+            matrix[rows - i - 1][i] = tmp1;
+
+            matrix[currentCycle][i] = tmp2;
         }
     }
 
