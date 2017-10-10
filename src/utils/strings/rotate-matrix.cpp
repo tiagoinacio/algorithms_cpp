@@ -24,10 +24,9 @@ std::vector<std::vector<int> >& rotateMatrixBy90Degrees(std::vector<std::vector<
             
             tmp = matrix[columns - elem - 1 + column][column];
             matrix[columns - elem - 1 + column][column] = tmp2;
-            
             matrix[column][elem + column] = tmp;            
         }
-        columns = columns / 2;
+        columns = columns - 2;
     }
 
     return matrix;
