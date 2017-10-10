@@ -27,6 +27,7 @@ add_library(
     src/utils/strings/one-away.cpp
     src/utils/strings/string-compression.cpp
     src/utils/strings/rotate-matrix.cpp
+    src/utils/strings/zero-matrix.cpp
     )
 
 add_library(
@@ -73,6 +74,7 @@ add_executable(
     test/utils/strings/one-away.cpp
     test/utils/strings/string-compression.cpp
     test/utils/strings/rotate-matrix.cpp
+    test/utils/strings/zero-matrix.cpp
     )
 
 add_dependencies(unit-tests googletest)
