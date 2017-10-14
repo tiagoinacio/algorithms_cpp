@@ -37,6 +37,7 @@ class Node {
 
   void setNext(Node* next_) {
     std::unique_ptr<Node> nextPtr(next_);
+    // TODO: doest this delete the next pointer, before replacing it?
     next = std::move(nextPtr);
   }
 };
@@ -67,6 +68,8 @@ class LinkedList {
     head.reset(nullptr);
     listSize = 0;
   }
+
+  // TODO: insert element at specified position
 
   void append(T value) {
     if (head.get() == nullptr) {
@@ -115,6 +118,22 @@ class LinkedList {
 
     return current->getValue();
   }
+
+  // TODO: delete element
+  // void deleteElement(int index) {
+  //   if (index > listSize || index < 1) {
+  //     throw "index out of bounds";
+  //   }
+
+  //   datastructures::Node<T>* current = head.get();
+  //   // TODO: handle if is last node
+  //   // TODO: handle if is HEAD
+  //   for (int i = 0; i < index - 1; i++) {
+  //     current = current->getNext();
+  //   }
+  //   current->setNext(current->getNext()->getNext());
+  //   listSize--;
+  // }
 
   int size() {
     return listSize;

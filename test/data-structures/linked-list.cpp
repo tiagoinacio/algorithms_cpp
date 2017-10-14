@@ -73,3 +73,25 @@ TEST(linked_list, get)
     datastructures::LinkedList<double> linkedList;
     ASSERT_ANY_THROW(linkedList.get(1));
 }
+
+// TEST(linked_list, delete_element)
+// {
+//     datastructures::LinkedList<double> linkedList;
+//     linkedList.append(0);
+//     linkedList.append(1);
+//     linkedList.append(2);
+//     linkedList.append(3);
+//     linkedList.append(4);
+//     linkedList.append(5);
+//     linkedList.append(6);
+//     linkedList.append(7);
+//     linkedList.append(8);
+
+//     ASSERT_EQ(linkedList.size(), 9);
+//     ASSERT_EQ(linkedList.get(4), 4);
+
+//     linkedList.deleteElement(4);
+
+//     ASSERT_EQ(linkedList.size(), 8);
+//     ASSERT_EQ(linkedList.get(4), 5);
+// }
