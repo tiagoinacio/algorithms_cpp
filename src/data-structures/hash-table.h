@@ -52,7 +52,7 @@ class HashTable {
                 }
             }
         }
-        throw "no key found on hast table";
+        throw "no key found on hash table";
     }
 
     int hashFn(const std::string &key) {

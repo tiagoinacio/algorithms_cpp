@@ -9,6 +9,7 @@ namespace datastructures {
 
 class StringBuilder {
  private:
+    // TODO: convert to gsl owner
     std::unique_ptr<char[]> str_;
     size_t arraySize_;
     size_t count_;

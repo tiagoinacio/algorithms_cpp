@@ -28,6 +28,7 @@ add_library(
     src/utils/strings/string-compression.cpp
     src/utils/strings/rotate-matrix.cpp
     src/utils/strings/zero-matrix.cpp
+    src/utils/strings/string-rotation.cpp
     )
 
 add_library(
@@ -75,6 +76,7 @@ add_executable(
     test/utils/strings/string-compression.cpp
     test/utils/strings/rotate-matrix.cpp
     test/utils/strings/zero-matrix.cpp
+    test/utils/strings/string-rotation.cpp
     )
 
 add_dependencies(unit-tests googletest)

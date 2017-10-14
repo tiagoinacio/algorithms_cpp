@@ -44,6 +44,7 @@ class Node {
 template <typename T>
 class LinkedList {
  private:
+  // TODO: convert to gsl owner
   std::unique_ptr<datastructures::Node<T> > head;
   int listSize;
 
