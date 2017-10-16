@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
-#include "utils/strings/is-unique.h"
 #include <string>
+#include "utils/strings/is-unique.h"
 
 TEST(isUnique_str, with_empty_string)
 {

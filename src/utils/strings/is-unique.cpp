@@ -7,12 +7,12 @@ bool isUnique(std::string &str)
     while (i != str.end()) {
         int j = i - str.begin();
         while(j != str.length()) {
-            j++; // do not compare the same char with itself
+            ++j; // do not compare the same char with itself
             if (str[j] == *i) {
                 return false;
             }
         }
-        i++;
+        ++i;
     }
     return true;
 }
@@ -21,12 +21,12 @@ bool isUnique(char *str, size_t strSize)
 {
     int i = 0;
     while (i != strSize) {
-        for (int j = i + 1; j < strSize; j++) {
+        for (int j = i + 1; j < strSize; ++j) {
             if (str[i] == str[j]) {
                 return false;
             }
         }
-        i++;
+        ++i;
     }
     return true;
 }

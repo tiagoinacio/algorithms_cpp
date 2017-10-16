@@ -37,19 +37,19 @@ bool isPalindromePermutation(char* str, size_t size) {
      * */
     while (it != chars.end()) {
         if (it->second == 1) {
-            numberOfMiddles++;
+            ++numberOfMiddles;
             // we can only have one middle. e.g.: abcba, abccba.
             // ('c' is the middle and can only have one or two occurrences)
             if (numberOfMiddles > 1) {
                 return false;
             }
-            it++;
+            ++it;
             continue;
         }
         if (it->second != 2) {
             return false;
         }
-        it++;
+        ++it;
     }
     return true;
 }

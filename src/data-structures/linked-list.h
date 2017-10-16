@@ -36,9 +36,11 @@ class Node {
   }
 
   void setNext(Node* next_) {
-    std::unique_ptr<Node> nextPtr(next_);
+    // std::unique_ptr<Node> nextPtr(next_);
     // TODO: doest this delete the next pointer, before replacing it?
-    next = std::move(nextPtr);
+    //std::cout << "before setNext " << next.get()->value << std::endl;
+    next.reset(next_);
+    std::cout << "after setNext " << next.get()->value << std::endl;
   }
 };
 
@@ -120,20 +122,21 @@ class LinkedList {
   }
 
   // TODO: delete element
-  // void deleteElement(int index) {
-  //   if (index > listSize || index < 1) {
-  //     throw "index out of bounds";
-  //   }
+  void deleteElement(int index) {
+    if (index > listSize || index < 1) {
+      throw "index out of bounds";
+    }
 
-  //   datastructures::Node<T>* current = head.get();
-  //   // TODO: handle if is last node
-  //   // TODO: handle if is HEAD
-  //   for (int i = 0; i < index - 1; i++) {
-  //     current = current->getNext();
-  //   }
-  //   current->setNext(current->getNext()->getNext());
-  //   listSize--;
-  // }
+    datastructures::Node<T>* current = head.get();
+    // TODO: handle if is last node
+    // TODO: handle if is HEAD
+    for (int i = 0; i < index - 1; i++) {
+      current = current->getNext();
+    }
+    current->setNext(current->getNext()->getNext());
+
+    listSize--;
+  }
 
   int size() {
     return listSize;

@@ -9,16 +9,16 @@ std::string stringCompression(const std::string &uncompressedString) {
         if ((*it) == *(it + 1)) {
             unsigned int count = 1;
             while ((*it) == *(it + 1)) {
-                count++;
-                it++;
+                ++count;
+                ++it;
             }
-            compressedString = compressedString + *(it - 1) + std::to_string(count);
-            it++;
+            compressedString = compressedString + *(it) + std::to_string(count);
+            ++it;
             continue;
         }
 
         compressedString = compressedString + (*it);
-        it++;
+        ++it;
     }
 
     if (uncompressedString.size() <= compressedString.size()) {

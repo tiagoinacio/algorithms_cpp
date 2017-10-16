@@ -16,8 +16,8 @@ bool isOneAway(const std::string &first, const std::string &second) {
             // if end of second string, 
             // we must increment at least one time the differences, 
             // because we are still evaluating chars from the first string
-            differences++;
-            firstIterator++;
+            ++differences;
+            ++firstIterator;
 
             if (differences > 1) {
                 return false;
@@ -25,19 +25,19 @@ bool isOneAway(const std::string &first, const std::string &second) {
             continue;
         }
         if (*firstIterator != *secondIterator) {
-            differences++;
+            ++differences;
             if (*(firstIterator + 1) == *secondIterator) {
-                firstIterator++;
+                ++firstIterator;
             } else if (*firstIterator == *(secondIterator + 1)) {
-                secondIterator++;
+                ++secondIterator;
             }
         }
 
         if (differences > 1) {
             return false;
         }
-        firstIterator++;
-        secondIterator++;
+        ++firstIterator;
+        ++secondIterator;
     }
 
     return true;
