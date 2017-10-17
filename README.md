@@ -9,8 +9,8 @@ git clone https://github.com/tiagoinacio/algorithms_cpp.git --recursive
 cd algorithms_cpp
 mkdir build
 cd build
-cmake ..
-make
+cmake DCMAKE_BUILD_TYPE=Debug -G 'Unix Makefiles' ..
+make -j 8
 ```
 
 

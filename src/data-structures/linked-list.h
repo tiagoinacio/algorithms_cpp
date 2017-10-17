@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <iostream>
+#include <gsl/gsl>
 
 namespace datastructures {
 
@@ -10,13 +11,17 @@ template <typename T>
 class Node {
  private:
   T value;
-  std::unique_ptr<Node> next;
+  gsl::owner<Node*> next;
 
  public:
   Node() :
     value(),
     next(nullptr)
     {}
+  
+  ~Node() {
+    std::cout << "calling ~Node with value " << value << std::endl;
+  }
 
   explicit Node(T value_) :
     value(value_),
@@ -32,15 +37,13 @@ class Node {
   }
 
   Node* getNext() {
-    return next.get();
+    return next;
   }
 
-  void setNext(Node* next_) {
-    // std::unique_ptr<Node> nextPtr(next_);
+  void setNext(gsl::owner<Node*> next_) {
     // TODO: doest this delete the next pointer, before replacing it?
-    //std::cout << "before setNext " << next.get()->value << std::endl;
-    next.reset(next_);
-    std::cout << "after setNext " << next.get()->value << std::endl;
+    delete next;
+    next = next_;
   }
 };
 
@@ -48,7 +51,7 @@ template <typename T>
 class LinkedList {
  private:
   // TODO: convert to gsl owner
-  std::unique_ptr<datastructures::Node<T> > head;
+  gsl::owner<datastructures::Node<T> *> head;
   int listSize;
 
  public:
@@ -67,40 +70,43 @@ class LinkedList {
   }
 
   void clear() {
-    head.reset(nullptr);
+    auto n = head;
+    while (n->getNext() != nullptr) {
+      auto current = n;
+      n = n->getNext();
+      delete current;
+    }
+    head = nullptr;
     listSize = 0;
   }
 
   // TODO: insert element at specified position
 
   void append(T value) {
-    if (head.get() == nullptr) {
-      std::unique_ptr<datastructures::Node<T> > newValue(new datastructures::Node<T>(value));
-      head = std::move(newValue);
+    if (head == nullptr) {
+      head = new datastructures::Node<T>(value);
       listSize++;
       return;
     }
 
-    datastructures::Node<T>* current = head.get();
-    while (current->getNext() != NULL) {
+    datastructures::Node<T>* current = head;
+    while (current->getNext() != nullptr) {
       current = current->getNext();
     }
-    datastructures::Node<T>* newNode = new datastructures::Node<T>(value);
-    current->setNext(newNode);
+    current->setNext(new datastructures::Node<T>(value));
     listSize++;
   }
 
   void preppend(T value) {
-    if (head.get() == nullptr) {
-      std::unique_ptr<datastructures::Node<T> > newValue(new datastructures::Node<T>(value));
-      head = std::move(newValue);
+    if (head == nullptr) {
+      head = new datastructures::Node<T>(value);
       listSize++;
       return;
     }
 
-    std::unique_ptr<datastructures::Node<T> > newNode(new datastructures::Node<T>(value));
-    newNode->setNext(head.release());
-    head = std::move(newNode);
+    gsl::owner<datastructures::Node<T> *> newNode = new datastructures::Node<T>(value);
+    newNode->setNext(head);
+    head = newNode;
     listSize++;
   }
 
@@ -113,7 +119,7 @@ class LinkedList {
       return head->getValue();
     }
 
-    datastructures::Node<T>* current = head.get();
+    datastructures::Node<T>* current = head;
     for (int i = 0; i < index; i++) {
       current = current->getNext();
     }
@@ -127,7 +133,7 @@ class LinkedList {
       throw "index out of bounds";
     }
 
-    datastructures::Node<T>* current = head.get();
+    datastructures::Node<T>* current = head;
     // TODO: handle if is last node
     // TODO: handle if is HEAD
     for (int i = 0; i < index - 1; i++) {

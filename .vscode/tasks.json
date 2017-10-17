@@ -6,7 +6,7 @@
         {
             "taskName": "build",
             "type": "shell",
-            "command": "cd build && rm -rf * && cmake DCMAKE_BUILD_TYPE=Debug -G 'Unix Makefiles' .. && make -j 8 && ./unit-tests && cd .. || cd .."
+            "command": "cd build && rm -rf * && cmake DCMAKE_BUILD_TYPE=Debug -G 'Unix Makefiles' -g3 .. && make -j 8 && ./unit-tests && cd .. || cd .."
         }
     ]
 }

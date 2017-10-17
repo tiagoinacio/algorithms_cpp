@@ -94,5 +94,5 @@ TEST(linked_list, delete_element)
 
     ASSERT_EQ(linkedList.size(), 8);
     ASSERT_EQ(linkedList.get(4), 5);
-    ASSERT_EQ(linkedList.get(6), 5);
+    ASSERT_EQ(linkedList.get(6), 7);
 }

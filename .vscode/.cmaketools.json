@@ -1,0 +1,656 @@
+{
+  "variant": {
+    "label": "Debug",
+    "keywordSettings": {
+      "buildType": "debug"
+    },
+    "description": "Emit debug information without performing optimizations"
+  },
+  "activeEnvironments": [],
+  "codeModel": {
+    "configurations": [
+      {
+        "name": "Debug",
+        "projects": [
+          {
+            "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+            "name": "algorithms_cpp",
+            "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+            "targets": [
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ContinuousBuild",
+                      "build/CMakeFiles/ContinuousBuild.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ContinuousBuild",
+                "name": "ContinuousBuild",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ContinuousTest",
+                      "build/CMakeFiles/ContinuousTest.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ContinuousTest",
+                "name": "ContinuousTest",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ContinuousUpdate",
+                      "build/CMakeFiles/ContinuousUpdate.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ContinuousUpdate",
+                "name": "ContinuousUpdate",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ContinuousStart",
+                      "build/CMakeFiles/ContinuousStart.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ContinuousStart",
+                "name": "ContinuousStart",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ExperimentalSubmit",
+                      "build/CMakeFiles/ExperimentalSubmit.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ExperimentalSubmit",
+                "name": "ExperimentalSubmit",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ContinuousCoverage",
+                      "build/CMakeFiles/ContinuousCoverage.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ContinuousCoverage",
+                "name": "ContinuousCoverage",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ExperimentalBuild",
+                      "build/CMakeFiles/ExperimentalBuild.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ExperimentalBuild",
+                "name": "ExperimentalBuild",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ExperimentalCoverage",
+                      "build/CMakeFiles/ExperimentalCoverage.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ExperimentalCoverage",
+                "name": "ExperimentalCoverage",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ExperimentalUpdate",
+                      "build/CMakeFiles/ExperimentalUpdate.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ExperimentalUpdate",
+                "name": "ExperimentalUpdate",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ExperimentalStart",
+                      "build/CMakeFiles/ExperimentalStart.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ExperimentalStart",
+                "name": "ExperimentalStart",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ContinuousSubmit",
+                      "build/CMakeFiles/ContinuousSubmit.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ContinuousSubmit",
+                "name": "ContinuousSubmit",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "artifacts": [
+                  "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build/unit-tests"
+                ],
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": "-Wall -Wreorder -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused -fprofile-arcs -ftest-coverage -std=c++14 -I external/GSL/include -g3  ",
+                    "includePath": [
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/src"
+                      },
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/external/googletest/googletest"
+                      },
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/external/googletest/googletest/include"
+                      },
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/external/GSL"
+                      },
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/external/GSL/include"
+                      }
+                    ],
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "test/main.cpp",
+                      "test/data-structures/linked-list.cpp",
+                      "test/data-structures/array-list.cpp",
+                      "test/data-structures/string-builder.cpp",
+                      "test/data-structures/hash-table.cpp",
+                      "test/utils/sort/bublesort.cpp",
+                      "test/utils/strings/check-permutation.cpp",
+                      "test/utils/strings/urlify.cpp",
+                      "test/utils/strings/is-unique.cpp",
+                      "test/utils/strings/palindrome-permutation.cpp",
+                      "test/utils/strings/is-palindrome.cpp",
+                      "test/utils/strings/one-away.cpp",
+                      "test/utils/strings/string-compression.cpp",
+                      "test/utils/strings/rotate-matrix.cpp",
+                      "test/utils/strings/zero-matrix.cpp",
+                      "test/utils/strings/string-rotation.cpp"
+                    ]
+                  }
+                ],
+                "fullName": "unit-tests",
+                "linkLanguageFlags": "-Wall -Wreorder -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused -fprofile-arcs -ftest-coverage -std=c++14 -I external/GSL/include -g3",
+                "linkLibraries": "libgoogletest.a -lpthread libutils-sort.a libutils-strings.a",
+                "linkerLanguage": "CXX",
+                "name": "unit-tests",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "EXECUTABLE"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ExperimentalTest",
+                      "build/CMakeFiles/ExperimentalTest.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ExperimentalTest",
+                "name": "ExperimentalTest",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/NightlySubmit",
+                      "build/CMakeFiles/NightlySubmit.rule"
+                    ]
+                  }
+                ],
+                "fullName": "NightlySubmit",
+                "name": "NightlySubmit",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/NightlyMemCheck",
+                      "build/CMakeFiles/NightlyMemCheck.rule"
+                    ]
+                  }
+                ],
+                "fullName": "NightlyMemCheck",
+                "name": "NightlyMemCheck",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ExperimentalConfigure",
+                      "build/CMakeFiles/ExperimentalConfigure.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ExperimentalConfigure",
+                "name": "ExperimentalConfigure",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/NightlyCoverage",
+                      "build/CMakeFiles/NightlyCoverage.rule"
+                    ]
+                  }
+                ],
+                "fullName": "NightlyCoverage",
+                "name": "NightlyCoverage",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/NightlyTest",
+                      "build/CMakeFiles/NightlyTest.rule"
+                    ]
+                  }
+                ],
+                "fullName": "NightlyTest",
+                "name": "NightlyTest",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ContinuousMemCheck",
+                      "build/CMakeFiles/ContinuousMemCheck.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ContinuousMemCheck",
+                "name": "ContinuousMemCheck",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/NightlyBuild",
+                      "build/CMakeFiles/NightlyBuild.rule"
+                    ]
+                  }
+                ],
+                "fullName": "NightlyBuild",
+                "name": "NightlyBuild",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/NightlyConfigure",
+                      "build/CMakeFiles/NightlyConfigure.rule"
+                    ]
+                  }
+                ],
+                "fullName": "NightlyConfigure",
+                "name": "NightlyConfigure",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ExperimentalMemCheck",
+                      "build/CMakeFiles/ExperimentalMemCheck.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ExperimentalMemCheck",
+                "name": "ExperimentalMemCheck",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/NightlyUpdate",
+                      "build/CMakeFiles/NightlyUpdate.rule"
+                    ]
+                  }
+                ],
+                "fullName": "NightlyUpdate",
+                "name": "NightlyUpdate",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "artifacts": [
+                  "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build/libutils-sort.a"
+                ],
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": "-Wall -Wreorder -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused -fprofile-arcs -ftest-coverage -std=c++14 -I external/GSL/include -g3  ",
+                    "includePath": [
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/src"
+                      },
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/external/googletest/googletest"
+                      },
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/external/googletest/googletest/include"
+                      },
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/external/GSL"
+                      },
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/external/GSL/include"
+                      }
+                    ],
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/utils/sort/bublesort.cpp"
+                    ]
+                  }
+                ],
+                "fullName": "libutils-sort.a",
+                "linkerLanguage": "CXX",
+                "name": "utils-sort",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "STATIC_LIBRARY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ContinuousConfigure",
+                      "build/CMakeFiles/ContinuousConfigure.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ContinuousConfigure",
+                "name": "ContinuousConfigure",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "artifacts": [
+                  "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build/libutils-strings.a"
+                ],
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": "-Wall -Wreorder -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused -fprofile-arcs -ftest-coverage -std=c++14 -I external/GSL/include -g3  ",
+                    "includePath": [
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/src"
+                      },
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/external/googletest/googletest"
+                      },
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/external/googletest/googletest/include"
+                      },
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/external/GSL"
+                      },
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/external/GSL/include"
+                      }
+                    ],
+                    "isGenerated": false,
+                    "language": "CXX",
+                    "sources": [
+                      "src/utils/strings/urlify.cpp",
+                      "src/utils/strings/check-permutation.cpp",
+                      "src/utils/strings/is-unique.cpp",
+                      "src/utils/strings/palindrome-permutation.cpp",
+                      "src/utils/strings/is-palindrome.cpp",
+                      "src/utils/strings/one-away.cpp",
+                      "src/utils/strings/string-compression.cpp",
+                      "src/utils/strings/rotate-matrix.cpp",
+                      "src/utils/strings/zero-matrix.cpp",
+                      "src/utils/strings/string-rotation.cpp"
+                    ]
+                  }
+                ],
+                "fullName": "libutils-strings.a",
+                "linkerLanguage": "CXX",
+                "name": "utils-strings",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "STATIC_LIBRARY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/NightlyMemoryCheck",
+                      "build/CMakeFiles/NightlyMemoryCheck.rule"
+                    ]
+                  }
+                ],
+                "fullName": "NightlyMemoryCheck",
+                "name": "NightlyMemoryCheck",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/Continuous",
+                      "build/CMakeFiles/Continuous.rule"
+                    ]
+                  }
+                ],
+                "fullName": "Continuous",
+                "name": "Continuous",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "artifacts": [
+                  "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build/libgoogletest.a"
+                ],
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "compileFlags": "-Wall -Wreorder -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused -fprofile-arcs -ftest-coverage -std=c++14 -I external/GSL/include -g3  ",
+                    "includePath": [
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/src"
+                      },
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/external/googletest/googletest"
+                      },
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/external/googletest/googletest/include"
+                      },
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/external/GSL"
+                      },
+                      {
+                        "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/external/GSL/include"
+                      }
+                    ],
+                    "isGenerated": true,
+                    "language": "CXX",
+                    "sources": [
+                      "external/googletest/googletest/src/gtest-all.cc",
+                      "external/googletest/googletest/src/gtest_main.cc"
+                    ]
+                  }
+                ],
+                "fullName": "libgoogletest.a",
+                "linkerLanguage": "CXX",
+                "name": "googletest",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "STATIC_LIBRARY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/Experimental",
+                      "build/CMakeFiles/Experimental.rule"
+                    ]
+                  }
+                ],
+                "fullName": "Experimental",
+                "name": "Experimental",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/NightlyStart",
+                      "build/CMakeFiles/NightlyStart.rule"
+                    ]
+                  }
+                ],
+                "fullName": "NightlyStart",
+                "name": "NightlyStart",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/Nightly",
+                      "build/CMakeFiles/Nightly.rule"
+                    ]
+                  }
+                ],
+                "fullName": "Nightly",
+                "name": "Nightly",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "cookie": "0.5780016705101878",
+    "inReplyTo": "codemodel",
+    "type": "reply"
+  }
+}
