@@ -93,3 +93,9 @@ include(CTest)
 enable_testing()
 
 add_test(unit ${PROJECT_BINARY_DIR}/unit-tests)
+
+find_program(VALGRIND "valgrind")
+if(VALGRIND)
+    add_custom_target(valgrind
+        COMMAND "${VALGRIND}" --tool=memcheck --leak-check=yes --show-reachable=yes --suppressions=../valgrind_suppress.txt --num-callers=20 --track-fds=yes ${PROJECT_BINARY_DIR}/unit-tests)
+endif()

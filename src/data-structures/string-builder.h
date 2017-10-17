@@ -59,6 +59,8 @@ class StringBuilder {
             ptr[i] = str_.get()[i];
         }
 
+        ptr[count_] = '\0';
+
         return ptr;
     }
 };
