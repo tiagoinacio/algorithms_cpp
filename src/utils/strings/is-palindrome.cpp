@@ -1,4 +1,6 @@
 #include "utils/strings/is-palindrome.h"
+#include <string>
+#include <cctype>
 
 bool isPalindrome(char* str, size_t size) {
     if (size < 1) {
@@ -19,7 +21,7 @@ bool isPalindrome(char* str, size_t size) {
     char * trimmedStr = (char *)ptr;
     size_t trimmedStrSize = 0;
     for (int i = 0; i < size; i++) {
-        if (str[i] == ' ') {
+        if (isspace(str[i])) {
             continue;
         }
         trimmedStr[i] = str[i];
@@ -32,7 +34,7 @@ bool isPalindrome(char* str, size_t size) {
     // 1st iteration: a ... a
     // 2nd iteration: ... b ... b ...
     // 3th iteration: ... c c ...
-    // if the size is even, we check all chars, if the size is odd, 
+    // if the size is even, we check all chars, if the size is odd,
     // we have one middle char that can be unique and have only one occurence
     // e.g.: a b c b a -> 'c' only appears once
     int numberOfIterations = trimmedStrSize % 2 == 0 ? trimmedStrSize / 2 : (trimmedStrSize - 1) / 2;
@@ -64,10 +66,10 @@ bool isPalindrome(const std::string &str) {
     std::string::const_reverse_iterator down = str.rbegin();
     int numberOfIterations = str.size() % 2 == 0 ? str.size() / 2 : (str.size() - 1) / 2;
     for (int i = 0; i < numberOfIterations; i++) {
-        while (*up == ' ') {
+        while (isspace(*up)) {
             up++;
         }
-        while (*down == ' ') {
+        while (isspace(*down)) {
             down++;
         }
         if (*up != *down) {
