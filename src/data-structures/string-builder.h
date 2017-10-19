@@ -11,6 +11,7 @@ class StringBuilder {
  private:
     // TODO: convert to gsl owner
     std::unique_ptr<char[]> str_;
+    std::unique_ptr<char[]> trimmedStr_;
     size_t arraySize_;
     size_t count_;
 
@@ -52,8 +53,8 @@ class StringBuilder {
 
     char* toString() {
         // count_ + 1 to have space for the null char
-        auto newArray = std::make_unique<char[]>(count_ + 1);
-        auto ptr = newArray.get();
+        trimmedStr_ = std::make_unique<char[]>(count_ + 1);
+        auto ptr = trimmedStr_.get();
 
         for (int i = 0; i < count_; i++) {
             ptr[i] = str_.get()[i];
