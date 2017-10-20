@@ -145,6 +145,29 @@ TEST(linked_list, insert_at_middle_position)
     datastructures::LinkedList<double> linkedList;
     linkedList.append(0);
     linkedList.append(1);
+    linkedList.append(2);
+
+    ASSERT_EQ(linkedList.size(), 3);
+    ASSERT_EQ(linkedList.get(0), 0);
+    ASSERT_EQ(linkedList.get(1), 1);
+    ASSERT_EQ(linkedList.get(2), 2);
+    ASSERT_ANY_THROW(linkedList.get(3));
+
+    linkedList.insertAtPosition(1, 9);
+
+    ASSERT_EQ(linkedList.size(), 4);
+    ASSERT_EQ(linkedList.get(0), 0);
+    ASSERT_EQ(linkedList.get(1), 9);
+    ASSERT_EQ(linkedList.get(2), 1);
+    ASSERT_EQ(linkedList.get(3), 2);
+    ASSERT_ANY_THROW(linkedList.get(4));
+}
+
+TEST(linked_list, insert_at_tail_position)
+{
+    datastructures::LinkedList<double> linkedList;
+    linkedList.append(0);
+    linkedList.append(1);
 
     ASSERT_EQ(linkedList.size(), 2);
     ASSERT_EQ(linkedList.get(0), 0);
@@ -156,6 +179,26 @@ TEST(linked_list, insert_at_middle_position)
     ASSERT_EQ(linkedList.size(), 3);
     ASSERT_EQ(linkedList.get(0), 0);
     ASSERT_EQ(linkedList.get(1), 2);
+    ASSERT_EQ(linkedList.get(2), 1);
+    ASSERT_ANY_THROW(linkedList.get(3));
+}
+
+TEST(linked_list, insert_at_head_position)
+{
+    datastructures::LinkedList<double> linkedList;
+    linkedList.append(0);
+    linkedList.append(1);
+
+    ASSERT_EQ(linkedList.size(), 2);
+    ASSERT_EQ(linkedList.get(0), 0);
+    ASSERT_EQ(linkedList.get(1), 1);
+    ASSERT_ANY_THROW(linkedList.get(2));
+
+    linkedList.insertAtPosition(0, 2);
+
+    ASSERT_EQ(linkedList.size(), 3);
+    ASSERT_EQ(linkedList.get(0), 2);
+    ASSERT_EQ(linkedList.get(1), 0);
     ASSERT_EQ(linkedList.get(2), 1);
     ASSERT_ANY_THROW(linkedList.get(3));
 }

@@ -18,9 +18,9 @@ class Node {
     value(),
     next(nullptr)
     {}
-  
+
   ~Node() {
-    std::cout << "calling ~Node with value " << value << std::endl;
+    //delete next;
   }
 
   explicit Node(const T &value_) :
@@ -59,6 +59,10 @@ class LinkedList {
     head(nullptr),
     listSize(0)
     {}
+
+    ~LinkedList() {
+      delete head;
+    }
 
   // assignment operator
   LinkedList<T>& operator=(const LinkedList<T>& rhs) {
@@ -103,7 +107,14 @@ class LinkedList {
     }
 
     // handle HEAD
-    // handle TAIL
+    if (position == 0) {
+      gsl::owner<datastructures::Node<T> *> newNode = new datastructures::Node<T>(value);
+      newNode->setNext(head);
+      head = newNode;
+      listSize++;
+      return;
+    }
+
     // handle middle position
     datastructures::Node<T>* current = head;
     for (int i = 0; i < position - 1; i++) {
@@ -150,7 +161,7 @@ class LinkedList {
       throw "index out of bounds";
     }
 
-    
+
     datastructures::Node<T>* current = head;
     datastructures::Node<T>* previous = current;
     // handle TAIL
