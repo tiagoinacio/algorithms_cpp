@@ -59,6 +59,9 @@
         "streambuf": "cpp",
         "cmath": "cpp",
         "cstdint": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "__functional_base": "cpp",
+        "chrono": "cpp",
+        "ratio": "cpp"
     }
 }
