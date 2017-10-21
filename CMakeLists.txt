@@ -31,11 +31,6 @@ add_library(
     src/utils/strings/string-rotation.cpp
     )
 
-# add_library(
-#     utils-linked-list
-#     src/utils/linked-list/remove-duplicates.h
-#     )
-
 add_library(
     utils-sort
     src/utils/sort/bublesort.cpp
@@ -83,6 +78,8 @@ add_executable(
     test/utils/strings/zero-matrix.cpp
     test/utils/strings/string-rotation.cpp
     test/utils/linked-list/remove-duplicates.cpp
+    test/utils/linked-list/find-element-from-tail.cpp
+    test/utils/linked-list/partition.cpp
     )
 
 add_dependencies(unit-tests googletest)

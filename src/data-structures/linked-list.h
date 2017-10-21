@@ -194,6 +194,19 @@ class LinkedList {
     listSize--;
   }
 
+  T findElementFromTail(unsigned int position) {
+    if (position >= listSize) {
+      throw "out of range";
+    }
+
+    size_t toIterate = listSize - position - 1;
+    datastructures::Node<T>* ptr = head;
+    for (size_t i = 0; i < toIterate; i++) {
+      ptr = ptr->getNext();
+    }
+    return ptr->getValue();
+  }
+
   int size() {
     return listSize;
   }
