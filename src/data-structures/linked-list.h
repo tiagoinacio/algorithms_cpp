@@ -73,7 +73,7 @@ class LinkedList {
     return *this;
   }
 
-  void clear() {
+  void reset() {
     auto n = head;
     while (n->getNext() != nullptr) {
       auto current = n;

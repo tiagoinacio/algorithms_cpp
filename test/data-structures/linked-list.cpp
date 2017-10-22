@@ -29,7 +29,7 @@ TEST(linked_list, append_get)
     ASSERT_EQ(linkedList.get(5), 25);
 }
 
-TEST(linked_list, clear)
+TEST(linked_list, reset)
 {
     datastructures::LinkedList<double> linkedList;
     ASSERT_EQ(linkedList.size(), 0);
@@ -41,7 +41,7 @@ TEST(linked_list, clear)
     ASSERT_EQ(linkedList.get(0), 2);
     ASSERT_EQ(linkedList.get(1), 5);
 
-    linkedList.clear();
+    linkedList.reset();
     ASSERT_EQ(linkedList.size(), 0);
 
     linkedList.append(50);

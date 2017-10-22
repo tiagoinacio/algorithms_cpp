@@ -24,7 +24,12 @@ void LinkedList::Init(v8::Local<v8::Object> exports) {
 
   // Prototype
   NODE_SET_PROTOTYPE_METHOD(tpl, "append", append);
+  NODE_SET_PROTOTYPE_METHOD(tpl, "preppend", preppend);
   NODE_SET_PROTOTYPE_METHOD(tpl, "get", get);
+  NODE_SET_PROTOTYPE_METHOD(tpl, "size", size);
+  NODE_SET_PROTOTYPE_METHOD(tpl, "reset", reset);
+  NODE_SET_PROTOTYPE_METHOD(tpl, "delete", deleteAtPosition);
+  NODE_SET_PROTOTYPE_METHOD(tpl, "insertAtPosition", insertAtPosition);
 
   constructor.Reset(isolate, tpl->GetFunction());
   exports->Set(v8::String::NewFromUtf8(isolate, "LinkedList"),
@@ -70,7 +75,29 @@ void LinkedList::append(const v8::FunctionCallbackInfo<v8::Value>& args) {
     }
 
     LinkedList* obj = ObjectWrap::Unwrap<LinkedList>(args.Holder());
-    obj->list_->append(args[0]->NumberValue());
+    obj->list_->append(args[0]->Int32Value());
+}
+
+void LinkedList::preppend(const v8::FunctionCallbackInfo<v8::Value>& args) {
+  v8::Isolate* isolate = args.GetIsolate();
+
+    // Check the number of arguments passed.
+    if (args.Length() < 1) {
+      // Throw an Error that is passed back to JavaScript
+      isolate->ThrowException(v8::Exception::TypeError(
+        v8::String::NewFromUtf8(isolate, "Please provide one argument")));
+      return;
+    }
+
+    // Check the argument types
+    if (!args[0]->IsNumber()) {
+      isolate->ThrowException(v8::Exception::TypeError(
+        v8::String::NewFromUtf8(isolate, "Argument should be a number")));
+      return;
+    }
+
+    LinkedList* obj = ObjectWrap::Unwrap<LinkedList>(args.Holder());
+    obj->list_->preppend(args[0]->Int32Value());
 }
 
 void LinkedList::get(const v8::FunctionCallbackInfo<v8::Value>& args) {
@@ -91,13 +118,66 @@ void LinkedList::get(const v8::FunctionCallbackInfo<v8::Value>& args) {
     }
 
     LinkedList* obj = ObjectWrap::Unwrap<LinkedList>(args.Holder());
-    if (args[0]->NumberValue() > obj->list_->size()) {
+    if (args[0]->Int32Value() > obj->list_->size()) {
       isolate->ThrowException(v8::Exception::TypeError(
         v8::String::NewFromUtf8(isolate, "Index out of bounds")));
       return;
     }
-    int result = obj->list_->get(args[0]->NumberValue());
+    int result = obj->list_->get(args[0]->Int32Value());
     args.GetReturnValue().Set(result);
+}
+
+void LinkedList::reset(const v8::FunctionCallbackInfo<v8::Value>& args) {
+  LinkedList* obj = ObjectWrap::Unwrap<LinkedList>(args.Holder());
+  obj->list_->reset();
+}
+
+void LinkedList::size(const v8::FunctionCallbackInfo<v8::Value>& args) {
+  LinkedList* obj = ObjectWrap::Unwrap<LinkedList>(args.Holder());
+  args.GetReturnValue().Set(obj->list_->size());
+}
+
+void LinkedList::deleteAtPosition(const v8::FunctionCallbackInfo<v8::Value>& args) {
+  v8::Isolate* isolate = args.GetIsolate();
+  // Check the number of arguments passed.
+  if (args.Length() < 1 || args.Length() > 1) {
+    // Throw an Error that is passed back to JavaScript
+    isolate->ThrowException(v8::Exception::TypeError(
+      v8::String::NewFromUtf8(isolate, "Please provide one argument")));
+      return;
+  }
+
+  // Check the argument types
+  if (!args[0]->IsNumber()) {
+    isolate->ThrowException(v8::Exception::TypeError(
+      v8::String::NewFromUtf8(isolate, "Argument should be a number")));
+    return;
+  }
+
+  LinkedList* obj = ObjectWrap::Unwrap<LinkedList>(args.Holder());
+  obj->list_->deleteElementAtPosition(args[0]->Int32Value());
+}
+
+void LinkedList::insertAtPosition(const v8::FunctionCallbackInfo<v8::Value>& args) {
+  v8::Isolate* isolate = args.GetIsolate();
+
+    // Check the number of arguments passed.
+    if (args.Length() != 2) {
+      // Throw an Error that is passed back to JavaScript
+      isolate->ThrowException(v8::Exception::TypeError(
+        v8::String::NewFromUtf8(isolate, "Please provide the position and the value")));
+      return;
+    }
+
+    // Check the argument types
+    if (!args[0]->IsNumber() || !args[1]->IsNumber()) {
+      isolate->ThrowException(v8::Exception::TypeError(
+        v8::String::NewFromUtf8(isolate, "Arguments should be a number")));
+      return;
+    }
+
+    LinkedList* obj = ObjectWrap::Unwrap<LinkedList>(args.Holder());
+    obj->list_->insertAtPosition(args[0]->Int32Value(), args[1]->Int32Value());
 }
 
 }  // namespace wrapper
