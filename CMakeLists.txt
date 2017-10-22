@@ -77,6 +77,9 @@ add_executable(
     test/utils/strings/rotate-matrix.cpp
     test/utils/strings/zero-matrix.cpp
     test/utils/strings/string-rotation.cpp
+    test/utils/linked-list/remove-duplicates.cpp
+    test/utils/linked-list/find-element-from-tail.cpp
+    test/utils/linked-list/partition.cpp
     )
 
 add_dependencies(unit-tests googletest)

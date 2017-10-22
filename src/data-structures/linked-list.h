@@ -18,21 +18,21 @@ class Node {
     value(),
     next(nullptr)
     {}
-  
+
   ~Node() {
-    std::cout << "calling ~Node with value " << value << std::endl;
+    //delete next;
   }
 
-  explicit Node(T value_) :
+  explicit Node(const T &value_) :
     value(value_),
     next(nullptr)
     {}
 
-  void setValue(T value_) {
+  void setValue(const T &value_) {
     value = value_;
   }
 
-  T getValue() {
+  T& getValue() {
     return value;
   }
 
@@ -60,6 +60,10 @@ class LinkedList {
     listSize(0)
     {}
 
+    ~LinkedList() {
+      delete head;
+    }
+
   // assignment operator
   LinkedList<T>& operator=(const LinkedList<T>& rhs) {
     if (this != &rhs) {
@@ -82,7 +86,7 @@ class LinkedList {
 
   // TODO: insert element at specified position
 
-  void append(T value) {
+  void append(const T &value) {
     if (head == nullptr) {
       head = new datastructures::Node<T>(value);
       listSize++;
@@ -97,7 +101,32 @@ class LinkedList {
     listSize++;
   }
 
-  void preppend(T value) {
+  void insertAtPosition(unsigned int position, const T &value) {
+    if (position > listSize) {
+      throw "index out of bounds";
+    }
+
+    // handle HEAD
+    if (position == 0) {
+      gsl::owner<datastructures::Node<T> *> newNode = new datastructures::Node<T>(value);
+      newNode->setNext(head);
+      head = newNode;
+      listSize++;
+      return;
+    }
+
+    // handle middle position
+    datastructures::Node<T>* current = head;
+    for (int i = 0; i < position - 1; i++) {
+      current = current->getNext();
+    }
+    datastructures::Node<T>* after = current->getNext();
+    current->setNext(new datastructures::Node<T>(value));
+    current->getNext()->setNext(after);
+    listSize++;
+  }
+
+  void preppend(const T &value) {
     if (head == nullptr) {
       head = new datastructures::Node<T>(value);
       listSize++;
@@ -110,7 +139,7 @@ class LinkedList {
     listSize++;
   }
 
-  T get(int index) {
+  T& get(int index) {
     if (index >= listSize) {
       throw "index out of bounds";
     }
@@ -127,21 +156,55 @@ class LinkedList {
     return current->getValue();
   }
 
-  // TODO: delete element
-  void deleteElement(int index) {
-    if (index > listSize || index < 1) {
+  void deleteElementAtPosition(unsigned int index) {
+    if (index > listSize) {
       throw "index out of bounds";
     }
 
+
     datastructures::Node<T>* current = head;
-    // TODO: handle if is last node
-    // TODO: handle if is HEAD
+    datastructures::Node<T>* previous = current;
+    // handle TAIL
+    if (index == listSize) {
+      while (current->getNext() != nullptr) {
+        previous = current;
+        current = current->getNext();
+        if (current->getNext() == nullptr) {
+          previous->setNext(nullptr);
+          listSize--;
+          return;
+        }
+      }
+    }
+
+    // handle HEAD
+    if (index == 0) {
+      head = current->getNext();
+      delete current;
+      listSize--;
+      return;
+    }
+
+    // handle middle nodes
     for (int i = 0; i < index - 1; i++) {
       current = current->getNext();
     }
     current->setNext(current->getNext()->getNext());
 
     listSize--;
+  }
+
+  T findElementFromTail(unsigned int position) {
+    if (position >= listSize) {
+      throw "out of range";
+    }
+
+    size_t toIterate = listSize - position - 1;
+    datastructures::Node<T>* ptr = head;
+    for (size_t i = 0; i < toIterate; i++) {
+      ptr = ptr->getNext();
+    }
+    return ptr->getValue();
   }
 
   int size() {
