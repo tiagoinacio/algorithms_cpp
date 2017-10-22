@@ -48,3 +48,16 @@ $ ./unit_tests
 [  PASSED  ] 2 tests.
 
 ```
+
+## How to build NodeJS demos
+
+You should already have NodeJS installed. If not, you can grab it [here](https://nodejs.org/en/).
+
+```sh
+git clone https://github.com/tiagoinacio/algorithms_cpp.git --recursive
+cd algorithms_cpp/src/node/data-structures
+npm -i -g node-gyp
+node-gyp configure
+node-gyp build
+node linked-list.js
+```
