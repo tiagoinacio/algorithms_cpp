@@ -62,6 +62,7 @@
         "utility": "cpp",
         "__functional_base": "cpp",
         "chrono": "cpp",
-        "ratio": "cpp"
+        "ratio": "cpp",
+        "ios": "cpp"
     }
 }

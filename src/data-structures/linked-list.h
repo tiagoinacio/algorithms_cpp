@@ -194,6 +194,10 @@ class LinkedList {
     listSize--;
   }
 
+  datastructures::Node<T>* getHead() {
+    return head;
+  }
+
   T findElementFromTail(unsigned int position) {
     if (position >= listSize) {
       throw "out of range";
