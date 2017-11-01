@@ -80,6 +80,7 @@ add_executable(
     test/utils/linked-list/remove-duplicates.cpp
     test/utils/linked-list/find-element-from-tail.cpp
     test/utils/linked-list/partition.cpp
+    test/utils/linked-list/delete-middle-node.cpp
     )
 
 add_dependencies(unit-tests googletest)

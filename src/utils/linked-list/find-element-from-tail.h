@@ -7,11 +7,13 @@ namespace utils {
 
     namespace linkedList {
 
-        // assuming that size() is already calculated, we have Big O(1)
-        // if we need to iterate through all the list to know the size,
-        // then we would have to iterate backwards after that, to get the nth element from last
-        // which would give us 2 N cycles,
-        // resumming to 2n = Big O(n)
+        /*
+        *  assuming that size() is already calculated, we have Big O(1)
+        *  if we need to iterate through all the list to know the size,
+        *  then we would have to iterate backwards after that, to get the nth element from last
+        *  which would give us 2 N cycles,
+        *  resumming to 2n = Big O(n)
+        */
         template <typename T>
         T findElementFromTail(datastructures::LinkedList<T> &list, unsigned int position) {
             if (position >= list.size()) {
@@ -21,27 +23,28 @@ namespace utils {
             return list.get(list.size() - 1 - position);
         }
 
-        // for position = 2
-        //            NODE -> NODE -> NODE -> NODE -> NULL
-        // current      >
-        // follower     >
-        //            NODE -> NODE -> NODE -> NODE -> NULL
-        // current             >
-        // follower     >
-        //            NODE -> NODE -> NODE -> NODE -> NULL
-        // current                     >
-        // follower     >
-        //            NODE -> NODE -> NODE -> NODE -> NULL
-        // current                              >
-        // follower             >
-        //            NODE -> NODE -> NODE -> NODE -> NULL
-        // current                                      >
-        // follower                    >
-        // algorithm Big O(n):
-        // start at HEAD
-        // avance current until position
-        // from this point on, avance current until end, but for every move, move the follower too.
-        // when current reach the end, the follower will be at the desired position
+        /* for position = 2
+        *             NODE -> NODE -> NODE -> NODE -> NULL
+        *  current      >
+        *  follower     >
+        *             NODE -> NODE -> NODE -> NODE -> NULL
+        *  current             >
+        *  follower     >
+        *             NODE -> NODE -> NODE -> NODE -> NULL
+        *  current                     >
+        *  follower     >
+        *             NODE -> NODE -> NODE -> NODE -> NULL
+        *  current                              >
+        *  follower             >
+        *             NODE -> NODE -> NODE -> NODE -> NULL
+        *  current                                      >
+        *  follower                    >
+        *  algorithm Big O(n):
+        *  start at HEAD
+        *  avance current until position
+        *  from this point on, avance current until end, but for every move, move the follower too.
+        * when current reach the end, the follower will be at the desired position
+        */
         template <typename T>
         T findNthElementFromTail(datastructures::LinkedList<T> &list, unsigned int position) {
             datastructures::Node<T> *current = list.getHead();
