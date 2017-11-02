@@ -150,6 +150,10 @@ class LinkedList {
 
     datastructures::Node<T>* current = head;
     for (int i = 0; i < index; i++) {
+      if (current->getNext() == nullptr) {
+        throw "out of range";
+      }
+
       current = current->getNext();
     }
 

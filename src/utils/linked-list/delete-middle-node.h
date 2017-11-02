@@ -2,12 +2,16 @@
 #define UTILS_LINKED_LIST_DELETE_MIDDLE_NODE_H_INCLUDED
 
 #include "data-structures/linked-list.h"
+#include "gsl/gsl"
 
 namespace utils {
 
     namespace linkedList {
 
         /*
+         * Current and follower technique
+         * Two pointers, one always ahead of the other by twice the distance
+         *
          *      | 0 | 1 | 2 | 3 | 4 | 5 | NULL |
          *
          * curr   ^
@@ -32,7 +36,6 @@ namespace utils {
          * foll           ^
          *
          */
-
         template <typename T>
         datastructures::LinkedList<T>& deleteMiddleNode(datastructures::LinkedList<T> &list) {
             if (list.size() < 1) {
@@ -51,11 +54,11 @@ namespace utils {
             while (current->getNext() != nullptr) {
                 current = current->getNext();
 
-                ++listSize;
-
                 if (listSize % 2 == 0) {
                     follower = follower->getNext();
                 }
+
+                ++listSize;
             }
 
             if (listSize % 2 == 0) {
@@ -66,6 +69,24 @@ namespace utils {
             }
 
             return list;
+        }
+
+        /*
+         * Delete Middle Node:
+         * Implement an algorithm to delete a node in the middle
+         * (i.e., any node but the  rst and last node, not necessarily the exact middle)
+         * of a singly linked list, given only access to that node.
+         */
+        template <typename T>
+        void deleteNode(gsl::not_null<datastructures::Node<T> *> ptrNode) {
+            auto next = ptrNode->getNext();
+
+            if (next == nullptr) {
+                throw "throw out of range";
+            }
+
+            ptrNode->setValue(next->getValue());
+            ptrNode->setNext(next->getNext());
         }
     }
 }

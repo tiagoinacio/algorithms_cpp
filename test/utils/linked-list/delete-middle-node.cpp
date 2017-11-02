@@ -146,8 +146,72 @@ TEST(deleteMiddleNode, with_ten_elements)
     EXPECT_EQ(list.get(1), 1);
     EXPECT_EQ(list.get(2), 2);
     EXPECT_EQ(list.get(3), 3);
-    EXPECT_EQ(list.get(5), 6);
-    EXPECT_EQ(list.get(6), 7);
-    EXPECT_EQ(list.get(7), 8);
-    EXPECT_EQ(list.get(8), 9);
+    EXPECT_EQ(list.get(4), 6);
+    EXPECT_EQ(list.get(5), 7);
+    EXPECT_EQ(list.get(6), 8);
+    EXPECT_EQ(list.get(7), 9);
+}
+
+TEST(deleteNode, with_one_element)
+{
+    datastructures::LinkedList<int> list;
+    list.append(2);
+
+    EXPECT_EQ(list.get(0), 2);
+
+    gsl::not_null<datastructures::Node<int> *> ptrNode = list.getHead();
+
+    ASSERT_ANY_THROW(utils::linkedList::deleteNode(ptrNode));
+}
+
+TEST(deleteNode, with_two_elements)
+{
+    datastructures::LinkedList<int> list;
+    list.append(1);
+    list.append(2);
+
+    EXPECT_EQ(list.get(0), 1);
+    EXPECT_EQ(list.get(1), 2);
+
+    gsl::not_null<datastructures::Node<int> *> ptrNode = list.getHead();
+    utils::linkedList::deleteNode(ptrNode);
+
+    EXPECT_EQ(list.get(0), 2);
+    ASSERT_ANY_THROW(list.get(1));
+}
+
+TEST(deleteNode, delete_second_elem)
+{
+    datastructures::LinkedList<int> list;
+    list.append(1);
+    list.append(2);
+    list.append(3);
+
+    EXPECT_EQ(list.get(0), 1);
+    EXPECT_EQ(list.get(1), 2);
+    EXPECT_EQ(list.get(2), 3);
+
+    gsl::not_null<datastructures::Node<int> *> ptrNode = list.getHead();
+    ptrNode = ptrNode->getNext();
+    utils::linkedList::deleteNode(ptrNode);
+
+    EXPECT_EQ(list.get(0), 1);
+    EXPECT_EQ(list.get(1), 3);
+    ASSERT_ANY_THROW(list.get(2));
+}
+
+TEST(deleteNode, delete_third_elem)
+{
+    datastructures::LinkedList<int> list;
+    list.append(1);
+    list.append(2);
+    list.append(3);
+
+    EXPECT_EQ(list.get(0), 1);
+    EXPECT_EQ(list.get(1), 2);
+    EXPECT_EQ(list.get(2), 3);
+
+    gsl::not_null<datastructures::Node<int> *> ptrNode = list.getHead();
+    ptrNode = ptrNode->getNext()->getNext();
+    ASSERT_ANY_THROW(utils::linkedList::deleteNode(ptrNode));
 }
