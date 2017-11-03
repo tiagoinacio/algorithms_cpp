@@ -63,6 +63,11 @@
         "__functional_base": "cpp",
         "chrono": "cpp",
         "ratio": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "gsl_algorithm": "cpp",
+        "gsl_assert": "cpp",
+        "gsl_byte": "cpp",
+        "gsl_util": "cpp",
+        "string_span": "cpp"
     }
 }

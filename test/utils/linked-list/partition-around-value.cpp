@@ -1,24 +1,50 @@
-#ifndef UTILS_LINKED_LIST_DELETE_MIDDLE_NODE_H_INCLUDED
-#define UTILS_LINKED_LIST_DELETE_MIDDLE_NODE_H_INCLUDED
 
+#include "gtest/gtest.h"
 #include "data-structures/linked-list.h"
-#include "gsl/gsl"
+#include "utils/linked-list/partition-around-value.h"
 
-namespace utils {
+TEST(partitionAroundValue, with_empty_list)
+{
+    datastructures::LinkedList<int> list;
 
-    namespace linkedList {
-        /*
-         * Partition:
-         * Write code to partition a linked list around a value x,
-         * such that all nodes less than x come before all nodes greater than or equal to x.
-         * If x is contained within the list, the values of x only need to be after the elements less than x.
-         * The partition element x can appear anywhere in the "right partition";
-         * it does not need to appear between the left and right partitions
-         */
-        template <typename T>
-        void partitionAroundValue(gsl::not_null<datastructures::LinkedList<T> *> list) {
-        }
-    }
+    ASSERT_ANY_THROW(utils::linkedList::partitionAroundValue(list, 5));
 }
 
-#endif
+TEST(partitionAroundValue, out_of_range)
+{
+    datastructures::LinkedList<int> list;
+
+    list.append(2);
+
+    // do nothing
+    utils::linkedList::partitionAroundValue(list, 5);
+
+    EXPECT_EQ(list.size(), 1);
+    EXPECT_EQ(list.get(0), 2);
+}
+
+TEST(partitionAroundValue, partition_around_5)
+{
+    datastructures::LinkedList<int> list;
+
+    list.append(3);
+    list.append(5);
+    list.append(8);
+    list.append(5);
+    list.append(10);
+    list.append(2);
+    list.append(1);
+
+    EXPECT_EQ(list.size(), 7);
+
+    // do nothing
+    utils::linkedList::partitionAroundValue(list, 5);
+    EXPECT_EQ(list.size(), 7);
+    EXPECT_EQ(list.get(0), 3);
+    EXPECT_EQ(list.get(0), 1);
+    EXPECT_EQ(list.get(0), 2);
+    EXPECT_EQ(list.get(0), 10);
+    EXPECT_EQ(list.get(0), 5);
+    EXPECT_EQ(list.get(0), 5);
+    EXPECT_EQ(list.get(0), 8);
+}
