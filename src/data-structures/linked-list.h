@@ -4,6 +4,7 @@
 #include <memory>
 #include <iostream>
 #include <gsl/gsl>
+#include <utility>
 
 namespace datastructures {
 
@@ -21,6 +22,20 @@ class Node {
 
   ~Node() {
     //delete next;
+  }
+
+  Node<T>(const Node<T> &other) {
+    value = other.value;
+    next = other.next;
+  }
+
+  // assignment operator
+  Node<T>& operator=(const Node<T>& rhs) {
+    if (this != &rhs) {
+      this->value = rhs.value;
+      this->next = rhs.next;
+    }
+    return *this;
   }
 
   explicit Node(const T &value_) :
@@ -64,11 +79,27 @@ class LinkedList {
       delete head;
     }
 
+    LinkedList<T>(const LinkedList<T> &other) {
+      datastructures::Node<T> *current = other.getHead();
+      datastructures::Node<T> *newNode = new datastructures::Node<T>();
+      head = newNode;
+
+      listSize = other.size();
+
+      while (current != nullptr) {
+        newNode->setValue(current->getValue());
+        newNode->setNext(new datastructures::Node<T>());
+        newNode = newNode->getNext();
+        current = current->getNext();
+      }
+    }
+
   // assignment operator
   LinkedList<T>& operator=(const LinkedList<T>& rhs) {
     if (this != &rhs) {
-      this->next = rhs.next;
-      this->value = rhs.value;
+      auto tmp(rhs);
+      std::swap(head, tmp.head);
+      std::swap(listSize, tmp.listSize);
     }
     return *this;
   }
@@ -198,7 +229,7 @@ class LinkedList {
     listSize--;
   }
 
-  datastructures::Node<T>* getHead() {
+  datastructures::Node<T>* getHead() const {
     return head;
   }
 
@@ -215,7 +246,7 @@ class LinkedList {
     return ptr->getValue();
   }
 
-  int size() {
+  int size() const {
     return listSize;
   }
 };

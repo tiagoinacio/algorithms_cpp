@@ -1,5 +1,5 @@
-#ifndef UTILS_LINKED_LIST_DELETE_MIDDLE_NODE_H_INCLUDED
-#define UTILS_LINKED_LIST_DELETE_MIDDLE_NODE_H_INCLUDED
+#ifndef UTILS_LINKED_LIST_PARTITION_AROUND_VALUE_H_INCLUDED
+#define UTILS_LINKED_LIST_PARTITION_AROUND_VALUE_H_INCLUDED
 
 #include "data-structures/linked-list.h"
 #include "gsl/gsl"
@@ -14,29 +14,36 @@ namespace utils {
          * If x is contained within the list, the values of x only need to be after the elements less than x.
          * The partition element x can appear anywhere in the "right partition";
          * it does not need to appear between the left and right partitions
+         *
+         *
+         *
+         * List
+         *
+         * 3 -> 5 -> 8 -> 5 -> 10 -> 2 -> 1 -> NULL
+         * 3 -> 1 -> 2 -> 10 -> 5 -> 5 -> 8 -> NULL
+         *
          */
         template <typename T>
-        void partitionAroundValue(datastructures::LinkedList<T> &list, T x) {
-            datastructures::Node<T> *lessThanX;
-            datastructures::Node<T> *greaterThanX;
+        datastructures::LinkedList<T> partitionAroundValue(const datastructures::LinkedList<T> &list, T x) {
+            datastructures::LinkedList<T> partitionedList;
             datastructures::Node<T> *current = list.getHead();
 
             if (current == nullptr) {
                 throw "out_of_range";
             }
 
-            while (current->getNext() != nullptr) {
+            while (current != nullptr) {
                 T value = current->getValue();
-
-                // if value less than x, we set
                 if (value < x) {
-
+                    partitionedList.preppend(value);
                 } else {
-
+                    partitionedList.append(value);
                 }
 
                 current = current->getNext();
             }
+
+            return partitionedList;
         }
     }
 }
