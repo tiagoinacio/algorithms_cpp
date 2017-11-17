@@ -12,7 +12,7 @@ template <typename T>
 class Node {
  private:
   T value;
-  gsl::owner<Node*> next;
+  Node* next;
 
  public:
   Node() :
@@ -20,9 +20,7 @@ class Node {
     next(nullptr)
     {}
 
-  ~Node() {
-    //delete next;
-  }
+  ~Node() {}
 
   Node<T>(const Node<T> &other) {
     value = other.value;
@@ -55,9 +53,7 @@ class Node {
     return next;
   }
 
-  void setNext(gsl::owner<Node*> next_) {
-    // TODO: doest this delete the next pointer, before replacing it?
-    delete next;
+  void setNext(Node* next_) {
     next = next_;
   }
 };
@@ -66,7 +62,7 @@ template <typename T>
 class LinkedList {
  private:
   // TODO: convert to gsl owner
-  gsl::owner<datastructures::Node<T> *> head;
+  datastructures::Node<T> *head;
   int listSize;
 
  public:
@@ -76,7 +72,9 @@ class LinkedList {
     {}
 
     ~LinkedList() {
-      delete head;
+      if (head != nullptr) {
+        reset();
+      }
     }
 
     LinkedList<T>(const LinkedList<T> &other) {
@@ -105,18 +103,17 @@ class LinkedList {
   }
 
   void reset() {
-    auto n = head;
-    while (n->getNext() != nullptr) {
-      auto current = n;
-      n = n->getNext();
-      delete current;
+    while (head->getNext() != nullptr) {
+      datastructures::Node<T> *tmp = head;
+      head = head->getNext();
+      delete tmp;
     }
+    delete head;
     head = nullptr;
     listSize = 0;
   }
 
   // TODO: insert element at specified position
-
   void append(const T &value) {
     if (head == nullptr) {
       head = new datastructures::Node<T>(value);
@@ -139,7 +136,7 @@ class LinkedList {
 
     // handle HEAD
     if (position == 0) {
-      gsl::owner<datastructures::Node<T> *> newNode = new datastructures::Node<T>(value);
+      datastructures::Node<T> *newNode = new datastructures::Node<T>(value);
       newNode->setNext(head);
       head = newNode;
       listSize++;
@@ -164,7 +161,7 @@ class LinkedList {
       return;
     }
 
-    gsl::owner<datastructures::Node<T> *> newNode = new datastructures::Node<T>(value);
+    datastructures::Node<T> *newNode = new datastructures::Node<T>(value);
     newNode->setNext(head);
     head = newNode;
     listSize++;
@@ -196,7 +193,6 @@ class LinkedList {
       throw "index out of bounds";
     }
 
-
     datastructures::Node<T>* current = head;
     datastructures::Node<T>* previous = current;
     // handle TAIL
@@ -214,7 +210,7 @@ class LinkedList {
 
     // handle HEAD
     if (index == 0) {
-      head = current->getNext();
+      head = head->getNext();
       delete current;
       listSize--;
       return;
@@ -225,7 +221,6 @@ class LinkedList {
       current = current->getNext();
     }
     current->setNext(current->getNext()->getNext());
-
     listSize--;
   }
 

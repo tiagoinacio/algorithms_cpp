@@ -23,13 +23,13 @@
                   {
                     "isGenerated": true,
                     "sources": [
-                      "build/CMakeFiles/ContinuousBuild",
-                      "build/CMakeFiles/ContinuousBuild.rule"
+                      "build/CMakeFiles/ContinuousCoverage",
+                      "build/CMakeFiles/ContinuousCoverage.rule"
                     ]
                   }
                 ],
-                "fullName": "ContinuousBuild",
-                "name": "ContinuousBuild",
+                "fullName": "ContinuousCoverage",
+                "name": "ContinuousCoverage",
                 "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
                 "type": "UTILITY"
               },
@@ -46,6 +46,22 @@
                 ],
                 "fullName": "ContinuousTest",
                 "name": "ContinuousTest",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
+                      "build/CMakeFiles/ContinuousBuild",
+                      "build/CMakeFiles/ContinuousBuild.rule"
+                    ]
+                  }
+                ],
+                "fullName": "ContinuousBuild",
+                "name": "ContinuousBuild",
                 "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
                 "type": "UTILITY"
               },
@@ -94,22 +110,6 @@
                 ],
                 "fullName": "ExperimentalSubmit",
                 "name": "ExperimentalSubmit",
-                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
-                "type": "UTILITY"
-              },
-              {
-                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
-                "fileGroups": [
-                  {
-                    "isGenerated": true,
-                    "sources": [
-                      "build/CMakeFiles/ContinuousCoverage",
-                      "build/CMakeFiles/ContinuousCoverage.rule"
-                    ]
-                  }
-                ],
-                "fullName": "ContinuousCoverage",
-                "name": "ContinuousCoverage",
                 "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
                 "type": "UTILITY"
               },
@@ -200,7 +200,7 @@
                 "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
                 "fileGroups": [
                   {
-                    "compileFlags": "-Wall -Wreorder -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused -fprofile-arcs -ftest-coverage -std=c++14 -I external/GSL/include -g3  ",
+                    "compileFlags": "-Wall -g3 -Wreorder -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused -fprofile-arcs -ftest-coverage -std=c++14 -I external/GSL/include -g3  ",
                     "includePath": [
                       {
                         "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/src"
@@ -236,12 +236,16 @@
                       "test/utils/strings/string-compression.cpp",
                       "test/utils/strings/rotate-matrix.cpp",
                       "test/utils/strings/zero-matrix.cpp",
-                      "test/utils/strings/string-rotation.cpp"
+                      "test/utils/strings/string-rotation.cpp",
+                      "test/utils/linked-list/remove-duplicates.cpp",
+                      "test/utils/linked-list/find-element-from-tail.cpp",
+                      "test/utils/linked-list/partition-around-value.cpp",
+                      "test/utils/linked-list/delete-middle-node.cpp"
                     ]
                   }
                 ],
                 "fullName": "unit-tests",
-                "linkLanguageFlags": "-Wall -Wreorder -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused -fprofile-arcs -ftest-coverage -std=c++14 -I external/GSL/include -g3",
+                "linkLanguageFlags": "-Wall -g3 -Wreorder -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused -fprofile-arcs -ftest-coverage -std=c++14 -I external/GSL/include -g3",
                 "linkLibraries": "libgoogletest.a -lpthread libutils-sort.a libutils-strings.a",
                 "linkerLanguage": "CXX",
                 "name": "unit-tests",
@@ -350,6 +354,22 @@
                   {
                     "isGenerated": true,
                     "sources": [
+                      "build/CMakeFiles/valgrind",
+                      "build/CMakeFiles/valgrind.rule"
+                    ]
+                  }
+                ],
+                "fullName": "valgrind",
+                "name": "valgrind",
+                "sourceDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp",
+                "type": "UTILITY"
+              },
+              {
+                "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
+                "fileGroups": [
+                  {
+                    "isGenerated": true,
+                    "sources": [
                       "build/CMakeFiles/ContinuousMemCheck",
                       "build/CMakeFiles/ContinuousMemCheck.rule"
                     ]
@@ -431,7 +451,7 @@
                 "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
                 "fileGroups": [
                   {
-                    "compileFlags": "-Wall -Wreorder -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused -fprofile-arcs -ftest-coverage -std=c++14 -I external/GSL/include -g3  ",
+                    "compileFlags": "-Wall -g3 -Wreorder -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused -fprofile-arcs -ftest-coverage -std=c++14 -I external/GSL/include -g3  ",
                     "includePath": [
                       {
                         "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/src"
@@ -485,7 +505,7 @@
                 "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
                 "fileGroups": [
                   {
-                    "compileFlags": "-Wall -Wreorder -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused -fprofile-arcs -ftest-coverage -std=c++14 -I external/GSL/include -g3  ",
+                    "compileFlags": "-Wall -g3 -Wreorder -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused -fprofile-arcs -ftest-coverage -std=c++14 -I external/GSL/include -g3  ",
                     "includePath": [
                       {
                         "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/src"
@@ -564,7 +584,7 @@
                 "buildDirectory": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/build",
                 "fileGroups": [
                   {
-                    "compileFlags": "-Wall -Wreorder -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused -fprofile-arcs -ftest-coverage -std=c++14 -I external/GSL/include -g3  ",
+                    "compileFlags": "-Wall -g3 -Wreorder -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused -fprofile-arcs -ftest-coverage -std=c++14 -I external/GSL/include -g3  ",
                     "includePath": [
                       {
                         "path": "/Users/tiago.inacio/Work/github/tiagoinacio/algorithms_cpp/src"
@@ -649,7 +669,7 @@
         ]
       }
     ],
-    "cookie": "0.5780016705101878",
+    "cookie": "0.21613481460507344",
     "inReplyTo": "codemodel",
     "type": "reply"
   }
