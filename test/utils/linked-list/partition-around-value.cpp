@@ -92,3 +92,33 @@ TEST(partition, partition_around_5)
     EXPECT_EQ(expectedList.get(5), 5);
     EXPECT_EQ(expectedList.get(6), 10);
 }
+
+TEST(partition, partition_around_6)
+{
+    datastructures::LinkedList<int> list;
+
+    list.append(3);
+    list.append(5);
+    list.append(8);
+    list.append(5);
+    list.append(10);
+    list.append(2);
+    list.append(1);
+    list.append(11);
+    list.append(7);
+
+    EXPECT_EQ(list.size(), 9);
+
+    datastructures::LinkedList<int> expectedList = utils::linkedList::partition(list, 6);
+
+    EXPECT_EQ(expectedList.size(), 9);
+    EXPECT_EQ(expectedList.get(0), 3);
+    EXPECT_EQ(expectedList.get(1), 5);
+    EXPECT_EQ(expectedList.get(2), 5);
+    EXPECT_EQ(expectedList.get(3), 2);
+    EXPECT_EQ(expectedList.get(4), 1);
+    EXPECT_EQ(expectedList.get(5), 8);
+    EXPECT_EQ(expectedList.get(6), 10);
+    EXPECT_EQ(expectedList.get(7), 11);
+    EXPECT_EQ(expectedList.get(8), 7);
+}
