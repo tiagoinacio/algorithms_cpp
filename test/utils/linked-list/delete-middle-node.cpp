@@ -192,7 +192,7 @@ TEST(deleteNode, delete_second_elem)
     EXPECT_EQ(list.get(2), 3);
 
     gsl::not_null<datastructures::Node<int> *> ptrNode = list.getHead();
-    ptrNode = ptrNode->getNext();
+    ptrNode = ptrNode->next;
     utils::linkedList::deleteNode(ptrNode);
 
     EXPECT_EQ(list.get(0), 1);
@@ -212,6 +212,6 @@ TEST(deleteNode, delete_third_elem)
     EXPECT_EQ(list.get(2), 3);
 
     gsl::not_null<datastructures::Node<int> *> ptrNode = list.getHead();
-    ptrNode = ptrNode->getNext()->getNext();
+    ptrNode = ptrNode->next->next;
     ASSERT_ANY_THROW(utils::linkedList::deleteNode(ptrNode));
 }

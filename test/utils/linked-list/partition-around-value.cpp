@@ -52,7 +52,7 @@ TEST(partition, with_empty_list)
 {
     datastructures::LinkedList<int> list;
 
-    ASSERT_ANY_THROW(utils::linkedList::partition(list, 5));
+    ASSERT_ANY_THROW(utils::linkedList::partition(list.getHead(), 5));
 }
 
 TEST(partition, out_of_range)
@@ -61,7 +61,7 @@ TEST(partition, out_of_range)
 
     list.append(2);
 
-    utils::linkedList::partition(list, 5);
+    utils::linkedList::partition(list.getHead(), 5);
 
     EXPECT_EQ(list.size(), 1);
     EXPECT_EQ(list.get(0), 2);
@@ -81,16 +81,16 @@ TEST(partition, partition_around_5)
 
     EXPECT_EQ(list.size(), 7);
 
-    datastructures::LinkedList<int> expectedList = utils::linkedList::partition(list, 5);
+    datastructures::Node<int> *expectedList = utils::linkedList::partition(list.getHead(), 5);
 
-    EXPECT_EQ(expectedList.size(), 7);
-    EXPECT_EQ(expectedList.get(0), 3);
-    EXPECT_EQ(expectedList.get(1), 2);
-    EXPECT_EQ(expectedList.get(2), 1);
-    EXPECT_EQ(expectedList.get(3), 5);
-    EXPECT_EQ(expectedList.get(4), 8);
-    EXPECT_EQ(expectedList.get(5), 5);
-    EXPECT_EQ(expectedList.get(6), 10);
+    EXPECT_EQ(expectedList->value, 3);
+    EXPECT_EQ(expectedList->next->value, 2);
+    EXPECT_EQ(expectedList->next->next->value, 1);
+    EXPECT_EQ(expectedList->next->next->next->value, 5);
+    EXPECT_EQ(expectedList->next->next->next->next->value, 8);
+    EXPECT_EQ(expectedList->next->next->next->next->next->value, 5);
+    EXPECT_EQ(expectedList->next->next->next->next->next->next->value, 10);
+    EXPECT_EQ(expectedList->next->next->next->next->next->next->next, nullptr);
 }
 
 TEST(partition, partition_around_6)
@@ -109,16 +109,16 @@ TEST(partition, partition_around_6)
 
     EXPECT_EQ(list.size(), 9);
 
-    datastructures::LinkedList<int> expectedList = utils::linkedList::partition(list, 6);
+    datastructures::Node<int> *expectedList = utils::linkedList::partition(list.getHead(), 6);
 
-    EXPECT_EQ(expectedList.size(), 9);
-    EXPECT_EQ(expectedList.get(0), 3);
-    EXPECT_EQ(expectedList.get(1), 5);
-    EXPECT_EQ(expectedList.get(2), 5);
-    EXPECT_EQ(expectedList.get(3), 2);
-    EXPECT_EQ(expectedList.get(4), 1);
-    EXPECT_EQ(expectedList.get(5), 8);
-    EXPECT_EQ(expectedList.get(6), 10);
-    EXPECT_EQ(expectedList.get(7), 11);
-    EXPECT_EQ(expectedList.get(8), 7);
+    EXPECT_EQ(expectedList->value, 3);
+    EXPECT_EQ(expectedList->next->value, 5);
+    EXPECT_EQ(expectedList->next->next->value, 5);
+    EXPECT_EQ(expectedList->next->next->next->value, 2);
+    EXPECT_EQ(expectedList->next->next->next->next->value, 1);
+    EXPECT_EQ(expectedList->next->next->next->next->next->value, 8);
+    EXPECT_EQ(expectedList->next->next->next->next->next->next->value, 10);
+    EXPECT_EQ(expectedList->next->next->next->next->next->next->next->value, 11);
+    EXPECT_EQ(expectedList->next->next->next->next->next->next->next->next->value, 7);
+    EXPECT_EQ(expectedList->next->next->next->next->next->next->next->next->next, nullptr);
 }

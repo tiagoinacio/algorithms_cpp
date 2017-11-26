@@ -11,13 +11,13 @@ namespace utils {
         datastructures::LinkedList<T> sumLists(const datastructures::LinkedList<T> &first, const datastructures::LinkedList<T> &second) {
 
             while (first != nullptr) {
-                firstSum = first->getValue() + firstSum;
-                first = first->getNext();
+                firstSum = first->value + firstSum;
+                first = first->next;
             }
 
             while (second != nullptr) {
-                secondSum = second->getValue() + secondSum;
-                second = second->getNext();
+                secondSum = second->value + secondSum;
+                second = second->next;
             }
 
             return std::stoi(firstSum, std::string::size_type) + std::stoi(secondSum, std::string::size_type);

@@ -51,18 +51,18 @@ namespace utils {
             datastructures::Node<T> *follower = list.getHead();
 
             for (size_t i = 0; i < position; ++i) {
-                if (current->getNext() == nullptr) {
+                if (current->next == nullptr) {
                     throw "out of range";
                 }
-                current = current->getNext();
+                current = current->next;
             }
 
-            while (current->getNext() != nullptr) {
-                current = current->getNext();
-                follower = follower->getNext();
+            while (current->next != nullptr) {
+                current = current->next;
+                follower = follower->next;
             }
 
-            return follower->getValue();
+            return follower->value;
         }
 
     }

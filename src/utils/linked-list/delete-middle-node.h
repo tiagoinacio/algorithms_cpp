@@ -51,11 +51,11 @@ namespace utils {
             datastructures::Node<T> *follower = list.getHead();
 
             size_t listSize = 1;
-            while (current->getNext() != nullptr) {
-                current = current->getNext();
+            while (current->next != nullptr) {
+                current = current->next;
 
                 if (listSize % 2 == 0) {
-                    follower = follower->getNext();
+                    follower = follower->next;
                 }
 
                 ++listSize;
@@ -79,14 +79,14 @@ namespace utils {
          */
         template <typename T>
         void deleteNode(gsl::not_null<datastructures::Node<T> *> ptrNode) {
-            auto next = ptrNode->getNext();
+            auto next = ptrNode->next;
 
             if (next == nullptr) {
                 throw "throw out of range";
             }
 
-            ptrNode->setValue(next->getValue());
-            ptrNode->setNext(next->getNext());
+            ptrNode->value = next->value;
+            ptrNode->next = next->next;
         }
     }
 }

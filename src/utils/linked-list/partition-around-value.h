@@ -33,14 +33,14 @@ namespace utils {
             }
 
             while (current != nullptr) {
-                T value = current->getValue();
+                T value = current->value;
                 if (value < x) {
                     partitionedList.preppend(value);
                 } else {
                     partitionedList.append(value);
                 }
 
-                current = current->getNext();
+                current = current->next;
             }
 
             return partitionedList;
@@ -103,51 +103,58 @@ namespace utils {
          *
          */
         template <typename T>
-        datastructures::LinkedList<T> partition(datastructures::LinkedList<T> &list, T x) {
-            datastructures::Node<T> *current = list.getHead();
-            datastructures::Node<T> *follower = list.getHead();
-            datastructures::Node<T> *lessThanX = list.getHead();
-            datastructures::Node<T> *greaterThanX = list.getHead();
+        datastructures::Node<T>* partition(datastructures::Node<T> *head, T x) {
+            datastructures::Node<T> *current = head;
+            datastructures::Node<T> *follower = head;
+            datastructures::Node<T> *lessThanX = head;
+            datastructures::Node<T> *greaterThanX = head;
 
             if (current == nullptr) {
                 throw "out_of_range";
             }
 
             // skip first values less than X
-            if (current->getNext() != nullptr) {
-                while (current->getValue() < x) {
-                    current = current->getNext();
+            if (current->next != nullptr) {
+                while (current->value < x) {
+                    current = current->next;
                 }
             }
 
             while (current != nullptr) {
-                if (current->getValue() < x) {
+                if (current->value < x) {
                     auto tmp = current;
-                    auto newNode = new datastructures::Node<T>(tmp->getValue());
+                    // create new node to be appended to the lessThan
+                    auto newNode = new datastructures::Node<T>();
+                    newNode->value = current->value;
 
-                    if (current->getNext() != nullptr) {
-                        current->setValue(current->getNext()->getValue());
-                        current->setNext(current->getNext());
-                        delete tmp;
-                    } else {
-                        follower->setNext(nullptr);
-                    }
-
-                    newNode->setNext(lessThanX->getNext());
-                    lessThanX->setNext(newNode);
-                    if (newNode->getNext() != nullptr) {
+                    // set less than pointer to the new node
+                    newNode->next = lessThanX->next;
+                    lessThanX->next = newNode;
+                    if (newNode->next != nullptr) {
                         lessThanX = newNode;
                     }
 
-                    current = current->getNext();
+                    // if we are not processing the last node,
+                    // delete the node
+                    // else, set the follower next to nullptr
+                    // to have the final node pointing to nullptr
+                    if (current->next != nullptr) {
+                        follower->next = current->next;
+                        current = current->next;
+                        delete tmp;
+                    } else {
+                        current = current->next;
+                        follower->next = nullptr;
+                    }
+
                     continue;
                 }
 
-                current = current->getNext();
-                follower = follower->getNext();
+                current = current->next;
+                follower = follower->next;
             }
 
-            return list;
+            return head;
         }
     }
 }
