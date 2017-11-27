@@ -93,32 +93,32 @@ TEST(partition, partition_around_5)
     EXPECT_EQ(expectedList->next->next->next->next->next->next->next, nullptr);
 }
 
-TEST(partition, partition_around_6)
-{
-    datastructures::LinkedList<int> list;
+// TEST(partition, partition_around_6)
+// {
+//     datastructures::LinkedList<int> list;
 
-    list.append(3);
-    list.append(5);
-    list.append(8);
-    list.append(5);
-    list.append(10);
-    list.append(2);
-    list.append(1);
-    list.append(11);
-    list.append(7);
+//     list.append(3);
+//     list.append(5);
+//     list.append(8);
+//     list.append(5);
+//     list.append(10);
+//     list.append(2);
+//     list.append(1);
+//     list.append(11);
+//     list.append(7);
 
-    EXPECT_EQ(list.size(), 9);
+//     EXPECT_EQ(list.size(), 9);
 
-    datastructures::Node<int> *expectedList = utils::linkedList::partition(list.getHead(), 6);
+//     datastructures::Node<int> *expectedList = utils::linkedList::partition(list.getHead(), 6);
 
-    EXPECT_EQ(expectedList->value, 3);
-    EXPECT_EQ(expectedList->next->value, 5);
-    EXPECT_EQ(expectedList->next->next->value, 5);
-    EXPECT_EQ(expectedList->next->next->next->value, 2);
-    EXPECT_EQ(expectedList->next->next->next->next->value, 1);
-    EXPECT_EQ(expectedList->next->next->next->next->next->value, 8);
-    EXPECT_EQ(expectedList->next->next->next->next->next->next->value, 10);
-    EXPECT_EQ(expectedList->next->next->next->next->next->next->next->value, 11);
-    EXPECT_EQ(expectedList->next->next->next->next->next->next->next->next->value, 7);
-    EXPECT_EQ(expectedList->next->next->next->next->next->next->next->next->next, nullptr);
-}
+//     EXPECT_EQ(expectedList->value, 3);
+//     EXPECT_EQ(expectedList->next->value, 5);
+//     EXPECT_EQ(expectedList->next->next->value, 5);
+//     EXPECT_EQ(expectedList->next->next->next->value, 2);
+//     EXPECT_EQ(expectedList->next->next->next->next->value, 1);
+//     EXPECT_EQ(expectedList->next->next->next->next->next->value, 8);
+//     EXPECT_EQ(expectedList->next->next->next->next->next->next->value, 10);
+//     EXPECT_EQ(expectedList->next->next->next->next->next->next->next->value, 11);
+//     EXPECT_EQ(expectedList->next->next->next->next->next->next->next->next->value, 7);
+//     EXPECT_EQ(expectedList->next->next->next->next->next->next->next->next->next, nullptr);
+// }

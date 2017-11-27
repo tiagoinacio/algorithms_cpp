@@ -68,6 +68,7 @@
         "gsl_assert": "cpp",
         "gsl_byte": "cpp",
         "gsl_util": "cpp",
-        "string_span": "cpp"
+        "string_span": "cpp",
+        "__locale": "cpp"
     }
 }
