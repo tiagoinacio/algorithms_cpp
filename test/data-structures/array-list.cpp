@@ -123,6 +123,23 @@ TEST(array_list, insert)
     ASSERT_ANY_THROW(arrayList.set(-4, 5));
 }
 
+TEST(array_list, prepend)
+{
+    datastructures::ArrayList<double> arrayList;
+
+    arrayList.push_back(7);
+    arrayList.push_back(1);
+    ASSERT_EQ(arrayList.size(), 2);
+    ASSERT_EQ(arrayList.get(0), 7);
+    ASSERT_EQ(arrayList.get(1), 1);
+
+    arrayList.prepend(9);
+    ASSERT_EQ(arrayList.size(), 3);
+    ASSERT_EQ(arrayList.get(0), 9);
+    ASSERT_EQ(arrayList.get(1), 7);
+    ASSERT_EQ(arrayList.get(2), 1);
+}
+
 TEST(array_list, remove)
 {
     datastructures::ArrayList<double> arrayList;

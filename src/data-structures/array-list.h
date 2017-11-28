@@ -9,11 +9,6 @@ namespace datastructures {
 
 template <typename T>
 class ArrayList {
- private:
-  T *array_;
-  int size_;
-  int capacity_;
-
  public:
   ArrayList<T>()
     :
@@ -48,20 +43,7 @@ class ArrayList {
 
   void push_back(const T &value) {
     if (size_ == capacity_) {
-      // allocate new array with double capacity
-      capacity_ = capacity_ * 2;
-      T *newArray = new T[capacity_];
-
-      // copy elements to new allocated array
-      for (int i = 0; i < capacity_; i++) {
-        newArray[i] = array_[i];
-      }
-
-      // delete old array
-      delete[] array_;
-
-      // update array pointer
-      array_ = newArray;
+        resize(capacity_ * 2);
     }
     array_[size_] = value;
     size_++;
@@ -75,11 +57,11 @@ class ArrayList {
   }
 
   void insert(int index, const T &value) {
-    if (index < 0 || index > size_ + 1 || index + 1 > capacity_) {
+    if (index < 0 || index > size_ || index + 1 > capacity_) {
       throw std::out_of_range("Index out of bounds");
     }
     // shift elements to the right
-    for (int i = size_; i > index; i--) {
+    for (int i = size_ - 1; i > index; i--) {
       array_[i] = array_[i - 1];
     }
     // insert element at position index
@@ -92,6 +74,15 @@ class ArrayList {
       throw std::out_of_range("Index out of bounds");
     }
     return array_[index];
+  }
+
+  void prepend(const T &value) {
+      insert(0, value);
+  }
+
+  T& pop() {
+      size_--;
+      return array_[size_ + 1];
   }
 
   void remove(int index) {
@@ -135,6 +126,29 @@ class ArrayList {
   int capacity() {
     return capacity_;
   }
+
+ private:
+  T *array_;
+  int size_;
+  int capacity_;
+
+  void resize(int capacity) {
+      // allocate new array with double capacity
+      T *newArray = new T[capacity];
+
+      // copy elements to new allocated array
+      for (int i = 0; i < capacity; i++) {
+        newArray[i] = array_[i];
+      }
+
+      // delete old array
+      delete[] array_;
+
+      // update array pointer
+      array_ = newArray;
+      capacity_ = capacity;
+  }
+
 };
 }
 #endif
