@@ -18,7 +18,9 @@ class ArrayList {
     {}
 
   ~ArrayList<T>() {
-    delete[] array_;
+    if (array_) {
+      delete[] array_;
+    }
     size_ = 0;
     capacity_ = 0;
   }
@@ -53,7 +55,7 @@ class ArrayList {
     if (index < 0 || index > size_) {
       throw std::out_of_range("Index out of bounds");
     }
-    array_[index] = value;
+    *(array_ + index) = value;
   }
 
   void insert(int index, const T &value) {
@@ -61,11 +63,11 @@ class ArrayList {
       throw std::out_of_range("Index out of bounds");
     }
     // shift elements to the right
-    for (int i = size_ - 1; i > index; i--) {
-      array_[i] = array_[i - 1];
+    for (int i = size_; i > index; i--) {
+      *(array_ + i) = *(array_ + i - 1);
     }
-    // insert element at position index
-    array_[index] = value;
+    // insert element at position index using pointer arithmetic
+    *(array_ + index) = value;
     size_ = size_ + 1;
   }
 
@@ -81,8 +83,21 @@ class ArrayList {
   }
 
   T& pop() {
+      if (size_ == 0) {
+        throw std::out_of_range("Nothing to pop");
+      }
+
+      // resize capacity to half if size is less then or equal to 25% of the capacity
+      double difference = static_cast<double>(size_) / static_cast<double>(capacity_);
+      if (difference <= 0.25) {
+        resize(capacity_ / 2);
+      }
+
+      // remove last element
       size_--;
-      return array_[size_ + 1];
+
+      // return previous last element (size_ is not zero based, starts at 1)
+      return array_[size_];
   }
 
   void remove(int index) {
