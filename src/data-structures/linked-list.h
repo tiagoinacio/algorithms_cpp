@@ -116,12 +116,18 @@ class LinkedList {
     void preppend(const T& value) {
         if (head == nullptr) {
             head = new datastructures::Node<T>();
+            if (!head) {
+                throw "";
+            }
             head->value = value;
             listSize++;
             return;
         }
 
         datastructures::Node<T>* newNode = new datastructures::Node<T>();
+        if (!newNode) {
+            throw "";
+        }
         newNode->value = value;
         newNode->next = head;
         head = newNode;

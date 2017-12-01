@@ -62,6 +62,12 @@ class ArrayList {
     if (index < 0 || index > size_ || index + 1 > capacity_) {
       throw std::out_of_range("Index out of bounds");
     }
+
+    // verify if we have space to allocate one more element
+    if (size_ == capacity_) {
+      resize(capacity_ * 2);
+    }
+
     // shift elements to the right
     for (int i = size_; i > index; i--) {
       *(array_ + i) = *(array_ + i - 1);
