@@ -23,8 +23,8 @@ void LinkedList::Init(v8::Local<v8::Object> exports) {
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
   // Prototype
-  NODE_SET_PROTOTYPE_METHOD(tpl, "append", append);
-  NODE_SET_PROTOTYPE_METHOD(tpl, "preppend", preppend);
+  NODE_SET_PROTOTYPE_METHOD(tpl, "push_back", push_back);
+  NODE_SET_PROTOTYPE_METHOD(tpl, "push_front", push_front);
   NODE_SET_PROTOTYPE_METHOD(tpl, "get", get);
   NODE_SET_PROTOTYPE_METHOD(tpl, "size", size);
   NODE_SET_PROTOTYPE_METHOD(tpl, "reset", reset);
@@ -56,7 +56,7 @@ void LinkedList::New(const v8::FunctionCallbackInfo<v8::Value>& args) {
   }
 }
 
-void LinkedList::append(const v8::FunctionCallbackInfo<v8::Value>& args) {
+void LinkedList::push_back(const v8::FunctionCallbackInfo<v8::Value>& args) {
   v8::Isolate* isolate = args.GetIsolate();
 
     // Check the number of arguments passed.
@@ -75,10 +75,10 @@ void LinkedList::append(const v8::FunctionCallbackInfo<v8::Value>& args) {
     }
 
     LinkedList* obj = ObjectWrap::Unwrap<LinkedList>(args.Holder());
-    obj->list_->append(args[0]->Int32Value());
+    obj->list_->push_back(args[0]->Int32Value());
 }
 
-void LinkedList::preppend(const v8::FunctionCallbackInfo<v8::Value>& args) {
+void LinkedList::push_front(const v8::FunctionCallbackInfo<v8::Value>& args) {
   v8::Isolate* isolate = args.GetIsolate();
 
     // Check the number of arguments passed.
@@ -97,7 +97,7 @@ void LinkedList::preppend(const v8::FunctionCallbackInfo<v8::Value>& args) {
     }
 
     LinkedList* obj = ObjectWrap::Unwrap<LinkedList>(args.Holder());
-    obj->list_->preppend(args[0]->Int32Value());
+    obj->list_->push_front(args[0]->Int32Value());
 }
 
 void LinkedList::get(const v8::FunctionCallbackInfo<v8::Value>& args) {
@@ -155,7 +155,7 @@ void LinkedList::deleteAtPosition(const v8::FunctionCallbackInfo<v8::Value>& arg
   }
 
   LinkedList* obj = ObjectWrap::Unwrap<LinkedList>(args.Holder());
-  obj->list_->deleteElementAtPosition(args[0]->Int32Value());
+  obj->list_->erase(args[0]->Int32Value());
 }
 
 void LinkedList::insertAtPosition(const v8::FunctionCallbackInfo<v8::Value>& args) {

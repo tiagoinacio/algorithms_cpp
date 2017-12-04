@@ -17,8 +17,8 @@ class LinkedList : public node::ObjectWrap {
   ~LinkedList();
 
   static void New(const v8::FunctionCallbackInfo<v8::Value>& args);
-  static void append(const v8::FunctionCallbackInfo<v8::Value>& args);
-  static void preppend(const v8::FunctionCallbackInfo<v8::Value>& args);
+  static void push_back(const v8::FunctionCallbackInfo<v8::Value>& args);
+  static void push_front(const v8::FunctionCallbackInfo<v8::Value>& args);
   static void insertAtPosition(const v8::FunctionCallbackInfo<v8::Value>& args);
   static void deleteAtPosition(const v8::FunctionCallbackInfo<v8::Value>& args);
   static void reset(const v8::FunctionCallbackInfo<v8::Value>& args);

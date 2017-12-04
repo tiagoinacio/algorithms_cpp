@@ -43,12 +43,12 @@ namespace utils {
             }
 
             if (list.size() == 1) {
-                list.deleteElementAtPosition(0);
+                list.erase(0);
                 return list;
             }
 
-            datastructures::Node<T> *current = list.getHead();
-            datastructures::Node<T> *follower = list.getHead();
+            datastructures::Node<T> *current = list.head();
+            datastructures::Node<T> *follower = list.head();
 
             size_t listSize = 1;
             while (current->next != nullptr) {
@@ -62,10 +62,10 @@ namespace utils {
             }
 
             if (listSize % 2 == 0) {
-                list.deleteElementAtPosition((listSize - 1) / 2);
-                list.deleteElementAtPosition((listSize - 1) / 2);
+                list.erase((listSize - 1) / 2);
+                list.erase((listSize - 1) / 2);
             } else {
-                list.deleteElementAtPosition(listSize / 2);
+                list.erase(listSize / 2);
             }
 
             return list;

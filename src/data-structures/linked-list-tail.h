@@ -18,8 +18,8 @@ struct Node {
 template <typename T>
 class LinkedList {
  private:
-    // TODO: convert to gsl owner
     datastructures::Node<T>* head_;
+    datastructures::Node<T>* tail_;
     size_t size_;
 
  public:
@@ -33,17 +33,19 @@ class LinkedList {
                 datastructures::Node<T>* tmp = head_;
                 head_ = head_->next;
                 delete tmp;
-        }
+            }
             delete head_;
             head_ = nullptr;
+            tail_ = nullptr;
             size_ = 0;
-    }
+        }
     }
 
     LinkedList<T>(const LinkedList<T>& other) {
         datastructures::Node<T>* current = other.head_;
         datastructures::Node<T>* newNode = new datastructures::Node<T>();
         head_ = newNode;
+        tail_ = newNode;
 
         size_ = other.size();
 
@@ -52,6 +54,7 @@ class LinkedList {
             newNode->next = new datastructures::Node<T>();
             newNode = newNode->next;
             current = current->next;
+            tail_ = current;
         }
     }
 
@@ -60,6 +63,7 @@ class LinkedList {
         if (this != &rhs) {
             auto tmp(rhs);
             std::swap(head_, tmp.head_);
+            std::swap(tail_, tmp.tail_);
             std::swap(size_, tmp.size_);
         }
         return *this;

@@ -36,7 +36,7 @@ class HashTable {
         map<T> keyValue;
         keyValue.key = key;
         keyValue.value = value;
-        linkedList->append(keyValue);
+        linkedList->push_back(keyValue);
         array_.set(index, linkedList);
     }
 

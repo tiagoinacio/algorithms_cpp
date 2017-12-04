@@ -41,6 +41,7 @@ bool isPalindrome(char* str, size_t size) {
 
     for (int i = 0; i < numberOfIterations; i++) {
         if (trimmedStr[i] != trimmedStr[size - i - 1]) {
+            free(trimmedStr);
             return false;
         }
     }

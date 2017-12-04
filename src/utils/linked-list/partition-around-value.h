@@ -24,9 +24,9 @@ namespace utils {
          *
          */
         template <typename T>
-        datastructures::LinkedList<T> partitionAroundValue(const datastructures::LinkedList<T> &list, T x) {
+        datastructures::LinkedList<T> partitionAroundValue(datastructures::Node<T> *head, T x) {
             datastructures::LinkedList<T> partitionedList;
-            datastructures::Node<T> *current = list.getHead();
+            datastructures::Node<T> *current = head;
 
             if (current == nullptr) {
                 throw "out_of_range";
@@ -35,9 +35,9 @@ namespace utils {
             while (current != nullptr) {
                 T value = current->value;
                 if (value < x) {
-                    partitionedList.preppend(value);
+                    partitionedList.push_front(value);
                 } else {
-                    partitionedList.append(value);
+                    partitionedList.push_back(value);
                 }
 
                 current = current->next;
@@ -123,7 +123,7 @@ namespace utils {
             while (current != nullptr) {
                 if (current->value < x) {
                     auto tmp = current;
-                    // create new node to be appended to the lessThan
+                    // create new node to be push_back to the lessThan
                     auto newNode = new datastructures::Node<T>();
                     newNode->value = current->value;
 

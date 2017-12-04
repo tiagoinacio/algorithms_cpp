@@ -27,7 +27,7 @@ class StringBuilder {
         str_.reset();
     }
 
-    void append(const char *str) {
+    void push_back(const char *str) {
         auto strLength = strlen(str);
 
         if (count_ + strLength >= arraySize_) {

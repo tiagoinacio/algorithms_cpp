@@ -15,12 +15,12 @@ namespace utils {
         *  resumming to 2n = Big O(n)
         */
         template <typename T>
-        T findElementFromTail(datastructures::LinkedList<T> &list, unsigned int position) {
+        T getNthValueFromTail(datastructures::LinkedList<T> &list, unsigned int position) {
             if (position >= list.size()) {
                 throw "out of range";
             }
 
-            return list.get(list.size() - 1 - position);
+            return list.value_at(list.size() - 1 - position);
         }
 
         /* for position = 2
@@ -47,8 +47,8 @@ namespace utils {
         */
         template <typename T>
         T findNthElementFromTail(datastructures::LinkedList<T> &list, unsigned int position) {
-            datastructures::Node<T> *current = list.getHead();
-            datastructures::Node<T> *follower = list.getHead();
+            datastructures::Node<T> *current = list.head();
+            datastructures::Node<T> *follower = list.head();
 
             for (size_t i = 0; i < position; ++i) {
                 if (current->next == nullptr) {
