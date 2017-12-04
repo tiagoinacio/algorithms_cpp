@@ -188,9 +188,11 @@ class LinkedList {
         }
 
         datastructures::Node<T> *tmp = head_;
+        T tmpValue = head_->value;
         head_ = head_->next;
         --size_;
-        return tmp->value;
+        delete tmp;
+        return tmpValue;
     }
 
     T& value_at(int index) {

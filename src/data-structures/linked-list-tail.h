@@ -71,18 +71,15 @@ class LinkedList {
 
     void push_back(const T& value) {
         if (head_ == nullptr) {
-            head_ = new datastructures::Node<T>();
+            head_ = tail_ = new datastructures::Node<T>();
             head_->value = value;
             size_++;
             return;
         }
 
-        datastructures::Node<T>* current = head_;
-        while (current->next != nullptr) {
-            current = current->next;
-        }
-        current->next = new datastructures::Node<T>();
-        current->next->value = value;
+        tail_->next = new datastructures::Node<T>();
+        tail_->next->value = value;
+        tail_ = tail_->next;
         size_++;
     }
 
@@ -98,7 +95,8 @@ class LinkedList {
             previous = current;
             current = current->next;
         }
-        previous->next = current->next;
+        previous->next = nullptr;
+        tail_ = previous;
 
         // store return value, because we are going to delete this node
         T tmp = current->value;
@@ -109,6 +107,7 @@ class LinkedList {
         // if we do not have nodes, update head pointer
         if (size_ == 0) {
             head_ = nullptr;
+            tail_ = nullptr;
         }
 
         // delete last node
@@ -123,13 +122,7 @@ class LinkedList {
             throw std::out_of_range("head is null");
         }
 
-        // we need a previous pointer to make it point to nullptr
-        datastructures::Node<T>* current = head_;
-        while (current->next != nullptr) {
-            current = current->next;
-        }
-
-        return current->value;
+        return tail_->value;
     }
 
     T front() const {
@@ -151,6 +144,13 @@ class LinkedList {
                 new datastructures::Node<T>();
             newNode->value = value;
             newNode->next = head_;
+
+            // handle the case where the list is empty
+            if (head_ == nullptr) {
+                tail_ = newNode;
+            }
+
+            // update head
             head_ = newNode;
             size_++;
             return;
@@ -165,6 +165,12 @@ class LinkedList {
         current->next = new datastructures::Node<T>();
         current->next->value = value;
         current->next->next = after;
+
+        // handle last node
+        if (after == nullptr) {
+            tail_ = current->next;
+        }
+
         size_++;
     }
 
@@ -172,9 +178,10 @@ class LinkedList {
         if (head_ == nullptr) {
             head_ = new datastructures::Node<T>();
             if (!head_) {
-                throw "";
+                throw "out of memory";
             }
             head_->value = value;
+            tail_ = head_;
             size_++;
             return;
         }
@@ -192,9 +199,14 @@ class LinkedList {
         }
 
         datastructures::Node<T> *tmp = head_;
+        T tmpValue = head_->value;
         head_ = head_->next;
         --size_;
-        return tmp->value;
+        if (head_ == nullptr) {
+            tail_ == nullptr;
+        }
+        delete tmp;
+        return tmpValue;
     }
 
     T& value_at(int index) {
@@ -233,6 +245,8 @@ class LinkedList {
                 if (current->next == nullptr) {
                     previous->next = nullptr;
                     size_--;
+                    delete current;
+                    tail_ = previous;
                     return;
                 }
             }
@@ -279,16 +293,21 @@ class LinkedList {
         datastructures::Node<T> *current = head_;
         datastructures::Node<T> *follower = head_;
         datastructures::Node<T> *tmp;
+
+        // update tail
+        tail_ = current;
+
+        // start iterating
         current = current->next;
         while (current->next != nullptr) {
-            auto processingNode = current->value;
+            // processingNode = current->value;
             tmp = current->next;
             current->next = follower;
-            auto currentNodeNextIsEqualTo = follower->value;
+            // currentNodeNextIsEqualTo = follower->value;
             follower = current;
-            auto followerIsNow = current->value;
+            // followerIsNow = current->value;
             current = tmp;
-            auto currentIsNow = current->value;
+            // currentIsNow = current->value;
         }
         current->next = follower;
         head_->next = nullptr;
@@ -299,19 +318,29 @@ class LinkedList {
         if (head_ == nullptr) {
             return;
         }
+
         if (head_->value == value) {
             datastructures::Node<T> *tmp = head_->next;
             delete head_;
             head_ = tmp;
+
+            // handle tail, because the list may now be empty
+            if (head_ == nullptr) {
+                tail_ = nullptr;
+            }
             --size_;
             return;
         }
+
         datastructures::Node<T> *current = head_;
         datastructures::Node<T> *follower = head_;
         while (current->next != nullptr) {
             current = current->next;
             if (current->value == value) {
                 follower->next = current->next;
+                if (current->next == nullptr) {
+                    tail_ = follower;
+                }
                 delete current;
                 --size_;
                 return;

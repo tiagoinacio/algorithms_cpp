@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
-#include "data-structures/linked-list.h"
+#include "data-structures/linked-list-tail.h"
 
-TEST(linked_list, one_value)
+TEST(linked_list_tail, one_value)
 {
     datastructures::LinkedList<double> linkedList;
 
@@ -10,7 +10,7 @@ TEST(linked_list, one_value)
     ASSERT_EQ(linkedList.value_at(0), 2);
 }
 
-TEST(linked_list, empty)
+TEST(linked_list_tail, empty)
 {
     datastructures::LinkedList<double> linkedList;
 
@@ -20,7 +20,7 @@ TEST(linked_list, empty)
     ASSERT_EQ(linkedList.empty(), false);
 }
 
-TEST(linked_list, push_back)
+TEST(linked_list_tail, push_back)
 {
     datastructures::LinkedList<double> linkedList;
 
@@ -39,7 +39,7 @@ TEST(linked_list, push_back)
     ASSERT_EQ(linkedList.value_at(5), 25);
 }
 
-TEST(linked_list, pop_front)
+TEST(linked_list_tail, pop_front)
 {
     datastructures::LinkedList<double> linkedList;
 
@@ -50,7 +50,7 @@ TEST(linked_list, pop_front)
     ASSERT_THROW(linkedList.pop_front(), std::out_of_range);
 }
 
-TEST(linked_list, pop_back)
+TEST(linked_list_tail, pop_back)
 {
     datastructures::LinkedList<double> linkedList;
 
@@ -63,7 +63,7 @@ TEST(linked_list, pop_back)
     ASSERT_THROW(linkedList.pop_front(), std::out_of_range);
 }
 
-TEST(linked_list, back)
+TEST(linked_list_tail, back)
 {
     datastructures::LinkedList<double> linkedList;
 
@@ -86,7 +86,7 @@ TEST(linked_list, back)
     ASSERT_THROW(linkedList.back(), std::out_of_range);
 }
 
-TEST(linked_list, front)
+TEST(linked_list_tail, front)
 {
     datastructures::LinkedList<double> linkedList;
 
@@ -105,7 +105,7 @@ TEST(linked_list, front)
     ASSERT_THROW(linkedList.front(), std::out_of_range);
 }
 
-TEST(linked_list, push_front)
+TEST(linked_list_tail, push_front)
 {
     datastructures::LinkedList<double> linkedList;
     ASSERT_EQ(linkedList.size(), 0);
@@ -124,13 +124,13 @@ TEST(linked_list, push_front)
     ASSERT_EQ(linkedList.value_at(2), 5);
 }
 
-TEST(linked_list, get)
+TEST(linked_list_tail, get)
 {
     datastructures::LinkedList<double> linkedList;
     ASSERT_ANY_THROW(linkedList.value_at(1));
 }
 
-TEST(linked_list, delete_element_at_middle_position)
+TEST(linked_list_tail, delete_element_at_middle_position)
 {
     datastructures::LinkedList<double> linkedList;
     linkedList.push_back(0);
@@ -153,7 +153,7 @@ TEST(linked_list, delete_element_at_middle_position)
     ASSERT_EQ(linkedList.value_at(6), 7);
 }
 
-TEST(linked_list, delete_element_at_start_position)
+TEST(linked_list_tail, delete_element_at_start_position)
 {
     datastructures::LinkedList<double> linkedList;
     linkedList.push_back(0);
@@ -175,7 +175,7 @@ TEST(linked_list, delete_element_at_start_position)
     ASSERT_EQ(linkedList.value_at(0), 1);
 }
 
-TEST(linked_list, delete_element_at_end_position)
+TEST(linked_list_tail, delete_element_at_end_position)
 {
     datastructures::LinkedList<double> linkedList;
     linkedList.push_back(0);
@@ -196,7 +196,7 @@ TEST(linked_list, delete_element_at_end_position)
     ASSERT_EQ(linkedList.size(), 8);
 }
 
-TEST(linked_list, reverse)
+TEST(linked_list_tail, reverse)
 {
     datastructures::LinkedList<double> linkedList;
 
@@ -224,7 +224,7 @@ TEST(linked_list, reverse)
     EXPECT_EQ(linkedList.value_at(5), 0);
 }
 
-TEST(linked_list, removeValue)
+TEST(linked_list_tail, removeValue)
 {
     datastructures::LinkedList<double> linkedList;
 
@@ -266,9 +266,81 @@ TEST(linked_list, removeValue)
 
     EXPECT_EQ(linkedList.size(), 1);
     EXPECT_EQ(linkedList.value_at(0), 2);
+
+    linkedList.push_back(3);
+    linkedList.push_back(4);
+    linkedList.removeValue(4);
+
+    EXPECT_EQ(linkedList.size(), 2);
+    EXPECT_EQ(linkedList.value_at(0), 2);
+    EXPECT_EQ(linkedList.value_at(1), 3);
 }
 
-TEST(linked_list, insert_at_middle_position)
+TEST(linked_list_tail, integration)
+{
+    datastructures::LinkedList<double> linkedList;
+
+    linkedList.push_back(0);
+    linkedList.push_back(1);
+    linkedList.push_back(1);
+    linkedList.push_back(2);
+    linkedList.push_back(2);
+    linkedList.push_back(5);
+
+    EXPECT_EQ(linkedList.value_at(0), 0);
+    EXPECT_EQ(linkedList.value_at(1), 1);
+    EXPECT_EQ(linkedList.value_at(2), 1);
+    EXPECT_EQ(linkedList.value_at(3), 2);
+    EXPECT_EQ(linkedList.value_at(4), 2);
+    EXPECT_EQ(linkedList.value_at(5), 5);
+    EXPECT_EQ(linkedList.size(), 6);
+
+    linkedList.removeValue(5);
+
+    EXPECT_EQ(linkedList.value_at(0), 0);
+    EXPECT_EQ(linkedList.value_at(1), 1);
+    EXPECT_EQ(linkedList.value_at(2), 1);
+    EXPECT_EQ(linkedList.value_at(3), 2);
+    EXPECT_EQ(linkedList.value_at(4), 2);
+    EXPECT_EQ(linkedList.size(), 5);
+
+    linkedList.insert(1, 9);
+
+    EXPECT_EQ(linkedList.value_at(0), 0);
+    EXPECT_EQ(linkedList.value_at(1), 9);
+    EXPECT_EQ(linkedList.value_at(2), 1);
+    EXPECT_EQ(linkedList.value_at(3), 1);
+    EXPECT_EQ(linkedList.value_at(4), 2);
+    EXPECT_EQ(linkedList.value_at(5), 2);
+    EXPECT_EQ(linkedList.size(), 6);
+
+    ASSERT_EQ(linkedList.pop_front(), 0);
+
+    EXPECT_EQ(linkedList.value_at(0), 9);
+    EXPECT_EQ(linkedList.value_at(1), 1);
+    EXPECT_EQ(linkedList.value_at(2), 1);
+    EXPECT_EQ(linkedList.value_at(3), 2);
+    EXPECT_EQ(linkedList.value_at(4), 2);
+    EXPECT_EQ(linkedList.size(), 5);
+
+    ASSERT_EQ(linkedList.pop_back(), 2);
+
+    EXPECT_EQ(linkedList.value_at(0), 9);
+    EXPECT_EQ(linkedList.value_at(1), 1);
+    EXPECT_EQ(linkedList.value_at(2), 1);
+    EXPECT_EQ(linkedList.value_at(3), 2);
+    EXPECT_EQ(linkedList.size(), 4);
+
+    linkedList.reverse();
+
+    EXPECT_EQ(linkedList.value_at(0), 2);
+    EXPECT_EQ(linkedList.value_at(1), 1);
+    EXPECT_EQ(linkedList.value_at(2), 1);
+    EXPECT_EQ(linkedList.value_at(3), 9);
+    EXPECT_EQ(linkedList.size(), 4);
+}
+
+TEST(linked_list_tail, insert_at_middle_position)
 {
     datastructures::LinkedList<double> linkedList;
     linkedList.push_back(0);
@@ -291,7 +363,7 @@ TEST(linked_list, insert_at_middle_position)
     ASSERT_ANY_THROW(linkedList.value_at(4));
 }
 
-TEST(linked_list, insert_at_tail_position)
+TEST(linked_list_tail, insert_at_tail_position)
 {
     datastructures::LinkedList<double> linkedList;
     linkedList.push_back(0);
@@ -311,7 +383,7 @@ TEST(linked_list, insert_at_tail_position)
     ASSERT_ANY_THROW(linkedList.value_at(3));
 }
 
-TEST(linked_list, insert_at_head_position)
+TEST(linked_list_tail, insert_at_head_position)
 {
     datastructures::LinkedList<double> linkedList;
     linkedList.push_back(0);
@@ -331,7 +403,7 @@ TEST(linked_list, insert_at_head_position)
     ASSERT_ANY_THROW(linkedList.value_at(3));
 }
 
-TEST(linked_list, copy_constructor)
+TEST(linked_list_tail, copy_constructor)
 {
     datastructures::LinkedList<double> linkedList;
     linkedList.push_back(0);
@@ -359,7 +431,7 @@ TEST(linked_list, copy_constructor)
     ASSERT_EQ(copiedLinkedList.value_at(4), 4);
 }
 
-TEST(linked_list, assignment_operator)
+TEST(linked_list_tail, assignment_operator)
 {
     datastructures::LinkedList<double> linkedList;
     linkedList.push_back(0);

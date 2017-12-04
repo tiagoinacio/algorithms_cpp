@@ -63,6 +63,7 @@ add_executable(
     unit-tests
     test/main.cpp
     test/data-structures/linked-list.cpp
+    test/data-structures/linked-list-tail.cpp
     test/data-structures/array-list.cpp
     test/data-structures/string-builder.cpp
     test/data-structures/hash-table.cpp

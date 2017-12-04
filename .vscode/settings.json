@@ -69,6 +69,8 @@
         "gsl_byte": "cpp",
         "gsl_util": "cpp",
         "string_span": "cpp",
-        "__locale": "cpp"
+        "__locale": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp"
     }
 }
