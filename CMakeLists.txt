@@ -62,6 +62,7 @@ add_library(googletest ${GOOGLETEST_SOURCES})
 add_executable(
     unit-tests
     test/main.cpp
+    test/data-structures/linked-list-c.cpp
     test/data-structures/linked-list.cpp
     test/data-structures/linked-list-tail.cpp
     test/data-structures/array-list.cpp

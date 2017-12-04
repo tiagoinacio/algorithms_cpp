@@ -71,6 +71,7 @@
         "string_span": "cpp",
         "__locale": "cpp",
         "unordered_map": "cpp",
-        "unordered_set": "cpp"
+        "unordered_set": "cpp",
+        "linked-list-c.c": "cpp"
     }
 }
