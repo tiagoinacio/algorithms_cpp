@@ -1,3 +1,6 @@
+#ifndef DATA_STRUCTURES_LINKED_LIST_C_H_INCLUDED
+#define DATA_STRUCTURES_LINKED_LIST_C_H_INCLUDED
+
 #include <stdio.h>
 
 struct node {
@@ -57,3 +60,4 @@ void display() {
         printf("\n\n the list is empty");
     }
 }
+#endif
