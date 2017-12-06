@@ -33,14 +33,14 @@ class StackList {
         top_->next = secondNode;
     }
 
-    T peek() const throw {
+    T peek() const {
         if (top_ == nullptr) {
             throw std::out_of_range("Stack is empty.");
         }
         return top_->data;
     }
 
-    T pop() throw {
+    T pop() {
         if (top_ == nullptr) {
             throw std::out_of_range("Stack is empty.");
         }
