@@ -49,12 +49,12 @@ class QueueArray {
 
         if (isEmpty()) {
             rear_ = front_ = 0;
-        }
-
-        if (rear_ == capacity_) {
-            rear_ = 0;
         } else {
-            rear_++;
+            if (rear_ == capacity_) {
+                rear_ = 0;
+            } else {
+                rear_++;
+            }
         }
 
         array_[rear_] = data;
@@ -72,7 +72,7 @@ class QueueArray {
             throw std::out_of_range("Queue is empty.");
         }
 
-        int indexToReturn;
+        int indexToReturn = 0;
         if (front_ == 0) {
             // array is zero based, so we need to subtract one
             front_ = capacity_ - 1;
