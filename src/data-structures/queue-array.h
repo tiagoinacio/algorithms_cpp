@@ -73,13 +73,14 @@ class QueueArray {
         }
 
         int indexToReturn = 0;
-        if (front_ == 0) {
+        if (front_ + 1 == capacity_) {
             // array is zero based, so we need to subtract one
-            front_ = capacity_ - 1;
-            indexToReturn = 0;
+            // to circule around from the beginning to the end of the array
+            indexToReturn = front_;
+            front_ = 0;
         } else {
-            --front_;
-            ++indexToReturn;
+            indexToReturn = front_;
+            front_++;
         }
 
         if (rear_ == indexToReturn) {
