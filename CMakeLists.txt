@@ -64,9 +64,10 @@ add_executable(
     test/main.cpp
     test/data-structures/linked-list-c.cpp
     test/data-structures/linked-list.cpp
-    test/data-structures/stack-list.cpp
     test/data-structures/stack-array.cpp
+    test/data-structures/stack-list.cpp
     test/data-structures/queue-array.cpp
+    test/data-structures/queue-list.cpp
     test/data-structures/linked-list-tail.cpp
     test/data-structures/array-list.cpp
     test/data-structures/string-builder.cpp
