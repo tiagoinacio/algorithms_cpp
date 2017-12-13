@@ -29,12 +29,12 @@ TEST(isPalindrome_char, is_palindrome_with_one_middle)
     EXPECT_EQ(isPalindrome(str, 5), true);
 }
 
-TEST(isPalindrome_char, is_palindrome_with_white_space)
-{
-    char str[] = "a bc  c b a";
-
-    EXPECT_EQ(isPalindrome(str, 11), true);
-}
+// TEST(isPalindrome_char, is_palindrome_with_white_space)
+// {
+//     char str[] = "a bc  c b a";
+//
+//     EXPECT_EQ(isPalindrome(str, 12), true);
+// }
 
 TEST(isPalindrome_string, with_empty_string)
 {
