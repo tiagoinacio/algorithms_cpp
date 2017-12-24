@@ -23,6 +23,7 @@ class FixedMultiStack {
         {
             for (int x = 0; x < numberOfStacks_; ++x) {
                 array_[x] = new T[capacity_];
+                top_[x] = -1;
             }
         }
 
@@ -34,6 +35,7 @@ class FixedMultiStack {
         {
             for (int x = 0; x < numberOfStacks_; ++x) {
                 array_[x] = new T[capacity_];
+                top_[x] = -1;
             }
         }
 
@@ -45,22 +47,29 @@ class FixedMultiStack {
         {
             for (int x = 0; x < numberOfStacks_; ++x) {
                 array_[x] = new T[capacity_];
+                top_[x] = -1;
             }
         }
 
     ~FixedMultiStack() {
-        // for (int x = 0; x < numberOfStacks_; ++x) {
-        //     delete[] array_[x];
-        // }
-        // delete[] array_;
-        // delete[] top_;
+        for (int x = 0; x < numberOfStacks_; ++x) {
+            delete[] array_[x];
+        }
+        delete[] array_;
+        delete[] top_;
     }
 
     bool isEmpty(int stackNumber) const {
+        if (stackNumber >= numberOfStacks_) {
+            throw std::out_of_range("Stack number is bigger than number of stacks");
+        }
         return top_[stackNumber] < 0;
     }
 
     void push_back(int stackNumber, const T &data) {
+        if (stackNumber >= numberOfStacks_) {
+            throw std::out_of_range("Stack number is bigger than number of stacks");
+        }
         if (top_[stackNumber] == capacity_) {
             throw std::out_of_range("Capacity is full");
         }
@@ -69,6 +78,9 @@ class FixedMultiStack {
     }
 
     T peek(int stackNumber) const {
+        if (stackNumber >= numberOfStacks_) {
+            throw std::out_of_range("Stack number is bigger than number of stacks");
+        }
         if (top_[stackNumber] < 0) {
             throw std::out_of_range("Stack is empty.");
         }
@@ -76,6 +88,9 @@ class FixedMultiStack {
     }
 
     T pop(int stackNumber) {
+        if (stackNumber >= numberOfStacks_) {
+            throw std::out_of_range("Stack number is bigger than number of stacks");
+        }
         if (top_[stackNumber] < 0) {
             throw std::out_of_range("Stack is empty.");
         }

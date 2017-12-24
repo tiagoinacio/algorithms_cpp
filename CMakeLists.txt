@@ -65,6 +65,8 @@ add_executable(
     test/data-structures/linked-list-c.cpp
     test/data-structures/linked-list.cpp
     test/data-structures/stack-array.cpp
+    test/data-structures/stack-array-min.cpp
+    test/data-structures/dynamic-multi-stack.cpp
     test/data-structures/fixed-multi-stack.cpp
     test/data-structures/stack-list.cpp
     test/data-structures/queue-array.cpp
