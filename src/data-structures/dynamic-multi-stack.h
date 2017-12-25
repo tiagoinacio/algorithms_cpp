@@ -19,8 +19,7 @@ class DynamicMultiStack {
         currentStack_(-1),
         index_(-1),
         capacity_(5),
-        array_(new T*[1]),
-        top_(new int[1])
+        array_(new T*[1])
         {
             array_[0] = new T[capacity_];
         }
@@ -33,17 +32,18 @@ class DynamicMultiStack {
     }
 
     bool isEmpty() const {
-        return index_ > -1;
+        return index_ == -1;
     }
 
     void push_back(const T &data) {
         if (currentStack_ == -1) {
+            // already instantiated
             ++currentStack_;
         }
         if (index_ == capacity_ - 1) {
             index_ = 0;
             ++currentStack_;
-            array_ = (T**)realloc(array_, currentStack_ * sizeof(*T));
+            array_ = (T**)realloc(array_, currentStack_ * sizeof(T*));
             array_[currentStack_] = new T[capacity_];
             array_[currentStack_][index_] = data;
         } else {
@@ -67,16 +67,16 @@ class DynamicMultiStack {
         T value = array_[currentStack_][index_];
 
         if (index_ == 0) {
-            if (currentStack == 0) {
-                currentStack = -1;
+            if (currentStack_ == 0) {
+                currentStack_ = -1;
                 index_ = -1;
-                delete array_[0];
+                //delete[] array_[0];
                 return value;
             }
 
-            currentStack--;
-            index_ = capacity - 1;
-            delete array_[currentStack_ + 1];
+            currentStack_--;
+            index_ = capacity_ - 1;
+            //delete[] array_[currentStack_ + 1];
             return value;
         }
 

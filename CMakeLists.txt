@@ -107,6 +107,9 @@ enable_testing()
 
 add_test(unit ${PROJECT_BINARY_DIR}/unit-tests)
 
+add_custom_target(lint
+    COMMAND python ../cpplint.py)
+
 find_program(VALGRIND "valgrind")
 if(VALGRIND)
     add_custom_target(valgrind
