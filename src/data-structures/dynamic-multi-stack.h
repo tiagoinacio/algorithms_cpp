@@ -28,7 +28,9 @@ class DynamicMultiStack {
         for (int i = 0; i < currentStack_; ++i) {
             delete[] array_[i];
         }
-        delete[] array_;
+        if (array_) {
+            delete[] array_;
+        }
     }
 
     bool isEmpty() const {
@@ -69,14 +71,17 @@ class DynamicMultiStack {
         if (index_ == 0) {
             if (currentStack_ == 0) {
                 currentStack_ = -1;
-                index_ = -1;
-                //delete[] array_[0];
+                index_ = -
+                1;
+                // TODO: fixme
+                // delete[] array_[0];
                 return value;
             }
 
             currentStack_--;
             index_ = capacity_ - 1;
-            //delete[] array_[currentStack_ + 1];
+            // TODO: fixme
+            // delete[] array_[currentStack_ + 1];
             return value;
         }
 
