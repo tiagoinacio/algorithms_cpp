@@ -16,18 +16,18 @@ struct Node {
 };
 
 template <typename T>
-class LinkedList {
+class LinkedListTail {
  private:
     datastructures::Node<T>* head_;
     datastructures::Node<T>* tail_;
     size_t size_;
 
  public:
-    LinkedList() :
+    LinkedListTail() :
         head_(nullptr),
         size_(0) {}
 
-    ~LinkedList() {
+    ~LinkedListTail() {
         if (head_ != nullptr) {
             while (head_->next != nullptr) {
                 datastructures::Node<T>* tmp = head_;
@@ -41,7 +41,7 @@ class LinkedList {
         }
     }
 
-    LinkedList<T>(const LinkedList<T>& other) {
+    LinkedListTail<T>(const LinkedListTail<T>& other) {
         datastructures::Node<T>* current = other.head_;
         datastructures::Node<T>* newNode = new datastructures::Node<T>();
         head_ = newNode;
@@ -59,7 +59,7 @@ class LinkedList {
     }
 
     // assignment operator
-    LinkedList<T>& operator=(const LinkedList<T>& rhs) {
+    LinkedListTail<T>& operator=(const LinkedListTail<T>& rhs) {
         if (this != &rhs) {
             auto tmp(rhs);
             std::swap(head_, tmp.head_);
