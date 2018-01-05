@@ -10,31 +10,39 @@ template <typename T>
 class DynamicMultiStack {
  private:
     int currentStack_;
-    int index_;
+    int *index_;
+    // create array for each stack to keep track of index value
+    // to make popAtStack work
+    // each stack needs to have an index indicating wether they are full or not
     int capacity_;
     T **array_;
 
  public:
     DynamicMultiStack() :
         currentStack_(-1),
-        index_(-1),
+        index_(new int[1]),
         capacity_(5),
         array_(new T*[1])
         {
             array_[0] = new T[capacity_];
+            index_[0] = -1;
         }
 
     ~DynamicMultiStack() {
-        for (int i = 0; i < currentStack_; ++i) {
+        for (int i = 0; i <= currentStack_; ++i) {
             delete[] array_[i];
         }
         if (array_) {
+            if (currentStack_ == -1) {
+                delete[] array_[0];
+            }
             delete[] array_;
         }
+        delete[] index_;
     }
 
     bool isEmpty() const {
-        return index_ == -1;
+        return currentStack_ == -1 || index_[currentStack_] == -1;
     }
 
     void push_back(const T &data) {
@@ -42,50 +50,78 @@ class DynamicMultiStack {
             // already instantiated
             ++currentStack_;
         }
-        if (index_ == capacity_ - 1) {
-            index_ = 0;
+        if (index_[currentStack_] == capacity_ - 1) {
+            index_[currentStack_] = 0;
             ++currentStack_;
             array_ = (T**)realloc(array_, currentStack_ * sizeof(T*));
+            index_ = (int*)realloc(index_, currentStack_ * sizeof(int));
+            index_[currentStack_] = -1;
             array_[currentStack_] = new T[capacity_];
-            array_[currentStack_][index_] = data;
+            array_[currentStack_][index_[currentStack_]] = data;
         } else {
-            ++index_;
-            array_[currentStack_][index_] = data;
+            index_[currentStack_] = index_[currentStack_] + 1;
+            array_[currentStack_][index_[currentStack_]] = data;
         }
     }
 
     T peek() const {
-        if (index_ == -1) {
+        if (index_[currentStack_] == -1) {
             throw std::out_of_range("Stack is empty.");
         }
-        return array_[currentStack_][index_];
+        return array_[currentStack_][index_[currentStack_]];
     }
 
     T pop() {
-        if (index_ == -1) {
+        if (index_[currentStack_] == -1) {
             throw std::out_of_range("Stack is empty.");
         }
 
-        T value = array_[currentStack_][index_];
+        T value = array_[currentStack_][index_[currentStack_]];
 
-        if (index_ == 0) {
+        if (index_[currentStack_] == 0) {
             if (currentStack_ == 0) {
                 currentStack_ = -1;
-                index_ = -
-                1;
-                // TODO: fixme
-                // delete[] array_[0];
+                index_[0] = -1;
                 return value;
             }
 
             currentStack_--;
-            index_ = capacity_ - 1;
+            index_[currentStack_ + 1] = capacity_ - 1;
             // TODO: fixme
-            // delete[] array_[currentStack_ + 1];
+            delete[] array_[currentStack_ + 1];
             return value;
         }
 
-        --index_;
+        index_[currentStack_] = index_[currentStack_] - 1;
+        return value;
+    }
+
+    T popAtStack(int stack) {
+        if (index_[stack] == -1 || stack > currentStack_ || stack < 0) {
+            throw std::out_of_range("Stack is empty.");
+        }
+
+        T value = array_[stack][index_[stack]];
+
+        if (index_[stack] == 0) {
+            if (currentStack_ == 0) {
+                currentStack_ = -1;
+                index_[stack] = -1;
+                // TODO: fixme
+                delete[] array_[0];
+                delete[] index_[0];
+                return value;
+            }
+
+            currentStack_--;
+            index_[stack] = capacity_ - 1;
+            // TODO: fixme
+            delete[] array_[currentStack_ + 1];
+            delete[] index_[currentStack_ + 1];
+            return value;
+        }
+
+        index_[stack] = index_[stack] - 1;
         return value;
     }
 };
