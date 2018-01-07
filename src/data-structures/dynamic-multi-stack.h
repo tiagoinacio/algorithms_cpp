@@ -24,7 +24,7 @@ class DynamicMultiStack {
         capacity_(5),
         array_(new T*[1])
         {
-            array_[0] = new T[capacity_];
+            array_[0] = new T[capacity_]{};
             index_[0] = -1;
         }
 
@@ -51,13 +51,12 @@ class DynamicMultiStack {
             ++currentStack_;
         }
         if (index_[currentStack_] == capacity_ - 1) {
-            index_[currentStack_] = 0;
             ++currentStack_;
             array_ = (T**)realloc(array_, currentStack_ * sizeof(T*));
             index_ = (int*)realloc(index_, currentStack_ * sizeof(int));
-            index_[currentStack_] = -1;
-            array_[currentStack_] = new T[capacity_];
-            array_[currentStack_][index_[currentStack_]] = data;
+            index_[currentStack_] = 0;
+            array_[currentStack_] = new T[capacity_]{};
+            array_[currentStack_][0] = data;
         } else {
             index_[currentStack_] = index_[currentStack_] + 1;
             array_[currentStack_][index_[currentStack_]] = data;
@@ -87,7 +86,6 @@ class DynamicMultiStack {
 
             currentStack_--;
             index_[currentStack_ + 1] = capacity_ - 1;
-            // TODO: fixme
             delete[] array_[currentStack_ + 1];
             return value;
         }
@@ -107,7 +105,6 @@ class DynamicMultiStack {
             if (currentStack_ == 0) {
                 currentStack_ = -1;
                 index_[stack] = -1;
-                // TODO: fixme
                 delete[] array_[0];
                 delete[] index_[0];
                 return value;
@@ -115,7 +112,6 @@ class DynamicMultiStack {
 
             currentStack_--;
             index_[stack] = capacity_ - 1;
-            // TODO: fixme
             delete[] array_[currentStack_ + 1];
             delete[] index_[currentStack_ + 1];
             return value;
