@@ -92,7 +92,7 @@ class DynamicMultiStack {
     }
 
     T pop() {
-        if (index_[currentStack_] == -1) {
+        if (index_[currentStack_] == -1 || currentStack_ == -1) {
             throw std::out_of_range("Stack is empty.");
         }
 
@@ -125,8 +125,6 @@ class DynamicMultiStack {
         if (index_[stack] == 0) {
             if (currentStack_ == 0) {
                 currentStack_ = -1;
-                index_[stack] = -1;
-                delete[] array_[0];
                 index_[0] = -1;
                 return value;
             }
