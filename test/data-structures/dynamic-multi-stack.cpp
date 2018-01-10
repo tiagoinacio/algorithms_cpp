@@ -61,3 +61,39 @@ TEST(dynamic_multi_stack, isEmpty)
     stack.pop();
     ASSERT_EQ(stack.isEmpty(), true);
 }
+
+TEST(dynamic_multi_stack, popAtStack)
+{
+    datastructures::DynamicMultiStack<double> stack {};
+
+    stack.push_back(2);
+    ASSERT_EQ(stack.popAtStack(0), 2);
+
+    stack.push_back(0);
+    stack.push_back(1);
+    stack.push_back(2);
+    stack.push_back(4);
+    ASSERT_EQ(stack.popAtStack(0), 4);
+    ASSERT_EQ(stack.popAtStack(0), 2);
+    ASSERT_EQ(stack.popAtStack(0), 1);
+    ASSERT_EQ(stack.popAtStack(0), 0);
+
+    stack.push_back(0);
+    stack.push_back(1);
+    stack.push_back(2);
+    stack.push_back(3);
+    stack.push_back(4);
+    stack.push_back(5);
+    stack.push_back(6);
+    stack.push_back(7);
+    ASSERT_EQ(stack.popAtStack(0), 4);
+    ASSERT_EQ(stack.popAtStack(0), 3);
+    ASSERT_EQ(stack.popAtStack(1), 7);
+    ASSERT_EQ(stack.popAtStack(1), 6);
+    ASSERT_EQ(stack.popAtStack(1), 5);
+    ASSERT_EQ(stack.popAtStack(0), 2);
+    ASSERT_EQ(stack.popAtStack(0), 1);
+    ASSERT_EQ(stack.popAtStack(0), 0);
+
+    ASSERT_THROW(stack.popAtStack(20), std::out_of_range);
+}

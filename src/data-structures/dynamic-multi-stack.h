@@ -1,6 +1,27 @@
 #ifndef DATA_STRUCTURES_DYNAMIC_MULTI_STACK_H_INCLUDED
 #define DATA_STRUCTURES_DYNAMIC_MULTI_STACK_H_INCLUDED
 
+/*
+Stack of Plates:
+
+Imagine a (literal) stack of plates.
+If the stack gets too high, it might topple.
+Composed of several stacks and should create a new stack once the previous one exceeds capacity.
+SetOfStacks. push() and SetOfStacks. pop() should behave identically to a single stack
+(that is, pop() should return the same values as it would if there were just a single stack).
+
+FOLLOW UP
+Implement a function popAt(int index) which performs a pop operation on a specific sub-stack.
+
+There are two possible solutions for the popAt function.
+
+- Keep poping from stacks and have some kind of index to indicate wihch is the last element of each stack.
+  The downside of this is that we may waste space.
+
+- Every time we pop from a stack, we shift all the elements from the right to the left.
+  This could be performed at O(n) time.
+*/
+
 #include <memory>
 #include <stdexcept>
 
@@ -106,14 +127,14 @@ class DynamicMultiStack {
                 currentStack_ = -1;
                 index_[stack] = -1;
                 delete[] array_[0];
-                delete[] index_[0];
+                index_[0] = -1;
                 return value;
             }
 
             currentStack_--;
             index_[stack] = capacity_ - 1;
             delete[] array_[currentStack_ + 1];
-            delete[] index_[currentStack_ + 1];
+            index_ = (int*)realloc(index_, currentStack_ * sizeof(int));
             return value;
         }
 
