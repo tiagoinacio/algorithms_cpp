@@ -130,9 +130,8 @@ class DynamicMultiStack {
             }
 
             currentStack_--;
-            index_[stack] = capacity_ - 1;
             delete[] array_[currentStack_ + 1];
-            index_ = (int*)realloc(index_, currentStack_ * sizeof(int));
+            index_ = (int*)realloc(index_, currentStack_ + 1 * sizeof(int));
             return value;
         }
 
