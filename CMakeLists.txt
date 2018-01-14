@@ -77,6 +77,7 @@ add_executable(
     test/data-structures/string-builder.cpp
     test/data-structures/hash-table.cpp
     test/utils/sort/bublesort.cpp
+    test/utils/stack/sort-stack.cpp
     test/utils/strings/check-permutation.cpp
     test/utils/strings/urlify.cpp
     test/utils/strings/is-unique.cpp

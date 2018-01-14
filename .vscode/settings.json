@@ -72,6 +72,7 @@
         "__locale": "cpp",
         "unordered_map": "cpp",
         "unordered_set": "cpp",
-        "linked-list-c.c": "cpp"
+        "linked-list-c.c": "cpp",
+        "__tuple": "cpp"
     }
 }
