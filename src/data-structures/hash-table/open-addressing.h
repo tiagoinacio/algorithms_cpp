@@ -47,8 +47,36 @@ class HashTable {
         while (array_.get(i) != nullptr && array_.get(i)->wasDeleted == false) {
             probe++;
             i = hashFn(key, square(probe));
+
+            // if key already exists
+            // replace it
+            if (array_.get(i) != nullptr && array_.get(i)->key.compare(key) == 0) {
+                break;
+            }
         }
         array_.set(i, keyValuePair);
+    }
+
+    void remove(const std::string &key) {
+        int probe = 1;
+        size_t i = hashFn(key, square(probe));
+        map<T> *keyValuePair = array_.get(i);
+
+        if (keyValuePair == nullptr) {
+            throw std::out_of_range("key not found");
+        }
+
+        while (keyValuePair->key.compare(key) != 0) {
+            probe++;
+            i = hashFn(key, square(probe));
+            keyValuePair = array_.get(i);
+
+            if (keyValuePair == nullptr) {
+                throw std::out_of_range("key not found");
+            }
+        }
+
+        keyValuePair->wasDeleted = true;
     }
 
     T get(const std::string &key) {
@@ -58,7 +86,7 @@ class HashTable {
             int index = hashFn(key, square(i));
             keyValuePair = array_.get(index);
             if (keyValuePair != nullptr) {
-                if (keyValuePair->key == key) {
+                if (keyValuePair->key.compare(key) == 0) {
                     break;
                 }
             } else {
@@ -68,6 +96,23 @@ class HashTable {
         }
 
         return keyValuePair->value;
+    }
+
+    bool exists(const std::string &key) {
+        map<T> *keyValuePair;
+        int i = 1;
+        while (true) {
+            int index = hashFn(key, square(i));
+            keyValuePair = array_.get(index);
+            if (keyValuePair != nullptr) {
+                if (keyValuePair->key.compare(key) == 0 && keyValuePair->wasDeleted == false) {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+            i++;
+        }
     }
 
     int square(int i) const {
@@ -81,11 +126,8 @@ class HashTable {
 		    index += int(key[i]);
         }
 
-        return (index + probe) % 127;
+        return (index + probe) % capacity_;
     }
-
-    // TODO: delete function
-    // set for wasDeleted flag
 };
 }
 #endif
