@@ -10,11 +10,11 @@ namespace datastructures {
 template <typename T>
 class ArrayList {
  public:
-  ArrayList<T>()
+  ArrayList<T>(int capacity = 1, int size = 0)
     :
-    array_(new T[1]),
-    size_(0),
-    capacity_(1)
+    array_(new T[capacity]{}),
+    size_(size),
+    capacity_(capacity)
     {}
 
   ~ArrayList<T>() {

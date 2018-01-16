@@ -92,6 +92,7 @@ add_executable(
     test/utils/linked-list/find-element-from-tail.cpp
     test/utils/linked-list/partition-around-value.cpp
     test/utils/linked-list/delete-middle-node.cpp
+    test/data-structures/hash-table/open-addressing.cpp
     )
 
 add_dependencies(unit-tests googletest)

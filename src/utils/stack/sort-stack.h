@@ -30,10 +30,14 @@ namespace utils {
             datastructures::StackArray<T> secondStack;
             while (!stack.isEmpty()) {
                 T value = stack.pop();
-                while (!secondStack.isEmpty() && value > secondStack.peek()) {
+                while (!secondStack.isEmpty() && value < secondStack.peek()) {
                     stack.push_back(secondStack.pop());
                 }
                 secondStack.push_back(value);
+            }
+
+            while (!secondStack.isEmpty()) {
+                stack.push_back(secondStack.pop());
             }
 
             return stack;
