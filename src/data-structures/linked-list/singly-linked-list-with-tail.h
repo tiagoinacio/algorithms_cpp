@@ -1,5 +1,5 @@
-#ifndef DATA_STRUCTURES_LINKED_LIST_TAIL_H_INCLUDED
-#define DATA_STRUCTURES_LINKED_LIST_TAIL_H_INCLUDED
+#ifndef DATA_STRUCTURES_LINKED_LIST_SINGLY_LINKED_LIST_WITH_TAIL_H_INCLUDED
+#define DATA_STRUCTURES_LINKED_LIST_SINGLY_LINKED_LIST_WITH_TAIL_H_INCLUDED
 
 #include <gsl/gsl>
 #include <iostream>
@@ -16,18 +16,18 @@ struct Node {
 };
 
 template <typename T>
-class LinkedListTail {
+class LinkedList {
  private:
     datastructures::Node<T>* head_;
     datastructures::Node<T>* tail_;
     size_t size_;
 
  public:
-    LinkedListTail() :
+    LinkedList() :
         head_(nullptr),
         size_(0) {}
 
-    ~LinkedListTail() {
+    ~LinkedList() {
         if (head_ != nullptr) {
             while (head_->next != nullptr) {
                 datastructures::Node<T>* tmp = head_;
@@ -41,7 +41,7 @@ class LinkedListTail {
         }
     }
 
-    LinkedListTail<T>(const LinkedListTail<T>& other) {
+    LinkedList<T>(const LinkedList<T>& other) {
         datastructures::Node<T>* current = other.head_;
         datastructures::Node<T>* newNode = new datastructures::Node<T>();
         head_ = newNode;
@@ -59,7 +59,7 @@ class LinkedListTail {
     }
 
     // assignment operator
-    LinkedListTail<T>& operator=(const LinkedListTail<T>& rhs) {
+    LinkedList<T>& operator=(const LinkedList<T>& rhs) {
         if (this != &rhs) {
             auto tmp(rhs);
             std::swap(head_, tmp.head_);

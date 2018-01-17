@@ -72,7 +72,7 @@ add_executable(
     test/data-structures/stack-list.cpp
     test/data-structures/queue-array.cpp
     test/data-structures/queue-list.cpp
-    test/data-structures/linked-list-tail.cpp
+    test/data-structures/linked-list/singly-linked-list-with-tail.cpp
     test/data-structures/array-list.cpp
     test/data-structures/string-builder.cpp
     test/data-structures/hash-table.cpp
@@ -93,6 +93,7 @@ add_executable(
     test/utils/linked-list/partition-around-value.cpp
     test/utils/linked-list/delete-middle-node.cpp
     test/data-structures/hash-table/open-addressing.cpp
+    test/utils/queue/animal-shelter.cpp
     )
 
 add_dependencies(unit-tests googletest)
