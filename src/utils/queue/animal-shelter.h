@@ -23,35 +23,51 @@ namespace utils {
         class Animal {
             public:
                 std::string name;
-                int order;
+                size_t order;
+                virtual char type() const {
+                    return 'A';
+                }
+                virtual ~Animal() {}
         };
 
-        class Dog: public Animal {};
-        class Cat: public Animal {};
+        class Dog: public Animal {
+            public:
+            virtual char type() const {
+                return 'D';
+            }
+        };
+        class Cat: public Animal {
+            virtual char type() const {
+                return 'C';
+            }
+        };
 
         class AnimalShelter {
             datastructures::LinkedList<Animal> cats_;
             datastructures::LinkedList<Animal> dogs_;
+            size_t order_;
 
             public:
 
             AnimalShelter() :
                 cats_(datastructures::LinkedList<Animal>()),
-                dogs_(datastructures::LinkedList<Animal>())
+                dogs_(datastructures::LinkedList<Animal>()),
+                order_(0)
                 {}
 
-            void enqueue(const Animal& animal) {
-                if (typeid(animal) == typeid(Cat)) {
+            void enqueue(Animal& animal) {
+                if (animal.type() == 'C') {
+                    animal.order = order_++;
                     cats_.push_back(animal);
                     return;
                 }
 
-                if (typeid(animal) == typeid(Dog)) {
+                if (animal.type() == 'D') {
+                    animal.order = order_++;
                     dogs_.push_back(animal);
                     return;
                 }
-                return;
-                //throw "unsuported animal provided";
+                throw "unsuported animal provided";
             }
 
             Animal dequeueCat() {
@@ -68,6 +84,26 @@ namespace utils {
                 }
 
                 return dogs_.pop_front();
+            }
+
+            Animal dequeue() {
+                if (dogs_.empty() && cats_.empty()) {
+                    throw std::out_of_range("empty list");
+                }
+
+                if (dogs_.empty()) {
+                    return cats_.pop_front();
+                }
+
+                if (cats_.empty()) {
+                    return dogs_.pop_front();
+                }
+
+                if (dogs_.front().order < cats_.front().order) {
+                    return dogs_.pop_front();
+                }
+
+                return cats_.pop_front();
             }
         };
     }

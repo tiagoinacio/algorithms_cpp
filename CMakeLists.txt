@@ -94,6 +94,7 @@ add_executable(
     test/utils/linked-list/delete-middle-node.cpp
     test/data-structures/hash-table/open-addressing.cpp
     test/utils/queue/animal-shelter.cpp
+    test/utils/search/binary-search.cpp
     )
 
 add_dependencies(unit-tests googletest)
