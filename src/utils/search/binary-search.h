@@ -18,7 +18,7 @@ namespace utils {
             }
 
             if (array[midPoint] == key) {
-                return midPoint;
+                return midPoint + 1; // arrays are zero index
             }
 
             if (array[midPoint] < key) {
@@ -30,6 +30,24 @@ namespace utils {
             }
 
             throw std::out_of_range("key not found");
+        }
+
+        int binarySearch(int* array, size_t sizeOfArray, int value)
+        {
+            int midPoint = floor(sizeOfArray / 2);
+
+            while (midPoint != value) {
+                if (value < midPoint) {
+                    midPoint = midPoint - (midPoint / 2);
+                } else {
+                    midPoint = midPoint + (midPoint / 2);
+                }
+                if (midPoint == 0 && midPoint != value) {
+                    throw std::out_of_range("key not found");
+                }
+            }
+
+            return midPoint;
         }
     }
 }
