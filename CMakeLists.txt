@@ -62,39 +62,40 @@ add_library(googletest ${GOOGLETEST_SOURCES})
 add_executable(
     unit-tests
     test/main.cpp
-    test/data-structures/linked-list-c.cpp
-    test/data-structures/linked-list.cpp
-    test/data-structures/stack-array.cpp
-    test/data-structures/queue-stack.cpp
-    test/data-structures/stack-array-min.cpp
+    test/data-structures/array-list.cpp
     test/data-structures/dynamic-multi-stack.cpp
     test/data-structures/fixed-multi-stack.cpp
-    test/data-structures/stack-list.cpp
+    test/data-structures/hash-table.cpp
+    test/data-structures/hash-table/open-addressing.cpp
+    test/data-structures/linked-list-c.cpp
+    test/data-structures/linked-list.cpp
+    test/data-structures/linked-list/singly-linked-list-with-tail.cpp
     test/data-structures/queue-array.cpp
     test/data-structures/queue-list.cpp
-    test/data-structures/linked-list/singly-linked-list-with-tail.cpp
-    test/data-structures/array-list.cpp
+    test/data-structures/queue-stack.cpp
+    test/data-structures/stack-array-min.cpp
+    test/data-structures/stack-array.cpp
+    test/data-structures/stack-list.cpp
     test/data-structures/string-builder.cpp
-    test/data-structures/hash-table.cpp
+    test/utils/linked-list/delete-middle-node.cpp
+    test/utils/linked-list/find-element-from-tail.cpp
+    test/utils/linked-list/partition-around-value.cpp
+    test/utils/linked-list/remove-duplicates.cpp
+    test/utils/queue/animal-shelter.cpp
+    test/utils/search/binary-search.cpp
     test/utils/sort/bublesort.cpp
     test/utils/stack/sort-stack.cpp
     test/utils/strings/check-permutation.cpp
-    test/utils/strings/urlify.cpp
-    test/utils/strings/is-unique.cpp
-    test/utils/strings/palindrome-permutation.cpp
     test/utils/strings/is-palindrome.cpp
+    test/utils/strings/is-unique.cpp
     test/utils/strings/one-away.cpp
-    test/utils/strings/string-compression.cpp
+    test/utils/strings/palindrome-permutation.cpp
     test/utils/strings/rotate-matrix.cpp
-    test/utils/strings/zero-matrix.cpp
+    test/utils/strings/string-compression.cpp
     test/utils/strings/string-rotation.cpp
-    test/utils/linked-list/remove-duplicates.cpp
-    test/utils/linked-list/find-element-from-tail.cpp
-    test/utils/linked-list/partition-around-value.cpp
-    test/utils/linked-list/delete-middle-node.cpp
-    test/data-structures/hash-table/open-addressing.cpp
-    test/utils/queue/animal-shelter.cpp
-    test/utils/search/binary-search.cpp
+    test/utils/strings/urlify.cpp
+    test/utils/strings/zero-matrix.cpp
+    test/data-structures/tree/binary-tree.cpp
     )
 
 add_dependencies(unit-tests googletest)
