@@ -28,6 +28,8 @@ namespace utils {
             if (array[midPoint] > key) {
                 return binarySearch(array, key, min, midPoint - 1);
             }
+
+            throw std::out_of_range("key not found");
         }
     }
 }

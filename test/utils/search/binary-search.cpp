@@ -17,12 +17,16 @@ TEST(binary_search, with_existing_key)
     EXPECT_EQ(utils::search::binarySearch<double>(vec, 9, 0, 9), 8);
 }
 
-TEST(binary_search, without_existing_key)
+TEST(binary_search, without_existing_key_5)
 {
     double vec[] = {1, 2, 3, 4, 6, 7, 8, 9, 10};
 
     ASSERT_ANY_THROW(utils::search::binarySearch<double>(vec, 5, 0, 8));
+}
+
+TEST(binary_search, without_existing_key_20)
+{
+    double vec[] = {1, 2, 3, 4, 6, 7, 8, 9, 10};
+
     ASSERT_ANY_THROW(utils::search::binarySearch<double>(vec, 20, 0, 8));
-    ASSERT_ANY_THROW(utils::search::binarySearch<double>(vec, 15, 0, 8));
-    ASSERT_ANY_THROW(utils::search::binarySearch<double>(vec, 0, 0, 8));
 }
