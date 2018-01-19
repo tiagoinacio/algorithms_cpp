@@ -19,19 +19,21 @@ template <typename T>
 class HashTable {
  private:
     size_t capacity_;
-    datastructures::ArrayList<map<T> *> array_;
+    size_t size_;
+    datastructures::ArrayList<map<T> *>* array_;
 
  public:
     HashTable<T>(size_t capacity = 127)
         :
         capacity_(capacity),
-        array_(datastructures::ArrayList<map<T> *>(capacity, capacity))
+        size_(0),
+        array_(new datastructures::ArrayList<map<T> *>(capacity, capacity))
         {}
 
     ~HashTable<T>() {
         for (size_t i = 0; i < capacity_; i++) {
-            if (array_.get(i) != nullptr) {
-                delete array_.get(i);
+            if (array_->get(i) != nullptr) {
+                delete array_->get(i);
             }
         }
     }
@@ -42,25 +44,43 @@ class HashTable {
         keyValuePair->value = value;
         keyValuePair->wasDeleted = false;
 
+        double percentageOccupied = (double)capacity_ / (size_ + 1) / 100;
+
+        if (percentageOccupied < 0.1) {
+            capacity_ = capacity_ * 2;
+
+            datastructures::ArrayList<map<T> *>* newArray = new datastructures::ArrayList<map<T> *>();
+
+            for (int i = array_->size(); i > 0; i--) {
+                insert(array_->get(i));
+            }
+            array_ = newArray;
+        } else {
+            insert(keyValuePair);
+        }
+    }
+
+    void insert(map<T> *keyValuePair) {
         int probe = 1;
-        size_t i = hashFn(key, square(probe));
-        while (array_.get(i) != nullptr && array_.get(i)->wasDeleted == false) {
+        size_t i = hashFn(keyValuePair->key, square(probe));
+        while (array_->get(i) != nullptr && array_->get(i)->wasDeleted == false) {
             probe++;
-            i = hashFn(key, square(probe));
+            i = hashFn(keyValuePair->key, square(probe));
 
             // if key already exists
             // replace it
-            if (array_.get(i) != nullptr && array_.get(i)->key.compare(key) == 0) {
+            if (array_->get(i) != nullptr && array_->get(i)->key.compare(keyValuePair->key) == 0) {
                 break;
             }
         }
-        array_.set(i, keyValuePair);
+        size_++;
+        array_->set(i, keyValuePair);
     }
 
     void remove(const std::string &key) {
         int probe = 1;
         size_t i = hashFn(key, square(probe));
-        map<T> *keyValuePair = array_.get(i);
+        map<T> *keyValuePair = array_->get(i);
 
         if (keyValuePair == nullptr) {
             throw std::out_of_range("key not found");
@@ -69,13 +89,14 @@ class HashTable {
         while (keyValuePair->key.compare(key) != 0) {
             probe++;
             i = hashFn(key, square(probe));
-            keyValuePair = array_.get(i);
+            keyValuePair = array_->get(i);
 
             if (keyValuePair == nullptr) {
                 throw std::out_of_range("key not found");
             }
         }
 
+        size_--;
         keyValuePair->wasDeleted = true;
     }
 
@@ -84,7 +105,7 @@ class HashTable {
         int i = 1;
         while (true) {
             int index = hashFn(key, square(i));
-            keyValuePair = array_.get(index);
+            keyValuePair = array_->get(index);
             if (keyValuePair != nullptr) {
                 if (keyValuePair->key.compare(key) == 0) {
                     break;
@@ -103,7 +124,7 @@ class HashTable {
         int i = 1;
         while (true) {
             int index = hashFn(key, square(i));
-            keyValuePair = array_.get(index);
+            keyValuePair = array_->get(index);
             if (keyValuePair != nullptr) {
                 if (keyValuePair->key.compare(key) == 0 && keyValuePair->wasDeleted == false) {
                     return true;
@@ -112,6 +133,7 @@ class HashTable {
                 return false;
             }
             i++;
+
         }
     }
 
