@@ -32,23 +32,23 @@ namespace utils {
             throw std::out_of_range("key not found");
         }
 
-        int binarySearch(int* array, size_t sizeOfArray, int value)
-        {
-            int midPoint = floor(sizeOfArray / 2);
+        // int binarySearch(int* array, size_t sizeOfArray, int value)
+        // {
+        //     int midPoint = floor(sizeOfArray / 2);
 
-            while (midPoint != value) {
-                if (value < midPoint) {
-                    midPoint = midPoint - (midPoint / 2);
-                } else {
-                    midPoint = midPoint + (midPoint / 2);
-                }
-                if (midPoint == 0 && midPoint != value) {
-                    throw std::out_of_range("key not found");
-                }
-            }
+        //     while (array[midPoint] != value) {
+        //         if (value < midPoint) {
+        //             midPoint = midPoint - (midPoint / 2) + 1;
+        //         } else {
+        //             midPoint = midPoint + (midPoint / 2) + 1;
+        //         }
+        //         if ((midPoint == 0 && midPoint != value) || midPoint > sizeOfArray) {
+        //             throw std::out_of_range("key not found");
+        //         }
+        //     }
 
-            return midPoint;
-        }
+        //     return midPoint;
+        // }
     }
 }
 

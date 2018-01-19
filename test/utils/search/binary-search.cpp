@@ -31,17 +31,17 @@ TEST(binary_search, without_existing_key_20)
     ASSERT_ANY_THROW(utils::search::binarySearch<double>(vec, 20, 0, 8));
 }
 
-TEST(binary_search, on_sorted_list_of_integers)
-{
-    int vec[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+// TEST(binary_search, on_sorted_list_of_integers)
+// {
+//     int vec[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-    EXPECT_EQ(utils::search::binarySearch(vec, 10, 1), 1);
-    EXPECT_EQ(utils::search::binarySearch(vec, 10, 2), 2);
-    EXPECT_EQ(utils::search::binarySearch(vec, 10, 3), 3);
-    EXPECT_EQ(utils::search::binarySearch(vec, 10, 4), 4);
-    EXPECT_EQ(utils::search::binarySearch(vec, 10, 5), 5);
-    EXPECT_EQ(utils::search::binarySearch(vec, 10, 6), 6);
-    EXPECT_EQ(utils::search::binarySearch(vec, 10, 7), 7);
-    EXPECT_EQ(utils::search::binarySearch(vec, 10, 8), 8);
-    EXPECT_EQ(utils::search::binarySearch(vec, 10, 9), 9);
-}
+//     EXPECT_EQ(utils::search::binarySearch(vec, 10, 1), 1);
+//     EXPECT_EQ(utils::search::binarySearch(vec, 10, 2), 2);
+//     EXPECT_EQ(utils::search::binarySearch(vec, 10, 3), 3);
+//     EXPECT_EQ(utils::search::binarySearch(vec, 10, 4), 4);
+//     EXPECT_EQ(utils::search::binarySearch(vec, 10, 5), 5);
+//     EXPECT_EQ(utils::search::binarySearch(vec, 10, 6), 6);
+//     EXPECT_EQ(utils::search::binarySearch(vec, 10, 7), 7);
+//     EXPECT_EQ(utils::search::binarySearch(vec, 10, 8), 8);
+//     EXPECT_EQ(utils::search::binarySearch(vec, 10, 9), 9);
+// }
