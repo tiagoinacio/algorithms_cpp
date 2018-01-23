@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "data-structures/tree/binary-tree.h"
+#include <vector>
 
 TEST(binary_tree, insert)
 {
@@ -21,6 +22,38 @@ TEST(binary_tree, insert)
     tree.insert(1);
     tree.insert(0);
     tree.insert(11);
+
+    ASSERT_EQ(tree.root()->value, 10);
+    ASSERT_EQ(tree.root()->left->value, 4);
+    ASSERT_EQ(tree.root()->left->left->value, 1);
+    ASSERT_EQ(tree.root()->left->left->left->value, 0);
+    ASSERT_EQ(tree.root()->left->right->value, 6);
+    ASSERT_EQ(tree.root()->right->value, 15);
+    ASSERT_EQ(tree.root()->right->right->value, 17);
+    ASSERT_EQ(tree.root()->right->left->value, 13);
+    ASSERT_EQ(tree.root()->right->left->left->value, 11);
+}
+
+TEST(binary_tree, insert_iteratively)
+{
+    /*
+     *             10
+     *       4             15
+     *    1     6      13       17
+     * 0             11
+     *
+     */
+    datastructures::BinaryTree<double> tree;
+
+    tree.insertIteratively(10);
+    tree.insertIteratively(15);
+    tree.insertIteratively(17);
+    tree.insertIteratively(13);
+    tree.insertIteratively(4);
+    tree.insertIteratively(6);
+    tree.insertIteratively(1);
+    tree.insertIteratively(0);
+    tree.insertIteratively(11);
 
     ASSERT_EQ(tree.root()->value, 10);
     ASSERT_EQ(tree.root()->left->value, 4);
@@ -121,4 +154,38 @@ TEST(binary_tree, post_order_traversal)
     ASSERT_EQ(vector[6], 4);
     ASSERT_EQ(vector[7], 1);
     ASSERT_EQ(vector[8], 0);
+}
+
+/*
+ *             10
+ *       4             15
+ *    1     6      13       17
+ * 0             11
+ *
+ */
+TEST(binary_tree, breadthFirstTraversal)
+{
+    datastructures::BinaryTree<double> tree;
+
+    tree.insert(10);
+    tree.insert(15);
+    tree.insert(17);
+    tree.insert(13);
+    tree.insert(4);
+    tree.insert(6);
+    tree.insert(1);
+    tree.insert(0);
+    tree.insert(11);
+
+    std::vector<double> vector = tree.breadthFirstTraversal();
+
+    ASSERT_EQ(vector[0], 10);
+    ASSERT_EQ(vector[1], 4);
+    ASSERT_EQ(vector[2], 15);
+    ASSERT_EQ(vector[3], 1);
+    ASSERT_EQ(vector[4], 6);
+    ASSERT_EQ(vector[5], 13);
+    ASSERT_EQ(vector[6], 17);
+    ASSERT_EQ(vector[7], 0);
+    ASSERT_EQ(vector[8], 11);
 }

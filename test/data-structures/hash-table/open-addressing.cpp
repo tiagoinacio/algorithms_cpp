@@ -2,13 +2,7 @@
 #include <string>
 #include "data-structures/hash-table/open-addressing.h"
 
-TEST(hash_table, constructor)
-{
-    datastructures::HashTable<std::string> hashTable;
-}
-
-TEST(hash_table, set_get)
-{
+TEST(hash_table, set_get) {
     datastructures::HashTable<std::string> hashTable;
 
     hashTable.set("first_name", "tiago");

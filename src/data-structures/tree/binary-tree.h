@@ -3,6 +3,8 @@
 
 #include <memory>
 #include <iostream>
+#include <vector>
+#include "data-structures/queue-array.h"
 
 namespace datastructures {
 
@@ -76,27 +78,93 @@ class BinaryTree {
         return root_;
     }
 
-    TreeNode<T>* search(const T& key) {
+    TreeNode<T>* search(const T& value) {
         if (root_ == nullptr) {
             throw std::out_of_range("tree is empty");
         }
-        return preOrderTraversalSearch(key, root_);
+        return preOrderTraversalSearch(value, root_);
+    }
+    /* TODO
+     * insert Iteratively
+     *
+     */
+
+    bool insertIteratively(const T& value) {
+        TreeNode<T>* currentNode = root_;
+
+        if(currentNode == nullptr) {
+            root_ = new TreeNode<T>(value);
+            return true;
+        }
+
+        bool isBigger = value > currentNode->value;
+        while (((!isBigger && currentNode->left != nullptr) || (isBigger && currentNode->right != nullptr))) {
+            // element with the same value already found in the tree
+            if (currentNode->value == value) {
+                return false;
+            }
+
+            if (value > currentNode->value) {
+                currentNode = currentNode->right;
+            } else {
+                currentNode = currentNode->left;
+            }
+            isBigger = value > currentNode->value;
+        }
+
+        if (value > currentNode->value) {
+            currentNode->right = new TreeNode<T>(value);
+            return true;
+        }
+
+        if (value < currentNode->value) {
+            currentNode->left = new TreeNode<T>(value);
+            return true;
+        }
+
+        // element with the same value already found in the tree
+        return false;
     }
 
-    TreeNode<T>* preOrderTraversalSearch(const T& key, TreeNode<T>* node) {
+    void deleteKey() {
+
+        // iterate until last left child is nullptr
+        // copy value to deleted node
+        // delete last left child
+    }
+
+    TreeNode<T>* searchIteratively(const T& value) {
+        TreeNode<T>* currentNode = root_;
+
+        while (currentNode) {
+            if (currentNode->value == value) {
+                return currentNode;
+            }
+
+            if (value < currentNode) {
+                currentNode = currentNode->left;
+            } else {
+                currentNode = currentNode->right;
+            }
+        }
+
+        throw std::out_of_range("tree is empty");
+    }
+
+    TreeNode<T>* preOrderTraversalSearch(const T& value, TreeNode<T>* node) {
         if (node != nullptr) {
-            if (key == node->value) {
+            if (value == node->value) {
                 return node;
             }
 
-            if (key < node->value) {
-                return preOrderTraversalSearch(key, node->left);
+            if (value < node->value) {
+                return preOrderTraversalSearch(value, node->left);
             }
 
-            return preOrderTraversalSearch(key, node->right);
+            return preOrderTraversalSearch(value, node->right);
         }
 
-        throw std::out_of_range("key not found");
+        throw std::out_of_range("value not found");
     }
 
     std::vector<T> getAscendingValues() {
@@ -129,6 +197,28 @@ class BinaryTree {
             vector.push_back(node->value);
             postOrderTraversal(node->left, vector);
         }
+    }
+
+    std::vector<T> breadthFirstTraversal() {
+        auto queue = datastructures::QueueArray<TreeNode<T>*>();
+        auto vector = std::vector<T>{};
+
+        queue.enqueue(root_);
+
+        while (!queue.isEmpty()) {
+            auto node = queue.dequeue();
+
+            vector.push_back(node->value);
+
+            if (node->left != nullptr) {
+                queue.enqueue(node->left);
+            }
+
+            if (node->right != nullptr) {
+                queue.enqueue(node->left);
+            }
+        }
+        return vector;
     }
 };
 }
