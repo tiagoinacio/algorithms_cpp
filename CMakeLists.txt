@@ -36,6 +36,13 @@ add_library(
     src/utils/sort/bublesort.cpp
     )
 
+add_library(
+    utils-bit-manipulation
+    src/utils/bit-manipulation/is-number-even.cpp
+    src/utils/bit-manipulation/is-number-odd.cpp
+    src/utils/bit-manipulation/is-power-of-two.cpp
+    )
+
 set(GOOGLETEST_ROOT external/googletest/googletest CACHE STRING "Google Test source root")
 set(GSL_ROOT external/GSL/ CACHE STRING "GSL source root")
 
@@ -77,6 +84,7 @@ add_executable(
     test/data-structures/stack-array.cpp
     test/data-structures/stack-list.cpp
     test/data-structures/string-builder.cpp
+    test/data-structures/tree/binary-tree.cpp
     test/utils/linked-list/delete-middle-node.cpp
     test/utils/linked-list/find-element-from-tail.cpp
     test/utils/linked-list/partition-around-value.cpp
@@ -95,7 +103,7 @@ add_executable(
     test/utils/strings/string-rotation.cpp
     test/utils/strings/urlify.cpp
     test/utils/strings/zero-matrix.cpp
-    test/data-structures/tree/binary-tree.cpp
+    test/utils/bit-manipulation/is-number-even.cpp
     )
 
 add_dependencies(unit-tests googletest)
@@ -105,6 +113,7 @@ target_link_libraries(
     googletest
     pthread
     utils-sort
+    utils-bit-manipulation
     utils-strings
     )
 
