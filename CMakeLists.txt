@@ -104,6 +104,7 @@ add_executable(
     test/utils/strings/string-rotation.cpp
     test/utils/strings/urlify.cpp
     test/utils/strings/zero-matrix.cpp
+    test/data-structures/tree/trie.cpp
     )
 
 add_dependencies(unit-tests googletest)
