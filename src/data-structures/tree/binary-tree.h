@@ -215,7 +215,7 @@ class BinaryTree {
             }
 
             if (node->right != nullptr) {
-                queue.enqueue(node->left);
+                queue.enqueue(node->right);
             }
         }
         return vector;
