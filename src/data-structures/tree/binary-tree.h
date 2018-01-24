@@ -34,13 +34,13 @@ class BinaryTree {
     {}
 
     ~BinaryTree<T>() {
-        deleteNode(root_);
+        deleteTree(root_);
     }
 
-    void deleteNode(TreeNode<T>* node) {
+    void deleteTree(TreeNode<T>* node) {
         if (node != nullptr) {
-            deleteNode(node->left);
-            deleteNode(node->right);
+            deleteTree(node->left);
+            deleteTree(node->right);
             delete node;
         }
     }
@@ -122,11 +122,80 @@ class BinaryTree {
         return false;
     }
 
-    void deleteKey() {
+    bool deleteNode(const T& value) {
+        TreeNode<T>* node = root_;
 
-        // iterate until last left child is nullptr
-        // copy value to deleted node
-        // delete last left child
+        if (node == nullptr) {
+            return false;
+        }
+
+        bool isBigger = value > node->value;
+        while ((isBigger && node->right != nullptr) || (!isBigger && node->left != nullptr)) {
+            if (isBigger) {
+                node = node->right;
+            } else {
+                node = node->left;
+            }
+
+            if (!node) {
+                return false;
+            }
+
+            if (node->value == value) {
+                break;
+            }
+        }
+
+        if (node->value != value) {
+            return false;
+        }
+
+        TreeNode<T> *tmp = node;
+        TreeNode<T> *parent = node;
+        if (isBigger) {
+            while (tmp->left) {
+                tmp = tmp->left;
+                if (tmp->left) {
+                    parent = tmp;
+                }
+            }
+
+            if (tmp == root_) {
+                delete root_;
+                root_ = nullptr;
+                return true;
+            }
+
+            T tmpValue = tmp->value;
+
+            node->value = tmpValue;
+
+            delete parent->left;
+            parent->left = nullptr;
+            return true;
+        } else {
+            while (tmp->right) {
+                tmp = tmp->right;
+                if (tmp->right) {
+                    parent = tmp;
+                }
+            }
+
+            if (tmp == root_) {
+                delete root_;
+                root_ = nullptr;
+                return true;
+            }
+
+            T tmpValue = tmp->value;
+
+            node->value = tmpValue;
+
+            delete parent->right;
+            parent->right = nullptr;
+
+            return true;
+        }
     }
 
     TreeNode<T>* searchIteratively(const T& value) {

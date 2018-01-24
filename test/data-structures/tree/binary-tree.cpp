@@ -201,3 +201,39 @@ TEST(binary_tree, breadthFirstTraversal)
     ASSERT_EQ(vector[7], 0);
     ASSERT_EQ(vector[8], 11);
 }
+
+TEST(binary_tree, remove_key_on_empty_tree)
+{
+    datastructures::BinaryTree<double> tree;
+
+    ASSERT_EQ(tree.deleteNode(10), false);
+}
+
+TEST(binary_tree, remove_key)
+{
+    datastructures::BinaryTree<double> tree;
+
+    tree.insert(10);
+    tree.insert(15);
+    tree.insert(17);
+
+    ASSERT_EQ(tree.search(10)->value, 10);
+
+    ASSERT_EQ(tree.deleteNode(10), true);
+
+    ASSERT_THROW(tree.search(10), std::out_of_range);
+
+    ASSERT_EQ(tree.deleteNode(16), false);
+
+    ASSERT_EQ(tree.search(17)->value, 17);
+
+    ASSERT_EQ(tree.deleteNode(17), true);
+
+    ASSERT_THROW(tree.search(17), std::out_of_range);
+
+    ASSERT_EQ(tree.search(15)->value, 15);
+
+    ASSERT_EQ(tree.deleteNode(15), true);
+
+    ASSERT_THROW(tree.search(15), std::out_of_range);
+}
