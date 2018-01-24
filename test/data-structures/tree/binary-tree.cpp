@@ -236,4 +236,20 @@ TEST(binary_tree, remove_key)
     ASSERT_EQ(tree.deleteNode(15), true);
 
     ASSERT_THROW(tree.search(15), std::out_of_range);
+
+    tree.insert(10);
+    tree.insert(15);
+    tree.insert(17);
+    tree.insert(13);
+    tree.insert(4);
+    tree.insert(6);
+    tree.insert(1);
+    tree.insert(0);
+    tree.insert(11);
+
+    ASSERT_EQ(tree.deleteNode(4), true);
+
+    ASSERT_EQ(tree.deleteNode(0), true);
+
+    ASSERT_EQ(tree.deleteNode(11), true);
 }

@@ -141,6 +141,8 @@ class BinaryTree {
                 return false;
             }
 
+            isBigger = value > node->value;
+
             if (node->value == value) {
                 break;
             }
