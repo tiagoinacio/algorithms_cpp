@@ -1,9 +1,9 @@
 #include "gtest/gtest.h"
-#include "data-structures/queue-stack.h"
+#include "data-structures/queue/queue-array.h"
 
-TEST(queue_stack, enqueue_peek)
+TEST(queue_array, enqueue_peek)
 {
-    datastructures::QueueStack<double> queue;
+    datastructures::QueueArray<double> queue;
 
     queue.enqueue(2);
     ASSERT_EQ(queue.peek(), 2);
@@ -15,9 +15,9 @@ TEST(queue_stack, enqueue_peek)
     ASSERT_EQ(queue.peek(), 2);
 }
 
-TEST(queue_stack, enqueue_dequeue)
+TEST(queue_array, enqueue_dequeue)
 {
-    datastructures::QueueStack<double> queue;
+    datastructures::QueueArray<double> queue;
 
     queue.enqueue(2);
     ASSERT_EQ(queue.dequeue(), 2);
@@ -34,9 +34,9 @@ TEST(queue_stack, enqueue_dequeue)
     ASSERT_THROW(queue.dequeue(), std::out_of_range);
 }
 
-TEST(queue_stack, isEmpty)
+TEST(queue_array, isEmpty)
 {
-    datastructures::QueueStack<double> queue;
+    datastructures::QueueArray<double> queue;
 
     ASSERT_EQ(queue.isEmpty(), true);
     queue.enqueue(2);

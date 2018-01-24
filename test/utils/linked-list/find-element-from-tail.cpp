@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "data-structures/linked-list.h"
+#include "data-structures/linked-list/linked-list.h"
 #include "utils/linked-list/find-element-from-tail.h"
 
 TEST(getNthValueFromTail, with_empty_list)

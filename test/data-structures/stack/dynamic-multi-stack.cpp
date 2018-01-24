@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "data-structures/dynamic-multi-stack.h"
+#include "data-structures/stack/dynamic-multi-stack.h"
 
 TEST(dynamic_multi_stack, push_peek)
 {

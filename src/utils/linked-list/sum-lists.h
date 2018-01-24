@@ -1,7 +1,7 @@
 #ifndef UTILS_LINKED_LIST_SUM_LISTS_H_INCLUDED
 #define UTILS_LINKED_LIST_SUM_LISTS_H_INCLUDED
 
-#include "data-structures/linked-list.h"
+#include "data-structures/linked-list/linked-list.h"
 #include "gsl/gsl"
 
 namespace utils {

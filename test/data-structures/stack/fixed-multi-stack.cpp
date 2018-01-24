@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "data-structures/fixed-multi-stack.h"
+#include "data-structures/stack/fixed-multi-stack.h"
 
 TEST(fixed_multi_stack_default, push_peek)
 {

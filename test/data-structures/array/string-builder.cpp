@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include <string>
-#include "data-structures/string-builder.h"
+#include "data-structures/array/string-builder.h"
 
 TEST(string_builder, constructor)
 {

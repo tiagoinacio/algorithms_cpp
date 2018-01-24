@@ -1,7 +1,7 @@
 #ifndef UTILS_STACK_SORT_STACK_H_INCLUDED
 #define UTILS_STACK_SORT_STACK_H_INCLUDED
 
-#include "data-structures/stack-array.h"
+#include "data-structures/stack/stack-array.h"
 #include "gsl/gsl"
 
 namespace utils {

@@ -1,7 +1,7 @@
 #ifndef UTILS_LINKED_LIST_REMOVE_DUPLICATES_H_INCLUDED
 #define UTILS_LINKED_LIST_REMOVE_DUPLICATES_H_INCLUDED
 
-#include "data-structures/linked-list.h"
+#include "data-structures/linked-list/linked-list.h"
 
 namespace utils {
 

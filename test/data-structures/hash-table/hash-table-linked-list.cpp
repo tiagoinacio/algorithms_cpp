@@ -1,6 +1,6 @@
 // #include "gtest/gtest.h"
 // #include <string>
-// #include "data-structures/hash-table.h"
+// #include "data-structures/hash-table/hash-table-linked-list.h"
 
 // TEST(hash_table, constructor)
 // {

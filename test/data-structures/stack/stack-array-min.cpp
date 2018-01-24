@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "data-structures/stack-array-min.h"
+#include "data-structures/stack/stack-array-min.h"
 
 TEST(stack_array_min, push_peek)
 {

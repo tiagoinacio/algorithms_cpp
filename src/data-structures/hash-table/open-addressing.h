@@ -4,7 +4,7 @@
 #include <memory>
 #include <string>
 #include <iostream>
-#include "../array-list.h"
+#include "data-structures/array/array-list.h"
 
 namespace datastructures {
 

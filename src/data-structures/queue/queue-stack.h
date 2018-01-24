@@ -3,7 +3,7 @@
 
 #include <memory>
 #include <stdexcept>
-#include "./stack-list.h"
+#include "../stack/stack-list.h"
 
 namespace datastructures {
 

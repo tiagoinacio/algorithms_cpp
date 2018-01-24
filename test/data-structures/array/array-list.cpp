@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "data-structures/array-list.h"
+#include "data-structures/array/array-list.h"
 
 TEST(array_list, default_params)
 {

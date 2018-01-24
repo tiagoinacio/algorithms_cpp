@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "data-structures/stack-array.h"
+#include "data-structures/stack/stack-array.h"
 #include "utils/stack/sort-stack.h"
 
 TEST(sortStack, with_empty_stack)

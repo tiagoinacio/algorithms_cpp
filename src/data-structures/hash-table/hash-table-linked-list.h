@@ -4,8 +4,8 @@
 #include <memory>
 #include <string>
 #include <iostream>
-#include "./linked-list.h"
-#include "./array-list.h"
+#include "../linked-list/linked-list.h"
+#include "../array/array-list.h"
 
 namespace datastructures {
 

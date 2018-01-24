@@ -4,7 +4,7 @@
 #include <memory>
 #include <iostream>
 #include <vector>
-#include "data-structures/queue-array.h"
+#include "data-structures/queue/queue-array.h"
 
 namespace datastructures {
 
@@ -84,10 +84,6 @@ class BinaryTree {
         }
         return preOrderTraversalSearch(value, root_);
     }
-    /* TODO
-     * insert Iteratively
-     *
-     */
 
     bool insertIteratively(const T& value) {
         TreeNode<T>* currentNode = root_;

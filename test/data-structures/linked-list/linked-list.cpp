@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "data-structures/linked-list.h"
+#include "data-structures/linked-list/linked-list.h"
 
 TEST(linked_list, one_value)
 {

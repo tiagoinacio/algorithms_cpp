@@ -66,6 +66,18 @@ TEST(binary_tree, insert_iteratively)
     ASSERT_EQ(tree.root()->right->left->left->value, 11);
 }
 
+TEST(binary_tree, with_value_already_in_the_tree)
+{
+    datastructures::BinaryTree<double> tree;
+
+    ASSERT_EQ(tree.insertIteratively(10), true);
+    ASSERT_EQ(tree.insertIteratively(10), false);
+
+    tree.insertIteratively(15);
+    tree.insertIteratively(20);
+    ASSERT_EQ(tree.insertIteratively(20), false);
+}
+
 TEST(binary_tree, search)
 {
     datastructures::BinaryTree<double> tree;

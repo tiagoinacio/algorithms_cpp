@@ -69,22 +69,23 @@ add_library(googletest ${GOOGLETEST_SOURCES})
 add_executable(
     unit-tests
     test/main.cpp
-    test/data-structures/array-list.cpp
-    test/data-structures/dynamic-multi-stack.cpp
-    test/data-structures/fixed-multi-stack.cpp
-    test/data-structures/hash-table.cpp
+    test/data-structures/array/array-list.cpp
+    test/data-structures/array/string-builder.cpp
+    test/data-structures/hash-table/hash-table-linked-list.cpp
     test/data-structures/hash-table/open-addressing.cpp
-    test/data-structures/linked-list-c.cpp
-    test/data-structures/linked-list.cpp
+    test/data-structures/linked-list/linked-list-c.cpp
+    test/data-structures/linked-list/linked-list.cpp
     test/data-structures/linked-list/singly-linked-list-with-tail.cpp
-    test/data-structures/queue-array.cpp
-    test/data-structures/queue-list.cpp
-    test/data-structures/queue-stack.cpp
-    test/data-structures/stack-array-min.cpp
-    test/data-structures/stack-array.cpp
-    test/data-structures/stack-list.cpp
-    test/data-structures/string-builder.cpp
+    test/data-structures/queue/queue-array.cpp
+    test/data-structures/queue/queue-list.cpp
+    test/data-structures/queue/queue-stack.cpp
+    test/data-structures/stack/dynamic-multi-stack.cpp
+    test/data-structures/stack/fixed-multi-stack.cpp
+    test/data-structures/stack/stack-array-min.cpp
+    test/data-structures/stack/stack-array.cpp
+    test/data-structures/stack/stack-list.cpp
     test/data-structures/tree/binary-tree.cpp
+    test/utils/bit-manipulation/is-number-even.cpp
     test/utils/linked-list/delete-middle-node.cpp
     test/utils/linked-list/find-element-from-tail.cpp
     test/utils/linked-list/partition-around-value.cpp
@@ -103,7 +104,6 @@ add_executable(
     test/utils/strings/string-rotation.cpp
     test/utils/strings/urlify.cpp
     test/utils/strings/zero-matrix.cpp
-    test/utils/bit-manipulation/is-number-even.cpp
     )
 
 add_dependencies(unit-tests googletest)

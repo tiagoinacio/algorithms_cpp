@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "data-structures/linked-list.h"
+#include "data-structures/linked-list/linked-list.h"
 #include "utils/linked-list/remove-duplicates.h"
 
 TEST(removeDuplicates, with_empty_list)
