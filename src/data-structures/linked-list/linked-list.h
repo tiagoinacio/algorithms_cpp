@@ -167,9 +167,6 @@ class LinkedList {
     void push_front(const T& value) {
         if (head_ == nullptr) {
             head_ = new datastructures::Node<T>();
-            if (!head_) {
-                throw "";
-            }
             head_->value = value;
             size_++;
             return;

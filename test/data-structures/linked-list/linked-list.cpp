@@ -268,6 +268,24 @@ TEST(linked_list, removeValue)
     EXPECT_EQ(linkedList.value_at(0), 2);
 }
 
+TEST(linked_list, insert_out_of_range)
+{
+    datastructures::LinkedList<double> linkedList;
+    ASSERT_THROW(linkedList.insert(90, 90), std::out_of_range);
+}
+
+TEST(linked_list, pop_back_out_of_range)
+{
+    datastructures::LinkedList<double> linkedList;
+    ASSERT_THROW(linkedList.pop_back(), std::out_of_range);
+}
+
+TEST(linked_list, erase_out_of_range)
+{
+    datastructures::LinkedList<double> linkedList;
+    ASSERT_THROW(linkedList.erase(40), std::out_of_range);
+}
+
 TEST(linked_list, insert_at_middle_position)
 {
     datastructures::LinkedList<double> linkedList;

@@ -62,7 +62,6 @@ TEST(queue_array, is_full)
     datastructures::QueueArray<double> queue;
 
     queue.enqueue(1);
-
     ASSERT_EQ(queue.isFull(), false);
 
     queue.enqueue(2);
@@ -72,6 +71,7 @@ TEST(queue_array, is_full)
     queue.enqueue(6);
     queue.enqueue(7);
     queue.enqueue(8);
+
     queue.enqueue(9);
     ASSERT_EQ(queue.isFull(), false);
 
