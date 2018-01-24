@@ -2,7 +2,8 @@
 #define DATA_STRUCTURES_QUEUE_ARRAY_H_INCLUDED
 
 #include <memory>
-#include <stdexcept>
+#include <stdexcept> /* std::out_of_range */
+#include <stdlib.h> /* abs */
 
 namespace datastructures {
 
@@ -39,7 +40,7 @@ class QueueArray {
 
     bool isFull() const {
         // return top_ < 0;
-        return false;
+        return abs(rear_ - front_) == capacity_ - 1;
     }
 
     void enqueue(const T &data) {

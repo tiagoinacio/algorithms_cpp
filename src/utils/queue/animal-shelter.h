@@ -43,15 +43,15 @@ namespace utils {
         };
 
         class AnimalShelter {
-            datastructures::LinkedList<Animal> cats_;
-            datastructures::LinkedList<Animal> dogs_;
+            datastructures::LinkedListWithTail<Animal> cats_;
+            datastructures::LinkedListWithTail<Animal> dogs_;
             size_t order_;
 
             public:
 
             AnimalShelter() :
-                cats_(datastructures::LinkedList<Animal>()),
-                dogs_(datastructures::LinkedList<Animal>()),
+                cats_(datastructures::LinkedListWithTail<Animal>()),
+                dogs_(datastructures::LinkedListWithTail<Animal>()),
                 order_(0)
                 {}
 

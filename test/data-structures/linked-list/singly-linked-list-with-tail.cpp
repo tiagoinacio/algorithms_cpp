@@ -3,7 +3,7 @@
 
 TEST(linked_list_tail, one_value)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
 
     linkedList.push_back(2);
 
@@ -12,7 +12,7 @@ TEST(linked_list_tail, one_value)
 
 TEST(linked_list_tail, empty)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
 
     ASSERT_EQ(linkedList.empty(), true);
 
@@ -22,7 +22,7 @@ TEST(linked_list_tail, empty)
 
 TEST(linked_list_tail, push_back)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
 
     linkedList.push_back(2);
     linkedList.push_back(5);
@@ -41,7 +41,7 @@ TEST(linked_list_tail, push_back)
 
 TEST(linked_list_tail, pop_front)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
 
     linkedList.push_back(2);
     ASSERT_EQ(linkedList.value_at(0), 2);
@@ -52,7 +52,7 @@ TEST(linked_list_tail, pop_front)
 
 TEST(linked_list_tail, pop_back)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
 
     linkedList.push_back(1);
     linkedList.push_back(2);
@@ -65,7 +65,7 @@ TEST(linked_list_tail, pop_back)
 
 TEST(linked_list_tail, back)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
 
     linkedList.push_back(1);
     linkedList.push_back(2);
@@ -88,7 +88,7 @@ TEST(linked_list_tail, back)
 
 TEST(linked_list_tail, front)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
 
     linkedList.push_back(1);
     ASSERT_EQ(linkedList.front(), 1);
@@ -107,7 +107,7 @@ TEST(linked_list_tail, front)
 
 TEST(linked_list_tail, push_front)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
     ASSERT_EQ(linkedList.size(), 0);
 
     linkedList.push_back(2);
@@ -126,13 +126,13 @@ TEST(linked_list_tail, push_front)
 
 TEST(linked_list_tail, get)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
     ASSERT_ANY_THROW(linkedList.value_at(1));
 }
 
 TEST(linked_list_tail, delete_element_at_middle_position)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
     linkedList.push_back(0);
     linkedList.push_back(1);
     linkedList.push_back(2);
@@ -155,7 +155,7 @@ TEST(linked_list_tail, delete_element_at_middle_position)
 
 TEST(linked_list_tail, delete_element_at_start_position)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
     linkedList.push_back(0);
     linkedList.push_back(1);
     linkedList.push_back(2);
@@ -177,7 +177,7 @@ TEST(linked_list_tail, delete_element_at_start_position)
 
 TEST(linked_list_tail, delete_element_at_end_position)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
     linkedList.push_back(0);
     linkedList.push_back(1);
     linkedList.push_back(2);
@@ -198,7 +198,7 @@ TEST(linked_list_tail, delete_element_at_end_position)
 
 TEST(linked_list_tail, reverse)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
 
     linkedList.push_back(0);
     linkedList.push_back(1);
@@ -226,7 +226,7 @@ TEST(linked_list_tail, reverse)
 
 TEST(linked_list_tail, removeValue)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
 
     linkedList.push_back(0);
     linkedList.push_back(1);
@@ -278,7 +278,7 @@ TEST(linked_list_tail, removeValue)
 
 TEST(linked_list_tail, integration)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
 
     linkedList.push_back(0);
     linkedList.push_back(1);
@@ -342,7 +342,7 @@ TEST(linked_list_tail, integration)
 
 TEST(linked_list_tail, insert_at_middle_position)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
     linkedList.push_back(0);
     linkedList.push_back(1);
     linkedList.push_back(2);
@@ -365,7 +365,7 @@ TEST(linked_list_tail, insert_at_middle_position)
 
 TEST(linked_list_tail, insert_at_tail_position)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
     linkedList.push_back(0);
     linkedList.push_back(1);
 
@@ -385,7 +385,7 @@ TEST(linked_list_tail, insert_at_tail_position)
 
 TEST(linked_list_tail, insert_at_head_position)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
     linkedList.push_back(0);
     linkedList.push_back(1);
 
@@ -405,7 +405,7 @@ TEST(linked_list_tail, insert_at_head_position)
 
 TEST(linked_list_tail, copy_constructor)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
     linkedList.push_back(0);
     linkedList.push_back(1);
     linkedList.push_back(2);
@@ -420,20 +420,20 @@ TEST(linked_list_tail, copy_constructor)
     ASSERT_EQ(linkedList.value_at(3), 3);
     ASSERT_EQ(linkedList.value_at(4), 4);
 
-    datastructures::LinkedList<double> copiedLinkedList(linkedList);
+    datastructures::LinkedListWithTail<double> copiedLinkedListWithTail(linkedList);
 
-    ASSERT_EQ(copiedLinkedList.size(), 5);
+    ASSERT_EQ(copiedLinkedListWithTail.size(), 5);
 
-    ASSERT_EQ(copiedLinkedList.value_at(0), 0);
-    ASSERT_EQ(copiedLinkedList.value_at(1), 1);
-    ASSERT_EQ(copiedLinkedList.value_at(2), 2);
-    ASSERT_EQ(copiedLinkedList.value_at(3), 3);
-    ASSERT_EQ(copiedLinkedList.value_at(4), 4);
+    ASSERT_EQ(copiedLinkedListWithTail.value_at(0), 0);
+    ASSERT_EQ(copiedLinkedListWithTail.value_at(1), 1);
+    ASSERT_EQ(copiedLinkedListWithTail.value_at(2), 2);
+    ASSERT_EQ(copiedLinkedListWithTail.value_at(3), 3);
+    ASSERT_EQ(copiedLinkedListWithTail.value_at(4), 4);
 }
 
 TEST(linked_list_tail, assignment_operator)
 {
-    datastructures::LinkedList<double> linkedList;
+    datastructures::LinkedListWithTail<double> linkedList;
     linkedList.push_back(0);
     linkedList.push_back(1);
     linkedList.push_back(2);
@@ -448,17 +448,17 @@ TEST(linked_list_tail, assignment_operator)
     ASSERT_EQ(linkedList.value_at(3), 3);
     ASSERT_EQ(linkedList.value_at(4), 4);
 
-    datastructures::LinkedList<double> copiedLinkedList;
+    datastructures::LinkedListWithTail<double> copiedLinkedListWithTail;
 
-    ASSERT_EQ(copiedLinkedList.size(), 0);
+    ASSERT_EQ(copiedLinkedListWithTail.size(), 0);
 
-    copiedLinkedList = linkedList;
+    copiedLinkedListWithTail = linkedList;
 
-    ASSERT_EQ(copiedLinkedList.size(), 5);
+    ASSERT_EQ(copiedLinkedListWithTail.size(), 5);
 
-    ASSERT_EQ(copiedLinkedList.value_at(0), 0);
-    ASSERT_EQ(copiedLinkedList.value_at(1), 1);
-    ASSERT_EQ(copiedLinkedList.value_at(2), 2);
-    ASSERT_EQ(copiedLinkedList.value_at(3), 3);
-    ASSERT_EQ(copiedLinkedList.value_at(4), 4);
+    ASSERT_EQ(copiedLinkedListWithTail.value_at(0), 0);
+    ASSERT_EQ(copiedLinkedListWithTail.value_at(1), 1);
+    ASSERT_EQ(copiedLinkedListWithTail.value_at(2), 2);
+    ASSERT_EQ(copiedLinkedListWithTail.value_at(3), 3);
+    ASSERT_EQ(copiedLinkedListWithTail.value_at(4), 4);
 }
