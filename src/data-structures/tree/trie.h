@@ -42,6 +42,7 @@ class Trie {
 
             if (node == nullptr) {
                 node = new TrieNode(e);
+                root_ = node;
             } else {
                 if (node->childrens.exists(e)) {
                     node = node->childrens.get(e);
