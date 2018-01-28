@@ -48,3 +48,31 @@ TEST(trie, deleteNode) {
     ASSERT_EQ(trie.contains("tiag"), false);
     ASSERT_EQ(trie.contains("tiago"), false);
 }
+
+TEST(trie, deleteWord) {
+    datastructures::Trie<std::string> trie;
+
+    trie.insert("tiago");
+
+    ASSERT_EQ(trie.isPrefix("t"), true);
+    ASSERT_EQ(trie.isPrefix("ti"), true);
+    ASSERT_EQ(trie.isPrefix("tia"), true);
+    ASSERT_EQ(trie.isPrefix("tiag"), true);
+    ASSERT_EQ(trie.contains("tiago"), true);
+
+    trie.deleteWord("tiago");
+
+    ASSERT_EQ(trie.isPrefix("t"), false);
+    ASSERT_EQ(trie.isPrefix("ti"), false);
+    ASSERT_EQ(trie.isPrefix("tia"), false);
+    ASSERT_EQ(trie.isPrefix("tiag"), false);
+    ASSERT_EQ(trie.contains("tiago"), false);
+}
+
+TEST(trie, deleteWord_out_of_range) {
+    datastructures::Trie<std::string> trie;
+
+    trie.insert("tiago");
+
+    ASSERT_THROW(trie.deleteWord("ti"), std::out_of_range);
+}

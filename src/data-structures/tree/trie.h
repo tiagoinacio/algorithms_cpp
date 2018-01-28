@@ -4,6 +4,8 @@
 #include <memory>
 #include "data-structures/hash-table/open-addressing.h"
 #include "data-structures/queue/queue-list.h"
+#include "data-structures/stack/stack-list.h"
+#include <iostream>
 
 namespace datastructures {
 
@@ -77,7 +79,9 @@ class Trie {
                 root_ = nullptr;
             }
 
-            delete node;
+            if (node) {
+                delete node;
+            }
         }
     }
 
@@ -101,6 +105,46 @@ class Trie {
         }
 
         node->isEndOfWord = true;
+    }
+
+    void deleteWord(const std::string &word) {
+        TrieNode* node = root_;
+        TrieNode** nodes = new TrieNode*[word.length()];
+        size_t nodeIndex = 0;
+
+        for (const char i : word) {
+            // if 'a', then is inserted at position 0,
+            // if 'b', then is inserted at position 1,
+            // and so on, until reach the limit of 26
+            size_t index = i - 'a';
+
+            if (node->childrens[index] != nullptr) {
+                nodes[nodeIndex] = node;
+                nodeIndex++;
+                node = node->childrens[index];
+            } else {
+                delete[] nodes;
+                throw std::out_of_range("word not found");
+            }
+        }
+
+        if (!node->isEndOfWord) {
+            delete[] nodes;
+            throw std::out_of_range("word not found");
+        }
+
+        int i = word.size() - 1;
+        while (i > -1) {
+            if (!nodes[i]->isEndOfWord) {
+                TrieNode* tmp = nodes[i]->childrens[word[i] - 'a'];
+                nodes[i]->childrens[word[i] - 'a'] = nullptr;
+                delete tmp;
+            } else {
+               break;
+            }
+            i--;
+        }
+        delete[] nodes;
     }
 
     bool contains(const T& word) {
