@@ -85,6 +85,7 @@ add_executable(
     test/data-structures/stack/stack-array.cpp
     test/data-structures/stack/stack-list.cpp
     test/data-structures/tree/binary-tree.cpp
+    test/data-structures/tree/min-heap.cpp
     test/utils/bit-manipulation/is-number-even.cpp
     test/utils/linked-list/delete-middle-node.cpp
     test/utils/linked-list/find-element-from-tail.cpp
