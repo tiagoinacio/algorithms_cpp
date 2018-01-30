@@ -23,17 +23,17 @@ struct TreeNode {
 };
 
 template <typename T>
-class BinaryTree {
+class BinarySearchTree {
  private:
     TreeNode<T>* root_;
 
  public:
-    BinaryTree<T>()
+    BinarySearchTree<T>()
     :
     root_(nullptr)
     {}
 
-    ~BinaryTree<T>() {
+    ~BinarySearchTree<T>() {
         deleteTree(root_);
     }
 

@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "data-structures/tree/binary-tree.h"
+#include "data-structures/tree/binary-search-tree.h"
 #include <vector>
 
 TEST(binary_tree, insert)
@@ -11,7 +11,7 @@ TEST(binary_tree, insert)
      * 0             11
      *
      */
-    datastructures::BinaryTree<double> tree;
+    datastructures::BinarySearchTree<double> tree;
 
     tree.insert(10);
     tree.insert(15);
@@ -43,7 +43,7 @@ TEST(binary_tree, insert_iteratively)
      * 0             11
      *
      */
-    datastructures::BinaryTree<double> tree;
+    datastructures::BinarySearchTree<double> tree;
 
     tree.insertIteratively(10);
     tree.insertIteratively(15);
@@ -68,7 +68,7 @@ TEST(binary_tree, insert_iteratively)
 
 TEST(binary_tree, with_value_already_in_the_tree)
 {
-    datastructures::BinaryTree<double> tree;
+    datastructures::BinarySearchTree<double> tree;
 
     ASSERT_EQ(tree.insertIteratively(10), true);
     ASSERT_EQ(tree.insertIteratively(10), false);
@@ -80,7 +80,7 @@ TEST(binary_tree, with_value_already_in_the_tree)
 
 TEST(binary_tree, search)
 {
-    datastructures::BinaryTree<double> tree;
+    datastructures::BinarySearchTree<double> tree;
 
     tree.insert(10);
     tree.insert(15);
@@ -105,7 +105,7 @@ TEST(binary_tree, search)
 
 TEST(binary_tree, search_out_of_range)
 {
-    datastructures::BinaryTree<double> tree;
+    datastructures::BinarySearchTree<double> tree;
 
     ASSERT_THROW(tree.search(10), std::out_of_range);
 
@@ -116,7 +116,7 @@ TEST(binary_tree, search_out_of_range)
 
 TEST(binary_tree, in_order_traversal)
 {
-    datastructures::BinaryTree<double> tree;
+    datastructures::BinarySearchTree<double> tree;
 
     tree.insert(10);
     tree.insert(15);
@@ -143,7 +143,7 @@ TEST(binary_tree, in_order_traversal)
 
 TEST(binary_tree, post_order_traversal)
 {
-    datastructures::BinaryTree<double> tree;
+    datastructures::BinarySearchTree<double> tree;
 
     tree.insert(10);
     tree.insert(15);
@@ -177,7 +177,7 @@ TEST(binary_tree, post_order_traversal)
  */
 TEST(binary_tree, breadthFirstTraversal)
 {
-    datastructures::BinaryTree<double> tree;
+    datastructures::BinarySearchTree<double> tree;
 
     tree.insert(10);
     tree.insert(15);
@@ -204,14 +204,14 @@ TEST(binary_tree, breadthFirstTraversal)
 
 TEST(binary_tree, remove_key_on_empty_tree)
 {
-    datastructures::BinaryTree<double> tree;
+    datastructures::BinarySearchTree<double> tree;
 
     ASSERT_EQ(tree.deleteNode(10), false);
 }
 
 TEST(binary_tree, remove_key)
 {
-    datastructures::BinaryTree<double> tree;
+    datastructures::BinarySearchTree<double> tree;
 
     tree.insert(10);
     tree.insert(15);
