@@ -85,6 +85,15 @@ class BinarySearchTree {
         return preOrderTraversalSearch(value, root_);
     }
 
+    bool contains(const T& value) {
+        if (root_ == nullptr) {
+            throw std::out_of_range("tree is empty");
+        }
+        TreeNode<T>* node = preOrderTraversalSearch(value, root_);
+
+        return node != nullptr;
+    }
+
     bool insertIteratively(const T& value) {
         TreeNode<T>* currentNode = root_;
 
@@ -256,6 +265,10 @@ class BinarySearchTree {
         postOrderTraversal(root_, vector);
 
         return vector;
+    }
+
+    bool isEmpty() {
+        return root_ == nullptr;
     }
 
     void postOrderTraversal(TreeNode<T>* node, std::vector<T>& vector) {
