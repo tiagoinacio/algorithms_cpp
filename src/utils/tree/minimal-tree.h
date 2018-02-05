@@ -13,7 +13,12 @@ void insertInto(datastructures::BinarySearchTree<T>& tree,
     datastructures::ArrayList<T>& array, const T& min, const T& max) {
     int middle = static_cast<T>(max / 2);
 
+    if (min == 0 && max == 0) {
+        return;
+    }
+
     tree.insert(array.get(min + middle));
+
     insertInto(tree, array, 0, middle);
     insertInto(tree, array, middle, max);
 }
@@ -83,9 +88,13 @@ datastructures::BinarySearchTree<T> minimalTree(
     datastructures::ArrayList<T>& array) {
     datastructures::BinarySearchTree<T> tree;
 
-    size_t arraySize = array.size();
+    int arraySize = array.size();
     int left = static_cast<T>(arraySize / 2);
     int right = left;
+
+    if (arraySize == 0) {
+        return tree;
+    }
 
     if (left != 0) {
         tree.insert(left);
