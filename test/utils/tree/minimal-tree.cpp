@@ -47,3 +47,12 @@ TEST(minimal_tree, with_10_values)
     EXPECT_EQ(tree.isEmpty(), false);
     EXPECT_EQ(tree.contains(1), true);
 }
+
+    /*
+     * 1 2 3 4 5 6 7 8 9 10
+     *
+     *         5
+     *   2
+     * 1     4
+     *
+     */

@@ -13,14 +13,34 @@ void insertInto(datastructures::BinarySearchTree<T>& tree,
     datastructures::ArrayList<T>& array, const T& min, const T& max) {
     int middle = static_cast<T>(max / 2);
 
+    std::cout << "Inserting " << middle << std::endl;
+    tree.insert(array.get(min + middle));
+
     if (min == 0 && max == 0) {
         return;
     }
+    /*
 
-    tree.insert(array.get(min + middle));
+    [0, 9]
 
-    insertInto(tree, array, 0, middle);
-    insertInto(tree, array, middle, max);
+    insert 4
+
+    [0, 4] [5, 9]
+
+    insert 2
+    insert 7
+
+    [0, 1] [2, 4] [5, 4]
+    insert 1
+    */
+    if (min <= middle - 1) {
+        return;
+    }
+    if (middle + 1 >= max) {
+        return;
+    }
+    insertInto(tree, array, min, middle - 1);
+    insertInto(tree, array, middle + 1, max);
 }
 
 template <typename T>
@@ -96,6 +116,7 @@ datastructures::BinarySearchTree<T> minimalTree(
         return tree;
     }
 
+    // insert 5
     if (left != 0) {
         tree.insert(left);
     }

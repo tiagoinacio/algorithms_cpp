@@ -87,11 +87,14 @@ class BinarySearchTree {
 
     bool contains(const T& value) {
         if (root_ == nullptr) {
-            throw std::out_of_range("tree is empty");
+            return false;
         }
-        TreeNode<T>* node = preOrderTraversalSearch(value, root_);
-
-        return node != nullptr;
+        try {
+            TreeNode<T>* node = preOrderTraversalSearch(value, root_);
+            return node != nullptr;
+        } catch (std::out_of_range e) {
+        }
+        return false;
     }
 
     bool insertIteratively(const T& value) {
