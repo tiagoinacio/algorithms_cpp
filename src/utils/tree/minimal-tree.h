@@ -11,36 +11,22 @@ namespace tree {
 template <typename T>
 void insertInto(datastructures::BinarySearchTree<T>& tree,
     datastructures::ArrayList<T>& array, const T& min, const T& max) {
-    int middle = static_cast<T>(max / 2);
+    int middle = static_cast<T>((max - min) / 2) + min;
 
-    std::cout << "Inserting " << middle << std::endl;
-    tree.insert(array.get(min + middle));
+    tree.insert(array.get(middle));
 
-    if (min == 0 && max == 0) {
+    if (min == max) {
         return;
     }
-    /*
 
-    [0, 9]
-
-    insert 4
-
-    [0, 4] [5, 9]
-
-    insert 2
-    insert 7
-
-    [0, 1] [2, 4] [5, 4]
-    insert 1
-    */
     if (min <= middle - 1) {
-        return;
+        insertInto(tree, array, min, middle - 1);
     }
-    if (middle + 1 >= max) {
-        return;
+
+    if (middle + 1 <= max) {
+        insertInto(tree, array, middle + 1, max);
     }
-    insertInto(tree, array, min, middle - 1);
-    insertInto(tree, array, middle + 1, max);
+
 }
 
 template <typename T>

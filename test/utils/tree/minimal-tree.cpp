@@ -46,6 +46,17 @@ TEST(minimal_tree, with_10_values)
 
     EXPECT_EQ(tree.isEmpty(), false);
     EXPECT_EQ(tree.contains(1), true);
+    EXPECT_EQ(tree.contains(2), true);
+    EXPECT_EQ(tree.contains(3), true);
+    EXPECT_EQ(tree.contains(4), true);
+    EXPECT_EQ(tree.contains(5), true);
+    EXPECT_EQ(tree.contains(6), true);
+    EXPECT_EQ(tree.contains(7), true);
+    EXPECT_EQ(tree.contains(8), true);
+    EXPECT_EQ(tree.contains(9), true);
+    EXPECT_EQ(tree.contains(10), true);
+    EXPECT_EQ(tree.contains(11), false);
+    EXPECT_EQ(tree.contains(12), false);
 }
 
     /*
